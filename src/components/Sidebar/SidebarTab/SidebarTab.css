@@ -1,0 +1,57 @@
+.sidebar_tabs{
+    display: block;
+    padding: 12px 24px 6px 6px;
+}
+
+.sidebar_tabs > div{
+    display: inline-block;
+    padding: 0px 12px 0px 12px;
+    margin-left: 12px;
+    font-weight: 700;
+}
+
+.active_tab{
+    border: 2px solid #8c00ff;
+    width: 105%;
+    margin-left: -2.5px;
+}
+
+.inactive_tab{
+    border: 2px solid white;
+    width: 105%;
+    margin-left: -2.5px;
+}
+
+.sidebar_tabs > div > h4{
+    padding-bottom: 3px;
+}
+
+.sidebar_tabs > div > h4:hover{
+    cursor: pointer;
+}
+
+.sidebar_channel{
+    flex: 1;
+}
+
+.sidebar_add_channel{
+    cursor: pointer;
+}
+
+.sidebar_add_channel:hover{
+    color: white;
+}
+
+.sidebar_channel_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #2f3135;
+    color: gray;
+}
+
+.sidebar_header{
+    display: flex;
+    align-items: center;
+}
