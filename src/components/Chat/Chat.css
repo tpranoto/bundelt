@@ -4,11 +4,11 @@
     width: 100%;
     background-color: white;
     height: 100vh;
-    box-shadow: 1px 1px 2px 1px grey;
 }
 
 .chat_messages{
     flex: 1;
+    overflow: scroll;
 }
 
 .chat_input{

@@ -1,10 +1,10 @@
 import React from 'react';
-import './SidebarGroup.css';
+import './Group.css';
 import { useDispatch } from 'react-redux';
-import { setGroupInfo } from '../../../../slices/groupSlice';
+import { setGroupInfo } from '../../../../../slices/groupSlice';
 import { Avatar } from '@material-ui/core'
 
-const SidebarGroup = ({ id, groupName }) => {
+const Group = ({ id, groupName }) => {
     const dispatch = useDispatch();
 
     const handleGroupChange = () => {
@@ -17,8 +17,8 @@ const SidebarGroup = ({ id, groupName }) => {
     }
 
     return (
-        <div className="sidebar_group" onClick={handleGroupChange}>
-            <h4 className="sidebar_group_name">
+        <div className="group" onClick={handleGroupChange}>
+            <h4 className="group_name">
                 <Avatar />
                 <span>{groupName}</span>
             </h4>
@@ -26,4 +26,4 @@ const SidebarGroup = ({ id, groupName }) => {
     );
 }
 
-export default SidebarGroup;
+export default Group;

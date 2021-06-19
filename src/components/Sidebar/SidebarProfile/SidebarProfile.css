@@ -6,6 +6,7 @@
     background-color: #8c00ff;
     padding: 5px;
     box-shadow: 0 1px 8px 0 rgb(0 17 25 / 27%);
+    border-right:0.5px solid #8c00ff;
 }
 
 .sidebar_profile_info{

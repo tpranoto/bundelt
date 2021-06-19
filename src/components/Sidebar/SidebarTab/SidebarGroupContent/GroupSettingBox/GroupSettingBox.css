@@ -1,0 +1,50 @@
+.group_settings{
+    flex: 10;
+    background-color: transparent;
+    padding: 0px 10px 5px 10px;
+}
+
+.setting_box_container{
+    border-radius: 5px;
+    background-color: #5c0099;
+    padding: 5px;
+}
+
+.setting_box_container > div{
+    display: flex;
+    height: 40px;
+    color: #f0f0f5;
+    text-align: center;
+    justify-content: space-between;
+    margin:5px 10px 5px 10px;
+    border-radius: 5px;
+}
+
+.notification_box:hover, .privacy_box:hover{
+    background-color: #d699ff;
+}
+
+.setting_box_container > div > span{
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: small;
+    margin-left: 5px;
+}
+
+.setting_box_container > div > .MuiSvgIcon-root{
+    margin-top: 10px;
+    margin-right: 5px;
+    font-size: medium;
+}
+
+#leave_group_box > span, #leave_group_box > .MuiSvgIcon-root{
+    color: #ff0000;
+}
+
+#leave_group_box:hover{
+    background-color: red;
+}
+
+#leave_group_box:hover #leave_name, #leave_group_box:hover #leave_icon{
+    color: white;
+}

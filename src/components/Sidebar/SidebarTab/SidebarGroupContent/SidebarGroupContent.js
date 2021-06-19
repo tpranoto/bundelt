@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
-import './SidebarGroupContent.css'
+import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import AddIcon from '@material-ui/icons/Add';
-import SidebarGroup from '../SidebarGroup/SidebarGroup.js'
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import db from '../../../../firebase';
+import GroupList from './GroupList/GroupList.js';
+import './SidebarGroupContent.css'
+import GroupSettingBox from './GroupSettingBox/GroupSettingBox';
+import { useState } from 'react';
 import { useEffect } from 'react';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
-
+import { useRef } from 'react';
 
 const SidebarGroupContent = () => {
-    const [groups, setGroups] = useState([]);
+    const [displaySettingBox, setDisplaySettingBox] = useState(false);
+    const settingRef = useOutsideAlerter(() => {
+        setDisplaySettingBox(false);
+    });
 
-    const handleFindGroups = () => {
-
-    }
     const handleAddGroups = () => {
         const groupName = prompt("Enter group name");
 
@@ -23,53 +24,67 @@ const SidebarGroupContent = () => {
                 groupName: groupName,
             });
         }
-    }
-
-    useEffect(() => {
-        db.collection('groups').onSnapshot((snapshot) =>
-            setGroups(snapshot.docs.map((doc) => ({
-                id: doc.id,
-                group: doc.data(),
-            })))
-        );
-    }, [])
+    };
 
     return (
-        <div className="sidebar_group">
-            <div className="sidebar_group_header">
-                <div className="sidebar_header">
-                    <ExpandMoreIcon />
-                    <h4>Groups</h4>
-                </div>
-
-                <div>
-                    <SearchIcon 
-                        onClick={handleFindGroups} 
-                        className="sidebar_find_group"
-                    />
-                    <AddIcon 
-                        onClick={handleAddGroups} 
-                        className="sidebar_add_group"
-                    />
-                </div>
-            </div>
-
-            <div className= "sidebar_group_search_container">
-                <div className="sidebar_group_search">
+        <>
+            <div className="group_search_container">
+                <div className="group_search">
                     <SearchIcon />
                     <input placeholder="Search" />
                 </div>
             </div>
 
-            <div className="sidebar_group_list">
-                <div className="inner_sidebar_group_list">
-                {groups.map(({ id, group }) => (
-                    <SidebarGroup key={id} id={id} groupName={group.groupName} />
-                ))}
+            <GroupList />
+
+            <div className="footer_container">
+                <GroupSettingBox
+                    showSetting={displaySettingBox}
+                    settingRef={settingRef}
+                />
+
+                <div
+                    className="group_footer_container"
+                    onClick={() => {
+                        setDisplaySettingBox(!displaySettingBox);
+                    }}
+                    ref={settingRef}
+                >
+                    <div className="group_footer">
+                        <h4>Groups</h4>
+                    </div>
+
+                    <ExpandLessIcon />
+
+                    {/* <div>
+                        <AddIcon
+                            onClick={handleAddGroups}
+                            className="group_footer_add"
+                        />
+                    </div> */}
                 </div>
             </div>
-        </div>
+        </>
     )
+};
+
+const useOutsideAlerter = (handler) => {
+    const ref = useRef(null);
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (ref.current && !ref.current.contains(event.target)) {
+                handler();
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    });
+
+    return ref
 }
 
 export default SidebarGroupContent;
