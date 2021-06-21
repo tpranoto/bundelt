@@ -8,33 +8,39 @@ import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import Message from './Message/Message.js'
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../slices/userSlice';
-import { selectGroupId, selectGroupName } from '../../slices/groupSlice';
+import { selectGroupId } from '../../slices/groupSlice';
+import { selectChannelId, selectChannelName } from '../../slices/channelSlice';
 import db from '../../firebase';
 import firebase from 'firebase';
 
 const Chat = () => {
     const user = useSelector(selectUser);
-    const channelId = useSelector(selectGroupId);
-    const channelName = useSelector(selectGroupName);
+    const groupId = useSelector(selectGroupId);
+    const channelName = useSelector(selectChannelName);
+    const channelId = useSelector(selectChannelId);
     const [input, setInput] = useState("");
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        if (channelId) {
+        if (groupId && channelId) {
             db.collection('groups')
+                .doc(groupId)
+                .collection('channels')
                 .doc(channelId)
                 .collection('messages')
-                .orderBy('timestamp', 'desc')
+                .orderBy('timestamp', 'asc')
                 .onSnapshot((snapshot) =>
                     setMessages(snapshot.docs.map((doc) => doc.data()))
                 );
         }
-    }, [channelId])
+    }, [groupId,channelId])
 
     const sendMessage = e =>{
         e.preventDefault();
 
         db.collection('groups')
+            .doc(groupId)
+            .collection('channels')
             .doc(channelId)
             .collection('messages')
             .add({
@@ -67,12 +73,12 @@ const Chat = () => {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         placeholder={`Message #${channelName}`}
-                        disabled={!channelId}
+                        disabled={!groupId}
                     />
                     <button
                         className="chat_input_button"
                         type="submit"
-                        disabled={!channelId}
+                        disabled={!groupId}
                         onClick={sendMessage}
                     >
                         Send Message

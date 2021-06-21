@@ -1,0 +1,31 @@
+.group_icon_container{
+    padding: 10px 5px 10px 5px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.group_icon:hover {
+    cursor: pointer;
+    border: 2px solid #f4e6ff;
+    border-radius: 100%;
+}
+
+.group_icon{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #8c00ff;
+    display: flex;
+    justify-content: center;
+}
+
+.active_group{
+    margin-top: 5px;
+    border: 2px solid #8c00ff;
+    border-radius: 5px;
+}
+
+.not_active_group{
+    margin-top: 5px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+}

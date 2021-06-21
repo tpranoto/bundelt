@@ -4,13 +4,17 @@ import './App.css';
 import Sidebar from '../Sidebar/Sidebar.js'
 import Chat from '../Chat/Chat.js'
 import Login from '../Login/Login.js'
+import Home from '../Home/Home.js'
+import Find from '../Find/Find.js'
 import { selectUser } from '../../slices/userSlice'
+import { selectGroupState } from '../../slices/appSlice'
 import { auth } from '../../firebase';
 import { login, logout } from '../../slices/userSlice'
 
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const groupState = useSelector(selectGroupState);
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -32,7 +36,15 @@ function App() {
       {user ? (
         <>
           <Sidebar />
-          <Chat />
+          {
+            groupState === "home" ? (
+              <Home />
+            ) : groupState === "find" ? (
+              <Find />
+            ) : (
+              <Chat />
+            )
+          }
         </>
       ) : (
         <Login />

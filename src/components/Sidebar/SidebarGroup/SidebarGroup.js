@@ -1,41 +1,32 @@
 import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
-import AddIcon from '@material-ui/icons/Add';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import db from '../../../../firebase';
-import GroupList from './GroupList/GroupList.js';
-import './SidebarGroupContent.css'
+import ChannelList from './ChannelList/ChannelList.js';
+import './SidebarGroup.css'
 import GroupSettingBox from './GroupSettingBox/GroupSettingBox';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { selectGroupName } from '../../../slices/groupSlice';
 
-const SidebarGroupContent = () => {
+const SidebarGroup = () => {
+    const groupName = useSelector(selectGroupName);
     const [displaySettingBox, setDisplaySettingBox] = useState(false);
     const settingRef = useOutsideAlerter(() => {
         setDisplaySettingBox(false);
     });
 
-    const handleAddGroups = () => {
-        const groupName = prompt("Enter group name");
-
-        if (groupName) {
-            db.collection('groups').add({
-                groupName: groupName,
-            });
-        }
-    };
-
     return (
         <>
-            <div className="group_search_container">
+            {/* <div className="group_search_container">
                 <div className="group_search">
                     <SearchIcon />
                     <input placeholder="Search" />
                 </div>
-            </div>
+            </div> */}
 
-            <GroupList />
+            <ChannelList />
 
             <div className="footer_container">
                 <GroupSettingBox
@@ -51,17 +42,10 @@ const SidebarGroupContent = () => {
                     ref={settingRef}
                 >
                     <div className="group_footer">
-                        <h4>Groups</h4>
+                        <h4>{groupName}</h4>
                     </div>
 
                     <ExpandLessIcon />
-
-                    {/* <div>
-                        <AddIcon
-                            onClick={handleAddGroups}
-                            className="group_footer_add"
-                        />
-                    </div> */}
                 </div>
             </div>
         </>
@@ -87,4 +71,4 @@ const useOutsideAlerter = (handler) => {
     return ref
 }
 
-export default SidebarGroupContent;
+export default SidebarGroup;

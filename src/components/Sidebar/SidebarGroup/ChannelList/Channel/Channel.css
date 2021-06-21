@@ -1,0 +1,45 @@
+.channel:hover > h4{
+    background-color: #f4e6ff;
+}
+
+.channel{
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.channel_selected > h4{
+    display: flex;
+    padding-left: 15px;
+    align-items: center;
+    background-color: #d199ff;
+    color: black;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    font-size: medium;
+    font-weight: 500;
+    padding: 10px;
+}
+.channel > h4{
+    display: flex;
+    padding-left: 15px;
+    align-items: center;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    font-size: medium;
+    font-weight: 500;
+    padding: 10px;
+}
+
+.channel_name{
+    font-size: 15px;
+    padding: 5px;
+}
+
+.channel_name > span{
+    padding-left: 10px;
+}

@@ -1,0 +1,24 @@
+.channel_list{
+    flex: 1;
+    overflow: scroll;
+}
+
+.channel_header{
+    display: flex;
+    justify-content: space-between;
+    padding:5px 20px 5px 20px;
+    background-color: #8c00ff;
+    color: white;
+    border-radius: 5px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.channel_header > h4{
+    font-size: medium;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+.add_new_channel:hover{
+    transform: scale(1.5);
+}
