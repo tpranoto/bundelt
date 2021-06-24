@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
-import './Login.css'
-import { auth, provider } from '../../firebase'
+import './Login.css';
+import { auth, provider } from '../../utils/firebase/firebase';
+import logo from '../../assets/logo512.png';
 
 const Login = () => {
     const signIn = () => {
@@ -12,7 +13,7 @@ const Login = () => {
         <div className='login'>
             <div className="login_logo">
                 <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+                    src={logo}
                     alt=""
                 />
             </div>

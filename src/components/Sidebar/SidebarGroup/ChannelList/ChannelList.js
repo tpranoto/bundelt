@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
-import './ChannelList.css'
-import Channel from './Channel/Channel.js'
-import db from '../../../../firebase';
+import './ChannelList.css';
+import Channel from './Channel/Channel.js';
+import NewChannelDialog from './NewChannelDialog/NewChannelDialog.js';
+import db from '../../../../utils/firebase/firebase';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectGroupId } from '../../../../slices/groupSlice';
 import { setChannelInfo } from '../../../../slices/channelSlice';
 import AddIcon from '@material-ui/icons/Add';
-import firebase from 'firebase';
 import { useDispatch } from 'react-redux';
 
 const ChannelList = () => {
     const dispatch = useDispatch();
-    const [channels, setChannels] = useState([]);
     const groupId = useSelector(selectGroupId);
+    const [channels, setChannels] = useState([]);
+    const [showAddDialog, setShowAddDialog] = useState(false);
 
     useEffect(() => {
         if (groupId) {
             db.collection('groups')
                 .doc(groupId)
                 .collection('channels')
+                .orderBy('timestamp', 'asc')
                 .onSnapshot((snapshot) =>
                     setChannels(snapshot.docs.map((doc) => ({
                         id: doc.id,
@@ -29,7 +31,7 @@ const ChannelList = () => {
         }
     }, [groupId, channels.length])
 
-    if (channels.length >0){
+    if (channels.length > 0) {
         dispatch(
             setChannelInfo({
                 channelId: channels[0].id,
@@ -38,21 +40,13 @@ const ChannelList = () => {
         );
     }
 
-    
+    const handleCloseDialog = () => {
+        setShowAddDialog(false);
+    }
 
-    const handleAddChannel = () => {
-        const cName = prompt("Enter channel name");
-
-        if (cName) {
-            db.collection('groups')
-                .doc(groupId)
-                .collection('channels')
-                .add({
-                    timestamp :firebase.firestore.FieldValue.serverTimestamp(),
-                    channelName: cName,
-                });
-        }
-    };
+    const handleOpenDialog = () => {
+        setShowAddDialog(true);
+    }
 
     return (
         <div className="channel_list">
@@ -60,10 +54,16 @@ const ChannelList = () => {
                 <h4>Channels</h4>
 
                 <AddIcon
-                    onClick={handleAddChannel}
+                    onClick={handleOpenDialog}
                     className="add_new_channel"
                 />
             </div>
+
+            <NewChannelDialog
+                handleCloseDialog={handleCloseDialog}
+                show={showAddDialog}
+            />
+
             <div>
                 {channels.map(({ id, channel }) => (
                     <Channel

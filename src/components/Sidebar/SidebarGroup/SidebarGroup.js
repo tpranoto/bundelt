@@ -5,10 +5,9 @@ import ChannelList from './ChannelList/ChannelList.js';
 import './SidebarGroup.css'
 import GroupSettingBox from './GroupSettingBox/GroupSettingBox';
 import { useState } from 'react';
-import { useEffect } from 'react';
-import { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { selectGroupName } from '../../../slices/groupSlice';
+import { useOutsideAlerter } from '../../../utils/helper_func/helper.js';
 
 const SidebarGroup = () => {
     const groupName = useSelector(selectGroupName);
@@ -51,24 +50,5 @@ const SidebarGroup = () => {
         </>
     )
 };
-
-const useOutsideAlerter = (handler) => {
-    const ref = useRef(null);
-
-    useEffect(() => {
-        function handleClickOutside(event) {
-            if (ref.current && !ref.current.contains(event.target)) {
-                handler();
-            }
-        }
-
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    });
-
-    return ref
-}
 
 export default SidebarGroup;

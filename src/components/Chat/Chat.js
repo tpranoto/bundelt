@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { selectUser } from '../../slices/userSlice';
 import { selectGroupId } from '../../slices/groupSlice';
 import { selectChannelId, selectChannelName } from '../../slices/channelSlice';
-import db from '../../firebase';
+import db from '../../utils/firebase/firebase';
 import firebase from 'firebase';
 
 const Chat = () => {

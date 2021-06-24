@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import './GroupBar.css'
-import Group from './Group/Group.js'
-import db from '../../../firebase';
+import './GroupBar.css';
+import Group from './Group/Group.js';
+import db from '../../../utils/firebase/firebase';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setGroupInfo } from '../../../slices/groupSlice';
 import { setAppInfo } from '../../../slices/appSlice';
 import { selectGroupState } from '../../../slices/appSlice';
 import { useSelector } from 'react-redux';
-
+import logo from '../../../assets/logo192.png';
+import { createImageFromInitials } from '../../../utils/default_image/default_image.js';
+import firebase from 'firebase';
 
 const GroupBar = () => {
     const dispatch = useDispatch();
@@ -47,7 +49,7 @@ const GroupBar = () => {
                 groupState: id,
             })
         );
-        
+
     };
 
     const handleAddIcon = () => {
@@ -63,6 +65,7 @@ const GroupBar = () => {
                     .doc(docRef.id)
                     .collection('channels')
                     .add({
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                         channelName: "general",
                     });
 
@@ -85,7 +88,7 @@ const GroupBar = () => {
             <Group
                 id="home_group"
                 iconType="home"
-                pic="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+                pic={logo}
                 active={activeTabs === "home"}
                 onClickFunc={handleHomeIcon}
             />
@@ -95,6 +98,7 @@ const GroupBar = () => {
                     id={id}
                     iconType="group"
                     groupName={group.groupName}
+                    pic={createImageFromInitials(200, group.groupName, '#f4e6ff')}
                     active={activeTabs === id}
                     onClickFunc={() => {
                         handleGroupIcon(id, group.groupName);

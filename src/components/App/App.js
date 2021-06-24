@@ -8,7 +8,7 @@ import Home from '../Home/Home.js'
 import Find from '../Find/Find.js'
 import { selectUser } from '../../slices/userSlice'
 import { selectGroupState } from '../../slices/appSlice'
-import { auth } from '../../firebase';
+import { auth } from '../../utils/firebase/firebase';
 import { login, logout } from '../../slices/userSlice'
 
 function App() {

@@ -1,6 +1,7 @@
 import React from 'react';
 import './SidebarSetting.css';
-import { auth } from '../../../firebase';
+import { auth } from '../../../utils/firebase/firebase';
+import logo from '../../../assets/logo192.png';
 
 const SidebarSetting = () => {
     return (
@@ -16,7 +17,7 @@ const SidebarSetting = () => {
 
             <div className="sidebar_setting_info">
                     <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+                        src={logo}
                         alt=""
                     />
                 <p>Version 1.0</p>

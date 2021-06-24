@@ -1,0 +1,77 @@
+.home_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: gray;
+    padding: 5px 10px 5px 10px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.friends_icon{
+    color: gray;
+    margin: 10px 0 10px 0;
+}
+
+.home_header_left{
+    display: flex;
+}
+
+.home_header_left {
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.home_header_left > div{
+    margin: 0 10px 0 10px;
+}
+
+.selected_home_header_tab{
+    background-color: #d199ff;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.home_header_tab{
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.home_header_tab:hover{
+    background-color: #f4e6ff;
+    cursor: pointer;
+}
+
+.add_friend_button{
+    display: flex;
+    justify-content: center;
+    background-color: #8c00ff;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.add_friend_button:hover{
+    cursor: pointer;
+}
+
+.friends_header_div{
+    border-right: 3px solid #e0e0eb;
+    border-radius: 10px;
+    height: 20px;
+    margin: 5px;
+}
+
+.home_header_right{
+    display: flex;
+    align-items: center;
+}
+
+.home_header_right > .MuiSvgIcon-root{
+    padding: 5px;
+    cursor: pointer;
+}
+
+.home_header_right > .MuiSvgIcon-root:hover{
+    color: black;
+}
