@@ -6,14 +6,12 @@ import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import SearchIcon from '@material-ui/icons/Search';
 import InboxIcon from '@material-ui/icons/Inbox';
 import HelpIcon from '@material-ui/icons/Help';
-import { Avatar } from '@material-ui/core'
 
 const ChatHeader = ({ channelName }) => {
     return (
         <div className="chat_header">
             <div className="chat_header_left">
                 <h3>
-                    <Avatar className="chat_header_avatar"/>
                     <span>{channelName}</span>
                 </h3>
             </div>

@@ -1,17 +1,10 @@
-.channel:hover > h4{
-    background-color: #f4e6ff;
-}
-
-.channel{
-    border-bottom: 1px solid #f2f2f2;
-}
-
-.channel_selected > h4{
+.channel_selected{
     display: flex;
+    justify-content: space-between;
     padding-left: 15px;
     align-items: center;
-    background-color: #d199ff;
     color: black;
+    background-color: #d199ff;
     cursor: pointer;
     margin-left: 10px;
     margin-right: 10px;
@@ -20,8 +13,10 @@
     font-weight: 500;
     padding: 10px;
 }
-.channel > h4{
+
+.channel{
     display: flex;
+    justify-content: space-between;
     padding-left: 15px;
     align-items: center;
     background-color: white;
@@ -35,11 +30,31 @@
     padding: 10px;
 }
 
-.channel_name{
-    font-size: 15px;
-    padding: 5px;
+.channel:hover {
+    background-color: #f4e6ff;
 }
 
-.channel_name > span{
-    padding-left: 10px;
+.channel > span{
+    margin: 1px 0 1px 10px;
+}
+
+.channel_selected > span{
+    margin: 1px 0 1px 10px;
+}
+
+.channel > .channel_option{
+    display: none;
+}
+
+.channel:hover > .channel_option{
+    display: block;
+}
+
+#channel_option_icon{
+    font-size: medium;
+    margin-left: 3px;
+}
+
+.tooltip_invite_channel{
+    color: black;
 }

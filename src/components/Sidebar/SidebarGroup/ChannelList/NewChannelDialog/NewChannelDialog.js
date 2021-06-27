@@ -18,7 +18,7 @@ const NewChannelDialog = ({ handleCloseDialog, show }) => {
     const handleCloseDialogRoutine = () => {
         setChannelName("");
         handleCloseDialog();
-    }
+    };
 
     const handleAddChannel = () => {
         if (channelName !== "") {
@@ -32,14 +32,14 @@ const NewChannelDialog = ({ handleCloseDialog, show }) => {
         }
 
         handleCloseDialogRoutine();
-    }
+    };
 
     return (
         <div
             className={show ? "bg_dialog display_block" : "bg_dialog display_none"}
         >
             <div
-                className="dialog_main"
+                className="channel_dialog_main"
                 ref={dialogRef}
             >
                 <h3>Create new channel </h3>
@@ -59,6 +59,7 @@ const NewChannelDialog = ({ handleCloseDialog, show }) => {
                 >
                     cancel
                 </button>
+                
                 <button
                     className="create_channel_button"
                     onClick={handleAddChannel}

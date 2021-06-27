@@ -10,13 +10,14 @@ import { selectGroupState } from '../../../slices/appSlice';
 import { useSelector } from 'react-redux';
 import logo from '../../../assets/logo192.png';
 import { createImageFromInitials } from '../../../utils/default_image/default_image.js';
-import firebase from 'firebase';
+import NewGroupDialog from './NewGroupDialog/NewGroupDialog.js';
 
 const GroupBar = () => {
     const dispatch = useDispatch();
     const groupName = useSelector(selectGroupState);
     const [groups, setGroups] = useState([]);
     const [activeTabs, setActiveTabs] = useState(groupName);
+    const [showAddDialog, setShowAddDialog] = useState(false);
 
     useEffect(() => {
         db.collection('groups').onSnapshot((snapshot) =>
@@ -54,24 +55,7 @@ const GroupBar = () => {
 
     const handleAddIcon = () => {
         setActiveTabs("add");
-        const gName = prompt("Enter group name");
-
-        if (gName) {
-            db.collection('groups').add({
-                groupName: gName,
-            }).then((docRef) => {
-                console.log(docRef);
-                db.collection('groups')
-                    .doc(docRef.id)
-                    .collection('channels')
-                    .add({
-                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                        channelName: "general",
-                    });
-
-                handleGroupIcon(docRef.id, gName);
-            });
-        }
+        setShowAddDialog(true);
     };
 
     const handleFindIcon = () => {
@@ -82,6 +66,11 @@ const GroupBar = () => {
             })
         );
     };
+
+    const handleCloseDialog = () =>{
+        setShowAddDialog(false);
+        setActiveTabs(groupName);
+    }
 
     return (
         <div className="group_bar">
@@ -118,6 +107,12 @@ const GroupBar = () => {
                 iconType="find"
                 active={activeTabs === "find"}
                 onClickFunc={handleFindIcon}
+            />
+
+            <NewGroupDialog 
+                show={showAddDialog}
+                handleGroupIcon={handleGroupIcon}
+                handleCloseDialog={handleCloseDialog}
             />
 
         </div>

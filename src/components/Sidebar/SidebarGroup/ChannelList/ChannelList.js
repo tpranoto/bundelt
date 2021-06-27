@@ -9,6 +9,7 @@ import { selectGroupId } from '../../../../slices/groupSlice';
 import { setChannelInfo } from '../../../../slices/channelSlice';
 import AddIcon from '@material-ui/icons/Add';
 import { useDispatch } from 'react-redux';
+import Tooltip from '../../../../utils/tooltip/Tooltip';
 
 const ChannelList = () => {
     const dispatch = useDispatch();
@@ -53,10 +54,15 @@ const ChannelList = () => {
             <div className="channel_header">
                 <h4>Channels</h4>
 
+                <Tooltip
+                    content="Add Channel"
+                    
+                >
                 <AddIcon
                     onClick={handleOpenDialog}
                     className="add_new_channel"
                 />
+                </Tooltip>
             </div>
 
             <NewChannelDialog

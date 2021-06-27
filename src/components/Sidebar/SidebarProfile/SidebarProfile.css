@@ -4,14 +4,14 @@
     align-items: center;
     color: gray;
     background-color: #8c00ff;
-    padding: 5px;
+    padding: 0 5px 0 5px;
     box-shadow: 0 1px 8px 0 rgb(0 17 25 / 27%);
     border-right:0.5px solid #8c00ff;
 }
 
 .sidebar_profile_info{
     flex: 1;
-    padding: 15px 15px 15px 5px;
+    padding: 7px 15px 7px 10px;
 }
 
 .sidebar_profile_info > h3, .sidebar_profile_info > p{
