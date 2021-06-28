@@ -3,10 +3,15 @@ import './Group.css';
 import { Avatar } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import ExploreIcon from '@material-ui/icons/Explore';
+import Tooltip from '../../../../utils/tooltip/Tooltip';
 
 const Group = ({ id, groupName, pic, active, onClickFunc, iconType }) => {
     return (
         <div className="group_icon_container" onClick={onClickFunc}>
+             <Tooltip 
+                content={groupName}
+                direction="middle"
+            >
             {
                 iconType === "add" ? (
                     <Avatar
@@ -30,6 +35,7 @@ const Group = ({ id, groupName, pic, active, onClickFunc, iconType }) => {
                     />
                 )
             }
+            </Tooltip>
 
 
             <hr className={active ? "active_group" : "not_active_group"} />

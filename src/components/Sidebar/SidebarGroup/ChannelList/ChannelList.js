@@ -50,13 +50,12 @@ const ChannelList = () => {
     }
 
     return (
-        <div className="channel_list">
+        <div className="channel_list_sidebar">
             <div className="channel_header">
                 <h4>Channels</h4>
 
                 <Tooltip
                     content="Add Channel"
-                    
                 >
                 <AddIcon
                     onClick={handleOpenDialog}
@@ -70,7 +69,7 @@ const ChannelList = () => {
                 show={showAddDialog}
             />
 
-            <div>
+            <div className="channel_list">
                 {channels.map(({ id, channel }) => (
                     <Channel
                         id={id}

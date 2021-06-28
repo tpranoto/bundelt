@@ -67,7 +67,7 @@ const GroupBar = () => {
         );
     };
 
-    const handleCloseDialog = () =>{
+    const handleCloseDialog = () => {
         setShowAddDialog(false);
         setActiveTabs(groupName);
     }
@@ -77,6 +77,7 @@ const GroupBar = () => {
             <Group
                 id="home_group"
                 iconType="home"
+                groupName="Home"
                 pic={logo}
                 active={activeTabs === "home"}
                 onClickFunc={handleHomeIcon}
@@ -98,6 +99,7 @@ const GroupBar = () => {
             <Group
                 id="add_group"
                 iconType="add"
+                groupName="Add"
                 active={activeTabs === "add"}
                 onClickFunc={handleAddIcon}
             />
@@ -105,16 +107,16 @@ const GroupBar = () => {
             <Group
                 id="find_group"
                 iconType="find"
+                groupName="Find"
                 active={activeTabs === "find"}
                 onClickFunc={handleFindIcon}
             />
 
-            <NewGroupDialog 
+            <NewGroupDialog
                 show={showAddDialog}
                 handleGroupIcon={handleGroupIcon}
                 handleCloseDialog={handleCloseDialog}
             />
-
         </div>
     )
 }

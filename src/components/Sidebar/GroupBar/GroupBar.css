@@ -1,5 +1,5 @@
 .group_bar{
     display: flex;
     flex-direction: row;
-    overflow: scroll;
+    overflow-x: auto;
 }
