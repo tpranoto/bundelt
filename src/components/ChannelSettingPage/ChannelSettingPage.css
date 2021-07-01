@@ -1,0 +1,19 @@
+.channel_setting_page {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+}
+
+.channel_setting_page_main{
+    flex: 3;
+    background: white;
+    width: 50%;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+}

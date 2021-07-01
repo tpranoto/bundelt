@@ -10,12 +10,14 @@ import { setChannelInfo } from '../../../../slices/channelSlice';
 import AddIcon from '@material-ui/icons/Add';
 import { useDispatch } from 'react-redux';
 import Tooltip from '../../../../utils/tooltip/Tooltip';
+import ChannelSettingPage from '../../../ChannelSettingPage/ChannelSettingPage';
 
 const ChannelList = () => {
     const dispatch = useDispatch();
     const groupId = useSelector(selectGroupId);
     const [channels, setChannels] = useState([]);
     const [showAddDialog, setShowAddDialog] = useState(false);
+    const [displayChannelSetting, setDisplayChannelSetting] = useState(false);
 
     useEffect(() => {
         if (groupId) {
@@ -74,9 +76,16 @@ const ChannelList = () => {
                     <Channel
                         id={id}
                         channelName={channel.channelName}
+                        openChannelSetting={()=>setDisplayChannelSetting(true)}
                     />
                 ))}
             </div>
+            
+            {
+                displayChannelSetting && (
+                    <ChannelSettingPage handleClose={()=>setDisplayChannelSetting(false)} />
+                )
+            }
         </div>
     )
 }

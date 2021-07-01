@@ -3,14 +3,14 @@
 }
 
 .channel_list{
-    height: 73vh;
+    height: 74.5vh;
     overflow: auto;
 }
 
 .channel_header{
     display: flex;
     justify-content: space-between;
-    padding: 3px 20px 4px 20px;
+    padding: 4px 20px 3px 20px;
     background-color: #8c00ff;
     color: white;
     border-radius: 5px;
@@ -24,5 +24,6 @@
 }
 
 .add_new_channel:hover{
+    cursor: pointer;
     transform: scale(1.5);
 }

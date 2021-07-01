@@ -37,6 +37,10 @@
     transform: scale(1.5);
 }
 
+.footer_container{
+    position: relative;
+}
+
 .group_footer_container{
     display: flex;
     flex: 1;

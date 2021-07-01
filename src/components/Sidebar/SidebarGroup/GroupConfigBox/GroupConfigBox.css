@@ -1,7 +1,10 @@
 .group_settings{
-    flex: 10;
+    position: absolute;
     background-color: transparent;
     padding: 0px 10px 5px 10px;
+    width: 280px;
+    transform: translateX(0) translateY(-100%);
+
 }
 
 .setting_box_container{
@@ -20,8 +23,9 @@
     border-radius: 5px;
 }
 
-.notification_box:hover, .privacy_box:hover{
+.notification_box:hover, .privacy_box:hover, .group_seting_box:hover{
     background-color: #d699ff;
+    cursor: pointer;
 }
 
 .setting_box_container > div > span{
@@ -43,6 +47,7 @@
 
 #leave_group_box:hover{
     background-color: red;
+    cursor: pointer;
 }
 
 #leave_group_box:hover #leave_name, #leave_group_box:hover #leave_icon{

@@ -42,19 +42,64 @@
     margin: 1px 0 1px 10px;
 }
 
+.channel_option{
+    display: flex;
+}
+
 .channel > .channel_option{
     display: none;
 }
 
 .channel:hover > .channel_option{
-    display: block;
+    display: flex;
 }
 
-#channel_option_icon{
+.channel_option_icon > .MuiSvgIcon-root{
     font-size: medium;
-    margin-left: 3px;
 }
 
-.tooltip_invite_channel{
-    color: black;
+.channel_option_icon_div{
+    width: 5px;
+}
+
+.tooltip_channel_add{
+    position: fixed;
+    background-color: black;
+    color: white;
+    font-size: small;
+    padding: 5px;
+    border-radius: 5px;
+    margin: -30px 0 0 -12px;
+}
+
+.tooltip_channel_add::before {
+    top: 100%;
+    content: " ";
+    left: 50%;
+    position: absolute;
+    margin-left: -5px;
+    border-top: 5px solid black;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+}
+
+.tooltip_channel_edit{
+    position: fixed;
+    background-color: black;
+    color: white;
+    font-size: small;
+    padding: 5px;
+    border-radius: 5px;
+    margin: -30px 0 0 -15px;
+}
+
+.tooltip_channel_edit::before {
+    top: 100%;
+    content: " ";
+    left: 50%;
+    position: absolute;
+    margin-left: -5px;
+    border-top: 5px solid black;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
 }

@@ -1,17 +1,24 @@
 import React from 'react';
-import './GroupSettingBox.css';
+import './GroupConfigBox.css';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import PolicyIcon from '@material-ui/icons/Policy';
 
-const GroupSettingBox = ({showSetting,settingRef}) => {
+const GroupConfigBox = ({ openGroupSetting }) => {
     return (
-        <div 
-            className="group_settings" 
-            style={{display: showSetting ? '' : 'none' }}
-            ref={settingRef}
+        <div
+            className="group_settings"
         >
             <div className="setting_box_container">
+                <div
+                    className="group_seting_box"
+                    onClick={openGroupSetting}
+                >
+                    <span>Group Settings</span>
+                    <SettingsIcon />
+                </div>
+
                 <div className="notification_box">
                     <span>Notification Settings</span>
                     <NotificationsIcon />
@@ -19,7 +26,7 @@ const GroupSettingBox = ({showSetting,settingRef}) => {
 
                 <div className="privacy_box">
                     <span>Privacy Settings</span>
-                    <SettingsIcon />
+                    <PolicyIcon />
                 </div>
 
                 <div id="leave_group_box">
@@ -31,4 +38,4 @@ const GroupSettingBox = ({showSetting,settingRef}) => {
     )
 }
 
-export default GroupSettingBox;
+export default GroupConfigBox;

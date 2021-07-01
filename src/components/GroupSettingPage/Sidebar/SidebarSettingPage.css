@@ -1,0 +1,56 @@
+.group_setting_page_sidebar{
+    background: white;
+    width: 220px;
+    height: 100vh;
+    padding: 20px;
+    background-color: #8c00ff;
+    color: white;
+    font-weight: 500;
+}
+
+.group_setting_page_sidebar_name{
+    display: flex;
+    padding: 50px 0 5px 0;
+    font-size: medium;
+    font-weight: 800;
+    color: #f2f2f2;
+}
+
+.group_setting_page_sidebar_close{
+    display: flex;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #f2f2f2;
+}
+
+.group_setting_page_sidebar_close:hover{
+    cursor: pointer;
+}
+
+.group_setting_page_sidebar_close > .MuiSvgIcon-root{
+    font-size: x-large;
+    margin-top: -2px;
+}
+
+.group_setting_page_sidebar_name > span{
+    padding: 2px 0 0 4px;
+}
+
+.group_setting_page_sidebar_overview, .group_setting_page_sidebar_roles, 
+.group_setting_page_sidebar_moderations, .group_setting_page_sidebar_delete{
+    padding: 7px 10px 7px 10px;
+}
+
+.group_setting_page_sidebar_overview:hover, .group_setting_page_sidebar_roles:hover, 
+.group_setting_page_sidebar_moderations:hover, .group_setting_page_sidebar_delete:hover{
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #f4e6ff;
+    color: black;
+}
+
+.group_setting_page_sidebar_delete{
+    color: red;
+}
