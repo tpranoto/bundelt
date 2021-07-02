@@ -3,31 +3,29 @@ import './Group.css';
 import { Avatar } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import ExploreIcon from '@material-ui/icons/Explore';
-import { useState } from 'react';
-import { getInitials } from '../../../../utils/helper_func/helper.js';
+import Tooltip from '@material-ui/core/Tooltip';
+import { getInitials } from '../../../../utils/helper/helper.js';
+import { makeStyles } from '@material-ui/core/styles';
+
+const groupTooltipStyle = makeStyles((theme) => ({
+    arrow: {
+        color: theme.palette.common.black,
+    },
+    tooltip: {
+        backgroundColor: theme.palette.common.black,
+        fontSize: 13,
+        fontWeight: 600,
+    },
+}));
 
 const Group = ({ id, groupName, pic, active, onClickFunc, iconType }) => {
-    const [groupActive, setGroupActive] = useState(false);
-    const [clicked, setClicked] = useState(false);
-
-    const showGroupTip = () => {
-        if (!clicked) {
-            setGroupActive(true);
-        }
-    };
-
-    const hideGroupTip = () => {
-        setClicked(false);
-        setGroupActive(false);
-    };
+    const tooltipStyle = groupTooltipStyle();
 
     return (
         <div
             className="group_icon_container"
             onClick={() => {
                 onClickFunc();
-                setClicked(true);
-                setGroupActive(false);
             }}
         >
 
@@ -38,49 +36,64 @@ const Group = ({ id, groupName, pic, active, onClickFunc, iconType }) => {
             >
                 {
                     iconType === "add" ? (
-                        <Avatar
-                            className="group_icon add_group_icon"
-                            variant='circular'
-                            onMouseEnter={showGroupTip}
-                            onMouseLeave={hideGroupTip}
+                        <Tooltip
+                            id="group_tooltip"
+                            classes={tooltipStyle}
+                            title="Create"
+                            placement="right"
+                            arrow
                         >
-                            <AddIcon className="add_group_icon" />
-                        </Avatar>
+                            <Avatar
+                                className="group_icon add_group_icon"
+                                variant='circular'
+                            >
+                                <AddIcon className="add_group_icon" />
+                            </Avatar>
+                        </Tooltip>
                     ) : iconType === "find" ? (
-                        <Avatar
-                            className="group_icon find_group_icon"
-                            variant='circular'
-                            onMouseEnter={showGroupTip}
-                            onMouseLeave={hideGroupTip}
+                        <Tooltip
+                            id="group_tooltip"
+                            classes={tooltipStyle}
+                            title="Find"
+                            placement="right"
+                            arrow
                         >
-                            <ExploreIcon className="find_group_icon" />
-                        </Avatar>
-                    ) :iconType === "home" ? (
-                        <Avatar
-                            className="group_icon home_group_icon"
-                            variant='circular'
-                            src={pic}
-                            onMouseEnter={showGroupTip}
-                            onMouseLeave={hideGroupTip}
-                        />
+                            <Avatar
+                                className="group_icon find_group_icon"
+                                variant='circular'
+                            >
+                                <ExploreIcon className="find_group_icon" />
+                            </Avatar>
+                        </Tooltip>
+                    ) : iconType === "home" ? (
+                        <Tooltip
+                            id="group_tooltip"
+                            classes={tooltipStyle}
+                            title="Home"
+                            placement="right"
+                            arrow
+                        >
+                            <Avatar
+                                className="group_icon home_group_icon"
+                                variant='circular'
+                                src={pic}
+                            />
+                        </Tooltip>
                     ) : (
-                        <Avatar
-                            className="group_icon"
-                            id="group_bar_group"
-                            variant='circular'
-                            onMouseEnter={showGroupTip}
-                            onMouseLeave={hideGroupTip}
-                        >{getInitials(groupName)}</Avatar>
-                    )
-                }
-
-                {
-                    groupActive && (
-                        <div
-                            className="tooltip_group"
+                        <Tooltip
+                            id="group_tooltip"
+                            classes={tooltipStyle}
+                            title={groupName}
+                            placement="right"
+                            arrow
                         >
-                            {groupName}
-                        </div>
+                            <Avatar
+                                className="group_icon"
+                                id="group_bar_group"
+                                variant='circular'
+                            >{getInitials(groupName)}</Avatar>
+                        </Tooltip>
+
                     )
                 }
             </div>

@@ -1,0 +1,50 @@
+.user_setting_page_sidebar{
+    background: white;
+    width: 205px;
+    height: 100vh;
+    padding: 20px;
+    background-color: #8c00ff;
+    color: white;
+    font-weight: 500;
+}
+
+.user_setting_page_sidebar_name{
+    display: flex;
+    padding: 50px 0 5px 0;
+    font-size: medium;
+    font-weight: 800;
+    color: #f2f2f2;
+}
+
+.user_setting_page_sidebar_name > span{
+    padding: 2px 0 0 4px;
+}
+
+.user_setting_page_sidebar_overview, .user_setting_page_sidebar_roles, 
+.user_setting_page_sidebar_moderations, .user_setting_page_sidebar_logout{
+    padding: 7px 10px 7px 10px;
+}
+
+.user_setting_page_sidebar_overview:hover, .user_setting_page_sidebar_roles:hover, 
+.user_setting_page_sidebar_moderations:hover, .user_setting_page_sidebar_logout:hover{
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #f4e6ff;
+    color: black;
+}
+
+.user_setting_page_sidebar_logout{
+    color: red;
+}
+
+.user_setting_page_sidebar_info{
+    align-items: center;
+    text-align: center;
+    padding-top: 50px;
+    margin-left: -100px;
+}
+
+.user_setting_page_sidebar_info > img{
+    width: 50px;
+    height: 50px;
+}

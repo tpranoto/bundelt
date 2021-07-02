@@ -33,5 +33,5 @@ export const getInitials = (name) => {
         initials = nameSplit[0].substring(0, 1);
     } else return;
 
-    return initials.toUpperCase();
+    return initials;
 };

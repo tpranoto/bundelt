@@ -33,15 +33,11 @@
     border: 2px solid #26282c;
 }
 
-.avatar:hover{
-    cursor:pointer;
+#profile_setting{
+    color: lightgray;
+    font-size: medium;
 }
 
-.back_arrow{
-    color:white;
-    margin-left: 5px;
-}
-
-.back_arrow:hover{
+#profile_setting:hover{
     cursor: pointer;
 }

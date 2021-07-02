@@ -62,44 +62,6 @@
     width: 5px;
 }
 
-.tooltip_channel_add{
-    position: fixed;
-    background-color: black;
-    color: white;
-    font-size: small;
-    padding: 5px;
-    border-radius: 5px;
-    margin: -30px 0 0 -12px;
-}
-
-.tooltip_channel_add::before {
-    top: 100%;
-    content: " ";
-    left: 50%;
-    position: absolute;
-    margin-left: -5px;
-    border-top: 5px solid black;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-}
-
-.tooltip_channel_edit{
-    position: fixed;
-    background-color: black;
-    color: white;
-    font-size: small;
-    padding: 5px;
-    border-radius: 5px;
-    margin: -30px 0 0 -15px;
-}
-
-.tooltip_channel_edit::before {
-    top: 100%;
-    content: " ";
-    left: 50%;
-    position: absolute;
-    margin-left: -5px;
-    border-top: 5px solid black;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
+#channel_tooltip{
+    margin-bottom: -10px;
 }

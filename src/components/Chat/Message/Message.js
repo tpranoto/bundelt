@@ -1,12 +1,12 @@
 import React from 'react';
 import './Message.css'
-import {Avatar} from '@material-ui/core'
+import { Avatar } from '@material-ui/core'
 
 
-const Message = ({timestamp,user,message}) => {
+const Message = ({ timestamp, user, message }) => {
     return (
         <div className="message">
-            <Avatar src={user.photo}/>
+            <Avatar src={user.photo} />
             <div className="message_info">
                 <h4>
                     {user.displayName}

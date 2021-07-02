@@ -6,13 +6,24 @@ import { selectChannelId } from '../../../../../slices/channelSlice';
 import { useSelector } from 'react-redux';
 import SettingsIcon from '@material-ui/icons/Settings';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import { useState } from 'react';
+import Tooltip from '@material-ui/core/Tooltip';
+import { makeStyles } from '@material-ui/core/styles';
+
+const channelTooltipStyle = makeStyles((theme) => ({
+    arrow: {
+        color: theme.palette.common.black,
+    },
+    tooltip: {
+        backgroundColor: theme.palette.common.black,
+        fontSize: 13,
+        fontWeight: 600,
+    },
+}));
 
 const Channel = ({ id, channelName, openChannelSetting }) => {
+    const tooltipStyle = channelTooltipStyle();
     const dispatch = useDispatch();
     const channelId = useSelector(selectChannelId);
-    const [inviteActive, setInviteActive] = useState(false);
-    const [editActive, setEditActive] = useState(false);
 
     const handleChannelChange = () => {
         dispatch(
@@ -23,66 +34,43 @@ const Channel = ({ id, channelName, openChannelSetting }) => {
         );
     };
 
-    const showInviteTip = () => {
-        setInviteActive(true);
-    };
-
-    const hideInviteTip = () => {
-        setInviteActive(false);
-    };
-
-    const showEditTip = () => {
-        setEditActive(true);
-    };
-
-    const hideEditTip = () => {
-        setEditActive(false);
-    };
-
     return (
         <div className={channelId === id ? "channel_selected" : "channel"} onClick={handleChannelChange}>
             <span>{channelName}</span>
 
             <div className="channel_option">
-
-                {
-                    inviteActive && (
-                        <div
-                            className="tooltip_channel_add"
-                        >
-                            Invite
-                        </div>
-                    )
-                }
-
-                <div
-                    className="channel_option_icon"
-                    onMouseEnter={showInviteTip}
-                    onMouseLeave={hideInviteTip}
+                <Tooltip
+                    id="channel_tooltip"
+                    classes={tooltipStyle}
+                    title="Invite"
+                    placement="top"
+                    arrow
                 >
-                    <PersonAddIcon />
-                </div>
+                    <div
+                        className="channel_option_icon"
+                    >
+                        <PersonAddIcon />
+                    </div>
+                </Tooltip>
 
-                <div className="channel_option_icon_div" />
+                <div 
+                    className="channel_option_icon_div"
+                />
 
-
-                {
-                    editActive && (
-                        <div
-                            className="tooltip_channel_edit"
-                        >
-                            Edit Channel
-                        </div>
-                    )
-                }
-                <div
-                    className="channel_option_icon"
-                    onClick={openChannelSetting}
-                    onMouseEnter={showEditTip}
-                    onMouseLeave={hideEditTip}
+                <Tooltip
+                    id="channel_tooltip"
+                    classes={tooltipStyle}
+                    title="Edit Channel"
+                    placement="top"
+                    arrow
                 >
-                    <SettingsIcon />
-                </ div>
+                    <div
+                        className="channel_option_icon"
+                        onClick={openChannelSetting}
+                    >
+                        <SettingsIcon />
+                    </ div>
+                </Tooltip>
 
             </div>
         </div>

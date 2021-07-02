@@ -5,7 +5,7 @@ import db from '../../../../utils/firebase/firebase';
 import firebase from 'firebase';
 import { useSelector } from 'react-redux';
 import { selectGroupId } from '../../../../slices/groupSlice';
-import { useOutsideAlerter } from '../../../../utils/helper_func/helper.js';
+import { useOutsideAlerter } from '../../../../utils/helper/helper.js';
 
 const NewChannelDialog = ({ handleCloseChannelDialog, handleCloseSetting, show }) => {
     const groupId = useSelector(selectGroupId);
