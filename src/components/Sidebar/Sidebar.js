@@ -17,6 +17,10 @@ const Sidebar = () => {
 
     return (
         <div className="sidebar">
+            <GroupBar />
+
+            
+            <div className="sidebar_right">
             <SidebarProfile
                 user={user}
                 setting={sidebarContent}
@@ -33,7 +37,6 @@ const Sidebar = () => {
                     <SidebarSetting />
                 ) : (
                     <>
-                        <GroupBar />
                         {
                             gState === "home" ? (
                                 <SidebarHome />
@@ -46,6 +49,7 @@ const Sidebar = () => {
                     </>
                 )
             }
+            </div>
         </div>
     );
 }

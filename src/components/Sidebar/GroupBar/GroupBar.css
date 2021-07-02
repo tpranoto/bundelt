@@ -1,5 +1,21 @@
 .group_bar{
     display: flex;
-    flex-direction: row;
-    overflow-x: auto;
+    flex-direction: column;
+    overflow-y: auto;
+    background-color: #6600cc;
+    padding: 5px;
+    height: 98.7vh;
+    border-right: 1px solid #400080;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.group_bar::-webkit-scrollbar {
+    display: none;
+}
+
+.home_group_separator{
+    margin: 3px 7px 3px 6px;
+    border: 1px solid grey;
+    border-radius: 5px;
 }

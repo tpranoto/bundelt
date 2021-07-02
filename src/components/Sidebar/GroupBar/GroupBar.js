@@ -83,6 +83,8 @@ const GroupBar = () => {
                 onClickFunc={handleHomeIcon}
             />
 
+            <div className={"home_group_separator"} />
+
             {groups.map(({ id, group }) => (
                 <Group
                     id={id}
