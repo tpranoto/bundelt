@@ -15,6 +15,7 @@
     height: 50px;
     display: flex;
     justify-content: center;
+    background-color: black;
 }
 
 .active_group{
@@ -53,4 +54,9 @@
 
 .home_group_icon{
     background-color: #f2e6ff;
+}
+
+#group_bar_group{
+    background-color: #f2e6ff;
+    color: #8c00ff;
 }

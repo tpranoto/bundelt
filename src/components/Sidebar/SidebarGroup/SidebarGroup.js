@@ -1,6 +1,5 @@
 import React from 'react';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ChannelList from './ChannelList/ChannelList.js';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';import ChannelList from './ChannelList/ChannelList.js';
 import './SidebarGroup.css'
 import GroupConfigBox from './GroupConfigBox/GroupConfigBox';
 import { useState } from 'react';
@@ -8,11 +7,13 @@ import { useSelector } from 'react-redux';
 import { selectGroupName } from '../../../slices/groupSlice';
 import { useOutsideAlerter } from '../../../utils/helper_func/helper.js';
 import GroupSettingPage from '../../GroupSettingPage/GroupSettingPage.js';
+import NewChannelDialog from './NewChannelDialog/NewChannelDialog.js';
 
 const SidebarGroup = () => {
     const groupName = useSelector(selectGroupName);
     const [displaySettingBox, setDisplaySettingBox] = useState(false);
     const [displayGroupSetting, setDisplayGroupSetting] = useState(false);
+    const [showCreateChannelDialog, setShowCreateChannelDialog] = useState(false);
     const settingRef = useOutsideAlerter(() => {
         setDisplaySettingBox(false);
     });
@@ -22,33 +23,50 @@ const SidebarGroup = () => {
         setDisplaySettingBox(false);
     }
 
+    const handleCloseChannelDialog = () => {
+        setShowCreateChannelDialog(false);
+    }
+
+    const handleOpenChannelDialog = () => {
+        setShowCreateChannelDialog(true);
+    }
+
     return (
         <>
-            <ChannelList />
-
             <div 
-                className="footer_container"
+                className="sidebar_header_container"
                 ref={settingRef}
             >
                 {
                     displaySettingBox && (
-                        <GroupConfigBox openGroupSetting={handleOpenGroupSetting}/>
+                        <GroupConfigBox 
+                            openGroupSetting={handleOpenGroupSetting}
+                            handleOpenChannelDialog={handleOpenChannelDialog}
+                        />
                     )
                 }
 
                 <div
-                    className="group_footer_container"
+                    className="sidebar_group_header_container"
                     onClick={() => {
                         setDisplaySettingBox(!displaySettingBox);
                     }}
                 >
-                    <div className="group_footer">
+                    <div className="sidebar_group_header_name">
                         <h4>{groupName}</h4>
                     </div>
 
-                    <ExpandLessIcon />
+                    <ExpandMoreIcon />
                 </div>
             </div>
+
+            <ChannelList />
+
+            <NewChannelDialog
+                handleCloseChannelDialog={handleCloseChannelDialog}
+                handleCloseSetting={()=>setDisplaySettingBox(false)}
+                show={showCreateChannelDialog}
+            />
             
             {
                 displayGroupSetting && (

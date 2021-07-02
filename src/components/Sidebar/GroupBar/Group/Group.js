@@ -4,6 +4,7 @@ import { Avatar } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import ExploreIcon from '@material-ui/icons/Explore';
 import { useState } from 'react';
+import { getInitials } from '../../../../utils/helper_func/helper.js';
 
 const Group = ({ id, groupName, pic, active, onClickFunc, iconType }) => {
     const [groupActive, setGroupActive] = useState(false);
@@ -65,11 +66,11 @@ const Group = ({ id, groupName, pic, active, onClickFunc, iconType }) => {
                     ) : (
                         <Avatar
                             className="group_icon"
+                            id="group_bar_group"
                             variant='circular'
-                            src={pic}
                             onMouseEnter={showGroupTip}
                             onMouseLeave={hideGroupTip}
-                        />
+                        >{getInitials(groupName)}</Avatar>
                     )
                 }
 

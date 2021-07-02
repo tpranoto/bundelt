@@ -3,7 +3,8 @@
     background-color: transparent;
     padding: 0px 10px 5px 10px;
     width: 230px;
-    transform: translateX(0) translateY(-100%);
+    z-index: 2;
+    transform: translateX(0) translateY(60px);
 }
 
 .setting_box_container{
@@ -22,7 +23,9 @@
     border-radius: 5px;
 }
 
-.notification_box:hover, .privacy_box:hover, .group_seting_box:hover{
+.invite_box:hover, .notification_box:hover, 
+.privacy_box:hover, .group_setting_box:hover, 
+.create_channel_box:hover{
     background-color: #d699ff;
     cursor: pointer;
 }

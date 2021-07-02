@@ -1,14 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
 import './NewChannelDialog.css';
-import db from '../../../../../utils/firebase/firebase';
+import db from '../../../../utils/firebase/firebase';
 import firebase from 'firebase';
 import { useSelector } from 'react-redux';
-import { selectGroupId } from '../../../../../slices/groupSlice';
-import { useOutsideAlerter } from '../../../../../utils/helper_func/helper.js';
+import { selectGroupId } from '../../../../slices/groupSlice';
+import { useOutsideAlerter } from '../../../../utils/helper_func/helper.js';
 
-
-const NewChannelDialog = ({ handleCloseDialog, show }) => {
+const NewChannelDialog = ({ handleCloseChannelDialog, handleCloseSetting, show }) => {
     const groupId = useSelector(selectGroupId);
     const [channelName, setChannelName] = useState("");
     const dialogRef = useOutsideAlerter(() => {
@@ -17,7 +16,7 @@ const NewChannelDialog = ({ handleCloseDialog, show }) => {
 
     const handleCloseDialogRoutine = () => {
         setChannelName("");
-        handleCloseDialog();
+        handleCloseChannelDialog();
     };
 
     const handleAddChannel = () => {
@@ -32,6 +31,7 @@ const NewChannelDialog = ({ handleCloseDialog, show }) => {
         }
 
         handleCloseDialogRoutine();
+        handleCloseSetting();
     };
 
     return (

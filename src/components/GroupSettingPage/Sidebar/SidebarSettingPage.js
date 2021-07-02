@@ -1,17 +1,10 @@
 import React from 'react';
 import './SidebarSettingPage.css';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-const SidebarSettingPage = ({ groupName, handleClose }) => {
+const SidebarSettingPage = ({ groupName }) => {
     return (
-        <div className="group_setting_page_sidebar">
+        <div className="group_setting_page_sidebar">            
             <div className="group_setting_page_sidebar_name">
-                <div
-                    className="group_setting_page_sidebar_close"
-                    onClick={handleClose}
-                >
-                    <ArrowBackIcon />
-                </div>
                 <span>{groupName}</span>
             </div>
 

@@ -9,7 +9,6 @@ import { setAppInfo } from '../../../slices/appSlice';
 import { selectGroupState } from '../../../slices/appSlice';
 import { useSelector } from 'react-redux';
 import logo from '../../../assets/logo192.png';
-import { createImageFromInitials } from '../../../utils/default_image/default_image.js';
 import NewGroupDialog from './NewGroupDialog/NewGroupDialog.js';
 
 const GroupBar = () => {
@@ -50,7 +49,6 @@ const GroupBar = () => {
                 groupState: id,
             })
         );
-
     };
 
     const handleAddIcon = () => {
@@ -90,7 +88,6 @@ const GroupBar = () => {
                     id={id}
                     iconType="group"
                     groupName={group.groupName}
-                    pic={createImageFromInitials(200, group.groupName, '#f4e6ff')}
                     active={activeTabs === id}
                     onClickFunc={() => {
                         handleGroupIcon(id, group.groupName);

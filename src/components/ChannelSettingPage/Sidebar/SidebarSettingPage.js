@@ -1,17 +1,10 @@
 import React from 'react';
 import './SidebarSettingPage.css';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const SidebarSettingPage = ({ channelName, handleClose }) => {
     return (
         <div className="channel_setting_page_sidebar">
             <div className="channel_setting_page_sidebar_name">
-                <div
-                    className="channel_setting_page_sidebar_close"
-                    onClick={handleClose}
-                >
-                    <ArrowBackIcon />
-                </div>
                 <span>{channelName}</span>
             </div>
 

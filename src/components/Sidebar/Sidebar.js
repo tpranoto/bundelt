@@ -19,36 +19,35 @@ const Sidebar = () => {
         <div className="sidebar">
             <GroupBar />
 
-            
             <div className="sidebar_right">
-            <SidebarProfile
-                user={user}
-                setting={sidebarContent}
-                handleSettingOn={() => {
-                    setSidebarContent("setting");
-                }}
-                handleSettingOff={() => {
-                    setSidebarContent("");
-                }}
-            />
+                {
+                    sidebarContent === "setting" ? (
+                        <SidebarSetting />
+                    ) : (
+                        <>
+                            {
+                                gState === "home" ? (
+                                    <SidebarHome />
+                                ) : gState === "find" ? (
+                                    <SidebarFind />
+                                ) : (
+                                    <SidebarGroup />
+                                )
+                            }
+                        </>
+                    )
+                }
 
-            {
-                sidebarContent === "setting" ? (
-                    <SidebarSetting />
-                ) : (
-                    <>
-                        {
-                            gState === "home" ? (
-                                <SidebarHome />
-                            ) : gState === "find" ? (
-                                <SidebarFind />
-                            ) : (
-                                <SidebarGroup />
-                            )
-                        }
-                    </>
-                )
-            }
+                <SidebarProfile
+                    user={user}
+                    setting={sidebarContent}
+                    handleSettingOn={() => {
+                        setSidebarContent("setting");
+                    }}
+                    handleSettingOff={() => {
+                        setSidebarContent("");
+                    }}
+                />
             </div>
         </div>
     );

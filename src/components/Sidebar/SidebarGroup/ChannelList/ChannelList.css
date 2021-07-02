@@ -3,24 +3,20 @@
 }
 
 .channel_list{
-    height: 74.5vh;
+    height: 84.3vh;
     overflow: auto;
 }
 
 .channel_header{
     display: flex;
     justify-content: space-between;
-    padding: 4px 20px 3px 20px;
-    background-color: #8c00ff;
-    color: white;
-    border-radius: 5px;
+    padding: 4px 20px 3px 10px;
 }
 
 .channel_header > h4{
-    font-size: medium;
+    font-size: small;
     font-weight: 700;
-    margin-top: 2px;
-    padding-top: 2px;
+    padding-top: 4px;
 }
 
 .add_new_channel:hover{

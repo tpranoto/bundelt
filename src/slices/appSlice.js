@@ -4,6 +4,7 @@ const initialState = {
   groupState: "home",
   homeTabState:"friends",
   friendTabState:"online",
+  showCreateChannel:false,
 };
 
 export const appState = createSlice({
@@ -19,13 +20,18 @@ export const appState = createSlice({
     setFriendTabState:(state,action)=>{
       state.friendTabState = action.payload.friendTabState;
     },
+    setShowCreateChannel:(state,action)=>{
+      state.showCreateChannel = action.payload.showCreateChannel;
+    },
   },
 });
 
-export const { setAppInfo, setHomeTabState, setFriendTabState } = appState.actions;
+export const { setAppInfo, setHomeTabState, setFriendTabState, setShowCreateChannel} = appState.actions;
 
 export const selectGroupState = (state) => state.app.groupState;
 export const selectHomeTabState = (state) => state.app.homeTabState;
 export const selectFriendTabState = (state) => state.app.friendTabState;
+export const selectShowCreateChannel = (state) => state.app.showCreateChannel;
+
 
 export default appState.reducer;

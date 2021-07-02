@@ -1,25 +1,26 @@
 import React from 'react';
-import {Avatar} from '@material-ui/core'
+import { Avatar } from '@material-ui/core'
 import './SidebarProfile.css'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
-const SidebarProfile = ({user,setting,handleSettingOn,handleSettingOff}) => {
+const SidebarProfile = ({ user, setting, handleSettingOn, handleSettingOff }) => {
 
     return (
         <div className="sidebar_profile">
             {
-                setting==="setting"?(
-                    <ArrowBackIosIcon 
-                        className="back_arrow" 
+                setting === "setting" ? (
+                    <ArrowBackIosIcon
+                        className="back_arrow"
                         onClick={handleSettingOff}
                     />
-                ):(
+                ) : (
                     <></>
                 )
             }
 
             <Avatar
                 className="avatar"
+                id="avatar_profile"
                 onClick={handleSettingOn}
                 src={user.photo}
             />

@@ -12,8 +12,32 @@
 .channel_setting_page_main{
     flex: 3;
     background: white;
-    width: 50%;
+    width: 100%;
     height: 100vh;
     text-align: center;
     padding: 20px;
+}
+
+.channel_setting_page_empty{
+    background: #8c00ff;
+    padding: 70px 20px 0 20px;
+}
+
+.channel_setting_page_sidebar_close{
+    display: flex;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #f2f2f2;
+}
+
+.channel_setting_page_sidebar_close:hover{
+    cursor: pointer;
+}
+
+.channel_setting_page_sidebar_close > .MuiSvgIcon-root{
+    font-size: x-large;
+    margin-top: -2px;
+    color: white;
 }

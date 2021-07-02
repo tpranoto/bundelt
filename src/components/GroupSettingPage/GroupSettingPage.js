@@ -4,35 +4,45 @@ import './GroupSettingPage.css';
 import SidebarSettingPage from './Sidebar/SidebarSettingPage';
 import { selectGroupName } from '../../slices/groupSlice';
 import { useEffect } from 'react';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-const GroupSettingPage = ({handleClose}) => {
-    const groupName = useSelector(selectGroupName);
-    
-    useEffect(() => {
-        const handleEsc = (event) => {
-           if (event.keyCode === 27) {
-            handleClose();
-          }
-        };
-        window.addEventListener('keydown', handleEsc);
-    
-        return () => {
-          window.removeEventListener('keydown', handleEsc);
-        };
-      },[handleClose]);
+const GroupSettingPage = ({ handleClose }) => {
+  const groupName = useSelector(selectGroupName);
 
-    return (
-        <div className="group_setting_page">
-            <SidebarSettingPage 
-                groupName={groupName}
-                handleClose={handleClose}
-            />
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.keyCode === 27) {
+        handleClose();
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
 
-            <div className="group_setting_page_main">
-                main
-            </div>
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, [handleClose]);
+
+  return (
+    <div className="group_setting_page">
+      <div className="group_setting_page_empty">
+        <div
+          className="group_setting_page_sidebar_close"
+          onClick={handleClose}
+        >
+          <ArrowBackIcon />
         </div>
-    )
+      </div>
+
+      <SidebarSettingPage
+        groupName={groupName}
+        handleClose={handleClose}
+      />
+
+      <div className="group_setting_page_main">
+        main
+      </div>
+    </div>
+  )
 }
 
 export default GroupSettingPage;
