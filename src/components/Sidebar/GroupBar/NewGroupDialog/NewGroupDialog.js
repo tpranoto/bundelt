@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { useOutsideAlerter } from '../../../../utils/helper_func/helper.js';
+import { useOutsideAlerter } from '../../../../utils/helper/helper.js';
 import db from '../../../../utils/firebase/firebase';
 import firebase from 'firebase';
 import './NewGroupDialog.css';

@@ -1,9 +1,15 @@
-.chat{
+.chat_content{
+    display: flex;
+    flex-direction: row;
+}
+
+.chat_content_main{
+    flex: 3;
     display: flex;
     flex-direction: column;
     width: 100%;
     background-color: white;
-    height: 100vh;
+    height: 93vh;
 }
 
 .chat_messages{
@@ -19,7 +25,7 @@
     justify-content: space-between;
     padding: 15px;
     border-radius: 10px;
-    margin: 20px;
+    margin: 0 20px 20px 20px;
     background-color: #f2f2f2;
 }
 
@@ -44,5 +50,3 @@
 .chat_input_icons > .MuiSvgIcon-root{
     padding: 5px;
 }
-
-

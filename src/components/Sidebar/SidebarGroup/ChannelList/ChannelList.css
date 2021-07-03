@@ -1,9 +1,10 @@
 .channel_list_sidebar{
     flex: 1;
+    background-color: #f0f0f5;
 }
 
 .channel_list{
-    height: 84.3vh;
+    height: 87.1vh;
     overflow: auto;
 }
 

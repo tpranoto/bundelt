@@ -69,9 +69,14 @@
 
 .home_header_right > .MuiSvgIcon-root{
     padding: 5px;
-    cursor: pointer;
+    color: #47476b;
 }
 
 .home_header_right > .MuiSvgIcon-root:hover{
     color: black;
+    cursor: pointer;
+}
+
+#header_friend_tooltip{
+    margin-top: -15px;
 }

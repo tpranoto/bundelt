@@ -7,8 +7,22 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectFriendTabState, setFriendTabState } from '../../../../slices/appSlice.js';
 import { useDispatch } from 'react-redux';
+import Tooltip from '@material-ui/core/Tooltip';
+import { makeStyles } from '@material-ui/core/styles';
+
+const headerFriendTooltipStyle = makeStyles((theme) => ({
+    arrow: {
+        color: theme.palette.common.black,
+    },
+    tooltip: {
+        backgroundColor: theme.palette.common.black,
+        fontSize: 13,
+        fontWeight: 600,
+    },
+}));
 
 const FriendHeader = () => {
+    const tooltipStyle = headerFriendTooltipStyle();
     const dispatch = useDispatch();
     const friendTab = useSelector(selectFriendTabState);
     const [friendSection, setFriendSection] = useState(friendTab);
@@ -93,8 +107,25 @@ const FriendHeader = () => {
             </div>
 
             <div className="home_header_right">
-                <InboxIcon />
-                <HelpIcon />
+                <Tooltip
+                    id="header_friend_tooltip"
+                    classes={tooltipStyle}
+                    title="Inbox"
+                    placement="bottom"
+                    arrow
+                >
+                    <InboxIcon />
+                </Tooltip>
+
+                <Tooltip
+                    id="header_friend_tooltip"
+                    classes={tooltipStyle}
+                    title="Help"
+                    placement="bottom"
+                    arrow
+                >
+                    <HelpIcon />
+                </Tooltip>
             </div>
         </div>
     )

@@ -5,7 +5,7 @@ import GroupConfigBox from './GroupConfigBox/GroupConfigBox';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectGroupName } from '../../../slices/groupSlice';
-import { useOutsideAlerter } from '../../../utils/helper_func/helper.js';
+import { useOutsideAlerter } from '../../../utils/helper/helper.js';
 import GroupSettingPage from '../../GroupSettingPage/GroupSettingPage.js';
 import NewChannelDialog from './NewChannelDialog/NewChannelDialog.js';
 

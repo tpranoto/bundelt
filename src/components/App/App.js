@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import './App.css';
 import Sidebar from '../Sidebar/Sidebar.js'
-import Chat from '../Chat/Chat.js'
+import GroupChat from '../GroupChat/GroupChat.js'
 import Login from '../Login/Login.js'
 import Home from '../Home/Home.js'
 import Find from '../Find/Find.js'
@@ -42,7 +42,7 @@ function App() {
             ) : groupState === "find" ? (
               <Find />
             ) : (
-              <Chat />
+              <GroupChat />
             )
           }
         </>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Avatar } from '@material-ui/core'
-import './SidebarProfile.css'
+import { Avatar } from '@material-ui/core';
+import './SidebarProfile.css';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { useState } from 'react';
 import UserSettingPage from '../../UserSettingPage/UserSettingPage';

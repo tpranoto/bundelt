@@ -1,0 +1,11 @@
+.chat_content_member{
+    flex: 1;
+    background-color: #f0f0f5;
+    width: 100%;
+    overflow-y: scroll;
+    height: 93vh;
+}
+
+.chat_content_member_role_name{
+    padding: 10px 0px 10px 10px;
+}
