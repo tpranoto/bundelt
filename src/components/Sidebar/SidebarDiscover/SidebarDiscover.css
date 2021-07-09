@@ -1,0 +1,12 @@
+.sidebar_discover{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #f0f0f5;
+}
+
+.sidebar_discover_header{
+    background-color: #8c00ff;
+    padding: 19px 10px 18px 20px;
+    color: white;
+}

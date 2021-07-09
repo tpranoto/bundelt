@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SidebarSettingPage.css';
+import ChannelDeleteDialog from '../ChannelDeleteDialog/ChannelDeleteDialog';
 
-const SidebarSettingPage = ({ channelName, handleClose }) => {
+const SidebarSettingPage = ({ groupId, channelId, channelName }) => {
+    const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+
     return (
         <div className="channel_setting_page_sidebar">
             <div className="channel_setting_page_sidebar_name">
@@ -20,10 +23,20 @@ const SidebarSettingPage = ({ channelName, handleClose }) => {
                 Invites
             </div>
 
-            <div className="channel_setting_page_sidebar_delete">
+            <div
+                className="channel_setting_page_sidebar_delete"
+                onClick={() => setShowDeleteDialog(true)}
+            >
                 Delete Channel
             </div>
 
+            {
+                showDeleteDialog && (
+                    <ChannelDeleteDialog
+                        handleCloseDialog={() => setShowDeleteDialog(false)}
+                    />
+                )
+            }
         </div>
     )
 };

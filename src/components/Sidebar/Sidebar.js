@@ -3,7 +3,7 @@ import './Sidebar.css';
 import SidebarProfile from './SidebarProfile/SidebarProfile.js';
 import SidebarGroup from './SidebarGroup/SidebarGroup.js';
 import SidebarHome from './SidebarHome/SidebarHome.js';
-import SidebarFind from './SidebarFind/SidebarFind.js';
+import SidebarDiscover from './SidebarDiscover/SidebarDiscover.js';
 import GroupBar from './GroupBar/GroupBar.js';
 import { selectUser } from '../../slices/userSlice';
 import { selectGroupState } from '../../slices/appSlice';
@@ -21,8 +21,8 @@ const Sidebar = () => {
                 {
                     gState === "home" ? (
                         <SidebarHome />
-                    ) : gState === "find" ? (
-                        <SidebarFind />
+                    ) : gState === "discover" ? (
+                        <SidebarDiscover />
                     ) : (
                         <SidebarGroup />
                     )

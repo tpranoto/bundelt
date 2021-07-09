@@ -50,19 +50,19 @@ const Group = ({ id, groupName, pic, active, onClickFunc, iconType }) => {
                                 <AddIcon className="add_group_icon" />
                             </Avatar>
                         </Tooltip>
-                    ) : iconType === "find" ? (
+                    ) : iconType === "discover" ? (
                         <Tooltip
                             id="group_tooltip"
                             classes={tooltipStyle}
-                            title="Find"
+                            title="Discover"
                             placement="right"
                             arrow
                         >
                             <Avatar
-                                className="group_icon find_group_icon"
+                                className="group_icon"
                                 variant='circular'
                             >
-                                <ExploreIcon className="find_group_icon" />
+                                <ExploreIcon className="discover_group_icon" />
                             </Avatar>
                         </Tooltip>
                     ) : iconType === "home" ? (

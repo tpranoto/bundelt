@@ -12,10 +12,6 @@
     margin: 10px 0 10px 0;
 }
 
-.home_header_left{
-    display: flex;
-}
-
 .home_header_left {
     display: flex;
     align-items: center;

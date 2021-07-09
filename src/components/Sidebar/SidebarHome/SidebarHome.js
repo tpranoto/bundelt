@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const SidebarHome = () => {
     const dispatch = useDispatch();
-    const [homeTab,setHomeTab] = useState("friends");
+    const [homeTab, setHomeTab] = useState("event");
 
     dispatch(
         setHomeTabState({
@@ -14,7 +14,7 @@ const SidebarHome = () => {
         })
     );
 
-    const handleFriendsTab = () =>{
+    const handleFriendsTab = () => {
         setHomeTab("friends");
         dispatch(
             setHomeTabState({
@@ -23,24 +23,14 @@ const SidebarHome = () => {
         );
     };
 
-    const handleDiscoveryTab = () =>{
-        setHomeTab("discovery");
+    const handleEventTab = () => {
+        setHomeTab("event");
         dispatch(
             setHomeTabState({
-                homeTabState: "discovery",
+                homeTabState: "event",
             })
         );
     };
-
-    const handleNewsTab = () =>{
-        setHomeTab("news");
-        dispatch(
-            setHomeTabState({
-                homeTabState: "news",
-            })
-        );
-    };
-
 
     return (
         <div className="sidebar_home">
@@ -48,25 +38,18 @@ const SidebarHome = () => {
                 <h4>Home</h4>
             </div>
 
-            <div 
-                className={homeTab==="friends"?"selected_home_tab":"home_tab"}
+            <div
+                className={homeTab === "event" ? "selected_home_tab" : "home_tab"}
+                onClick={handleEventTab}
+            >
+                Events
+            </div>
+
+            <div
+                className={homeTab === "friends" ? "selected_home_tab" : "home_tab"}
                 onClick={handleFriendsTab}
             >
                 Friends
-            </div>
-
-            <div 
-                className={homeTab==="discovery"?"selected_home_tab":"home_tab"}
-                onClick={handleDiscoveryTab}
-            >
-                Discovery
-            </div>
-
-            <div 
-                className={homeTab==="news"?"selected_home_tab":"home_tab"}
-                onClick={handleNewsTab}
-            >
-                News
             </div>
 
             <div className="sidebar_home_divider" />

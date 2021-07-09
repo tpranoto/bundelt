@@ -1,8 +1,7 @@
 import React from 'react';
 import './Home.css'
 import FriendPage from './FriendPage/FriendPage.js';
-import DiscoveryPage from './DiscoveryPage/DiscoveryPage.js';
-import NewsPage from './NewsPage/NewsPage.js';
+import EventPage from './EventPage/EventPage.js';
 import { useSelector } from 'react-redux';
 import { selectHomeTabState } from '../../slices/appSlice.js';
 
@@ -14,10 +13,8 @@ const Home = () => {
             {
                 homeTab === "friends" ? (
                     <FriendPage />
-                ) : homeTab ==="discovery"?(
-                    <DiscoveryPage />
-                ):(
-                    <NewsPage />
+                ) : (
+                    <EventPage />
                 )
             }
 

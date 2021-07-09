@@ -5,7 +5,7 @@ import Sidebar from '../Sidebar/Sidebar.js'
 import GroupChat from '../GroupChat/GroupChat.js'
 import Login from '../Login/Login.js'
 import Home from '../Home/Home.js'
-import Find from '../Find/Find.js'
+import Discover from '../Discover/Discover.js'
 import { selectUser } from '../../slices/userSlice'
 import { selectGroupState } from '../../slices/appSlice'
 import { auth } from '../../utils/firebase/firebase';
@@ -39,8 +39,8 @@ function App() {
           {
             groupState === "home" ? (
               <Home />
-            ) : groupState === "find" ? (
-              <Find />
+            ) : groupState === "discover" ? (
+              <Discover />
             ) : (
               <GroupChat />
             )

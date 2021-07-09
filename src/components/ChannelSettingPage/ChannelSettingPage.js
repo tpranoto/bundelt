@@ -36,7 +36,6 @@ const ChannelSettingPage = ({ handleClose }) => {
 
       <SidebarSettingPage
         channelName={channelName}
-        handleClose={handleClose}
       />
 
       <div className="channel_setting_page_main">

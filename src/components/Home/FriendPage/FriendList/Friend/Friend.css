@@ -1,45 +1,53 @@
-.channel:hover > h4{
-    background-color: #f4e6ff;
+.friend_page_profile{
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px 0 20px;
+    border-radius: 5px;
 }
 
-.channel{
-    border-bottom: 1px solid #f2f2f2;
+.friend_page_profile:hover{
+    background-color: #f0f0f5;
+    cursor: pointer;
 }
 
-.channel_selected > h4{
-    display: flex;
-    padding-left: 15px;
-    align-items: center;
-    background-color: #d199ff;
-    color: black;
-    cursor: pointer;
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 10px;
-    font-size: medium;
-    font-weight: 500;
-    padding: 10px;
+.friend_page_div{
+    border-top: 2px solid #f0f0f5;
+    margin: 0 10px 0 10px;
 }
-.channel > h4{
+
+.friend_page_profile_info{
     display: flex;
-    padding-left: 15px;
-    align-items: center;
-    background-color: white;
-    color: black;
-    cursor: pointer;
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 10px;
-    font-size: medium;
-    font-weight: 500;
+    justify-content: space-between;   
+    border-radius: 5px;
     padding: 10px;
 }
 
-.channel_name{
-    font-size: 15px;
-    padding: 5px;
+#friend_avatar_id, #friend_option_id{
+    height: 25px;
+    width: 25px;
+    margin: 0 3px 0 3px;
 }
 
-.channel_name > span{
-    padding-left: 10px;
+#friend_option_id > .MuiSvgIcon-root{
+    font-size: small;
+}
+
+.friend_avatar{
+    flex: 9;
+    display: flex;
+}
+
+.friend_page_display_name{
+    display: flex;
+    margin-top: 2px;
+}
+
+.friend_page_friend_option{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+#friend_tooltip{
+    margin-bottom: -5px;
 }

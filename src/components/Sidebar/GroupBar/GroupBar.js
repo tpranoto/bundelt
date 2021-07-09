@@ -56,11 +56,11 @@ const GroupBar = () => {
         setShowAddDialog(true);
     };
 
-    const handleFindIcon = () => {
-        setActiveTabs("find");
+    const handleDiscoverIcon = () => {
+        setActiveTabs("discover");
         dispatch(
             setAppInfo({
-                groupState: "find",
+                groupState: "discover",
             })
         );
     };
@@ -79,6 +79,14 @@ const GroupBar = () => {
                 pic={logo}
                 active={activeTabs === "home"}
                 onClickFunc={handleHomeIcon}
+            />
+
+            <Group
+                id="discover_group"
+                iconType="discover"
+                groupName="Discover"
+                active={activeTabs === "discover"}
+                onClickFunc={handleDiscoverIcon}
             />
 
             <div className={"home_group_separator"} />
@@ -101,14 +109,6 @@ const GroupBar = () => {
                 groupName="Add"
                 active={activeTabs === "add"}
                 onClickFunc={handleAddIcon}
-            />
-
-            <Group
-                id="find_group"
-                iconType="find"
-                groupName="Find"
-                active={activeTabs === "find"}
-                onClickFunc={handleFindIcon}
             />
 
             <NewGroupDialog

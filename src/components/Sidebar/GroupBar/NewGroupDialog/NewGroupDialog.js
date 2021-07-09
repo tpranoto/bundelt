@@ -68,7 +68,6 @@ const NewGroupDialog =({ handleCloseDialog,handleGroupIcon, show }) =>{
                     create
                 </button>
             </div>
-
         </div>
     )
 }
