@@ -34,6 +34,8 @@ const SidebarSettingPage = ({ groupId, channelId, channelName }) => {
                 showDeleteDialog && (
                     <ChannelDeleteDialog
                         handleCloseDialog={() => setShowDeleteDialog(false)}
+                        groupId={groupId}
+                        channelId={channelId}
                     />
                 )
             }

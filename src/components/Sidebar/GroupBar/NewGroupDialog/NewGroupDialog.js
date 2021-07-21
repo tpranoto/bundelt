@@ -4,8 +4,11 @@ import { useOutsideAlerter } from '../../../../utils/helper/helper.js';
 import db from '../../../../utils/firebase/firebase';
 import firebase from 'firebase';
 import './NewGroupDialog.css';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../../slices/userSlice.js';
 
-const NewGroupDialog =({ handleCloseDialog,handleGroupIcon, show }) =>{
+const NewGroupDialog = ({ handleCloseDialog, handleGroupIcon, show }) => {
+    const user = useSelector(selectUser);
     const [groupName, setGroupName] = useState("");
     const dialogRef = useOutsideAlerter(() => {
         handleCloseDialogRoutine();
@@ -22,6 +25,26 @@ const NewGroupDialog =({ handleCloseDialog,handleGroupIcon, show }) =>{
                 groupName: groupName,
             }).then((docRef) => {
                 handleGroupIcon(docRef.id, groupName);
+
+                db.collection('groups')
+                    .doc(docRef.id)
+                    .collection('groupmembers')
+                    .add({
+                        roleName:"admin"
+                    }).then((groupRef)=>{
+                        db.collection('groups')
+                            .doc(docRef.id)
+                            .collection('groupmembers')
+                            .doc(groupRef.id)
+                            .collection("members")
+                            .add(
+                                {
+                                    user_id: user.uid,
+                                    photo: user.photo,
+                                    displayName: user.displayName,
+                                });
+                    })
+                    
 
                 db.collection('groups')
                     .doc(docRef.id)
@@ -54,7 +77,7 @@ const NewGroupDialog =({ handleCloseDialog,handleGroupIcon, show }) =>{
                 </div>
 
 
-                <button 
+                <button
                     className="cancel_group_button"
                     onClick={handleCloseDialogRoutine}
                 >

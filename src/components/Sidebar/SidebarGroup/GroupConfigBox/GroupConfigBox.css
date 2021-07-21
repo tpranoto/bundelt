@@ -52,6 +52,6 @@
     cursor: pointer;
 }
 
-#leave_group_box:hover #leave_name, #leave_group_box:hover #leave_icon{
+#leave_group_box:hover #leave_group_name, #leave_group_box:hover #leave_icon{
     color: white;
 }

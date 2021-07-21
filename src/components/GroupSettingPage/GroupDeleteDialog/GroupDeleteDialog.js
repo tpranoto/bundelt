@@ -1,10 +1,12 @@
 import React from 'react';
 import { useOutsideAlerter } from '../../../utils/helper/helper.js';
-import './ChannelDeleteDialog.css';
+import './GroupDeleteDialog.css';
 import db from '../../../utils/firebase/firebase';
+import { useDispatch } from 'react-redux';
+import { setAppInfo } from '../../../slices/appSlice.js';
 
-
-const ChannelDeleteDialog = ({ handleCloseDialog, groupId, channelId }) => {
+const GroupDeleteDialog = ({ handleCloseDialog, handleCloseSettingPage, groupId, groupName }) => {
+    const dispatch = useDispatch();
     const dialogRef = useOutsideAlerter(() => {
         handleCloseDialog();
     });
@@ -12,11 +14,17 @@ const ChannelDeleteDialog = ({ handleCloseDialog, groupId, channelId }) => {
     const handleDeleteDialog = () => {
         db.collection('groups')
             .doc(groupId)
-            .collection('channels')
-            .doc(channelId)
             .delete()
 
         handleCloseDialog();
+        handleCloseSettingPage();
+
+        //reset group focus to home
+        dispatch(
+            setAppInfo({
+                groupState: "home",
+            })
+        );
     }
 
     return (
@@ -24,20 +32,20 @@ const ChannelDeleteDialog = ({ handleCloseDialog, groupId, channelId }) => {
             className="bg_dialog display_block"
         >
             <div
-                className="channel_delete_dialog_main"
+                className="group_delete_dialog_main"
                 ref={dialogRef}
             >
-                <h3>Delete Channel</h3>
-                <p>Are you sure you want to delete this channel? This cannot be undone</p>
+                <h3>Delete Group</h3>
+                <p>Are you sure you want to delete {groupName}? This cannot be undone</p>
 
                 <button
-                    className="cancel_channel_delete_button"
+                    className="cancel_group_delete_button"
                     onClick={handleCloseDialog}
                 >
                     cancel
                 </button>
                 <button
-                    className="delete_channel_button"
+                    className="delete_group_button"
                     onClick={handleDeleteDialog}
                 >
                     delete
@@ -47,4 +55,4 @@ const ChannelDeleteDialog = ({ handleCloseDialog, groupId, channelId }) => {
     )
 }
 
-export default ChannelDeleteDialog;
+export default GroupDeleteDialog;

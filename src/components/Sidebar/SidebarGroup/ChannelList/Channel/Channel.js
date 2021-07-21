@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Channel.css';
-import { useDispatch } from 'react-redux';
-import { setChannelInfo } from '../../../../../slices/channelSlice';
-import { selectChannelId } from '../../../../../slices/channelSlice';
-import { useSelector } from 'react-redux';
 import SettingsIcon from '@material-ui/icons/Settings';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import Tooltip from '@material-ui/core/Tooltip';
 import { makeStyles } from '@material-ui/core/styles';
+import ChannelSettingPage from '../../../../ChannelSettingPage/ChannelSettingPage';
 
 const channelTooltipStyle = makeStyles((theme) => ({
     arrow: {
@@ -20,22 +17,25 @@ const channelTooltipStyle = makeStyles((theme) => ({
     },
 }));
 
-const Channel = ({ id, channelName, openChannelSetting }) => {
+const Channel = ({ channelId, channelName, activeChannel, onClick }) => {
     const tooltipStyle = channelTooltipStyle();
-    const dispatch = useDispatch();
-    const channelId = useSelector(selectChannelId);
+    const [displayChannelSetting, setDisplayChannelSetting] = useState(false);
 
-    const handleChannelChange = () => {
-        dispatch(
-            setChannelInfo({
-                channelId: id,
-                channelName: channelName,
-            })
-        );
-    };
+    const handleOpenSetting = (event) =>{
+        event.stopPropagation();
+        setDisplayChannelSetting(true);
+    }
+
+    const handleCloseSetting = (event) =>{
+        event.stopPropagation();
+        setDisplayChannelSetting(false);
+    }
 
     return (
-        <div className={channelId === id ? "channel_selected" : "channel"} onClick={handleChannelChange}>
+        <div
+            className={activeChannel ? "channel_selected" : "channel"}
+            onClick={onClick}
+        >
             <span>{channelName}</span>
 
             <div className="channel_option">
@@ -53,7 +53,7 @@ const Channel = ({ id, channelName, openChannelSetting }) => {
                     </div>
                 </Tooltip>
 
-                <div 
+                <div
                     className="channel_option_icon_div"
                 />
 
@@ -66,13 +66,25 @@ const Channel = ({ id, channelName, openChannelSetting }) => {
                 >
                     <div
                         className="channel_option_icon"
-                        onClick={openChannelSetting}
+                        onClick={handleOpenSetting}
                     >
                         <SettingsIcon />
                     </ div>
                 </Tooltip>
 
             </div>
+
+            {
+                displayChannelSetting && (
+                    <ChannelSettingPage
+                        handleClose={handleCloseSetting}
+                        handleCloseNorm={()=>setDisplayChannelSetting(false)}
+                        channelId={channelId}
+                        channelName={channelName}
+                    />
+                )
+            }
+
         </div>
     );
 }

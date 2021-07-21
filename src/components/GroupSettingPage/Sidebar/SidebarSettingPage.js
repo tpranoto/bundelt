@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SidebarSettingPage.css';
+import GroupDeleteDialog from '../GroupDeleteDialog/GroupDeleteDialog';
 
-const SidebarSettingPage = ({ groupName }) => {
+const SidebarSettingPage = ({ groupId, groupName, handleClose }) => {
+    const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+
     return (
         <div className="group_setting_page_sidebar">            
             <div className="group_setting_page_sidebar_name">
@@ -20,9 +23,23 @@ const SidebarSettingPage = ({ groupName }) => {
                 Moderations
             </div>
 
-            <div className="group_setting_page_sidebar_delete">
+            <div 
+                className="group_setting_page_sidebar_delete"
+                onClick={() => setShowDeleteDialog(true)}
+            >
                 Delete Group
             </div>
+
+            {
+                showDeleteDialog && (
+                    <GroupDeleteDialog
+                        handleCloseDialog={() => setShowDeleteDialog(false)}
+                        handleCloseSettingPage = {handleClose}
+                        groupId={groupId}
+                        groupName={groupName}
+                    />
+                )
+            }
 
         </div>
     )

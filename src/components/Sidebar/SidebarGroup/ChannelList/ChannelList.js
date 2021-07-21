@@ -5,15 +5,24 @@ import db from '../../../../utils/firebase/firebase';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectGroupId } from '../../../../slices/groupSlice';
-import { setChannelInfo } from '../../../../slices/channelSlice';
+import { selectChannelId, setChannelInfo } from '../../../../slices/channelSlice';
 import { useDispatch } from 'react-redux';
-import ChannelSettingPage from '../../../ChannelSettingPage/ChannelSettingPage';
+
+const channelFound = (channelList, channelId) => {
+    for (const value of channelList) {
+        if (value.id === channelId) {
+            return true;
+        }
+    }
+    return false;
+}
 
 const ChannelList = () => {
     const dispatch = useDispatch();
     const groupId = useSelector(selectGroupId);
+    const channelId = useSelector(selectChannelId);
     const [channels, setChannels] = useState([]);
-    const [displayChannelSetting, setDisplayChannelSetting] = useState(false);
+    const [activeChannel, setActiveChannel] = useState("");
 
     useEffect(() => {
         if (groupId) {
@@ -26,15 +35,32 @@ const ChannelList = () => {
                         id: doc.id,
                         channel: doc.data(),
                     })))
-                );
+                )
         }
-    }, [groupId, channels.length])
 
-    if (channels.length > 0) {
+        //reset active channel when not found
+        if (!channelFound(channels, channelId)) {
+            setActiveChannel("");
+        }
+
+        if (activeChannel === "" && channels.length > 0) {
+            setActiveChannel(channels[0].id);
+            dispatch(
+                setChannelInfo({
+                    channelId: channels[0].id,
+                    channelName: channels[0].channel.channelName,
+                })
+            );
+        }
+
+    }, [groupId, channelId, activeChannel, channels, dispatch]);
+
+    const handleChannelOnClick = (chId, chName) => {
+        setActiveChannel(chId);
         dispatch(
             setChannelInfo({
-                channelId: channels[0].id,
-                channelName: channels[0].channel.channelName,
+                channelId: chId,
+                channelName: chName,
             })
         );
     }
@@ -44,18 +70,13 @@ const ChannelList = () => {
             <div className="channel_list">
                 {channels.map(({ id, channel }) => (
                     <Channel
-                        id={id}
+                        channelId={id}
                         channelName={channel.channelName}
-                        openChannelSetting={()=>setDisplayChannelSetting(true)}
+                        activeChannel={id === activeChannel}
+                        onClick={() => handleChannelOnClick(id, channel.channelName)}
                     />
                 ))}
             </div>
-            
-            {
-                displayChannelSetting && (
-                    <ChannelSettingPage handleClose={()=>setDisplayChannelSetting(false)} />
-                )
-            }
         </div>
     )
 }

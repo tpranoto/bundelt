@@ -2,11 +2,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import './GroupSettingPage.css';
 import SidebarSettingPage from './Sidebar/SidebarSettingPage';
-import { selectGroupName } from '../../slices/groupSlice';
+import { selectGroupId, selectGroupName } from '../../slices/groupSlice';
 import { useEffect } from 'react';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const GroupSettingPage = ({ handleClose }) => {
+  const groupId = useSelector(selectGroupId);
   const groupName = useSelector(selectGroupName);
 
   useEffect(() => {
@@ -34,6 +35,7 @@ const GroupSettingPage = ({ handleClose }) => {
       </div>
 
       <SidebarSettingPage
+        groupId={groupId}
         groupName={groupName}
         handleClose={handleClose}
       />

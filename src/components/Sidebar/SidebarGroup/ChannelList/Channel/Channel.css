@@ -5,7 +5,6 @@
     align-items: center;
     color: black;
     background-color: #d199ff;
-    cursor: pointer;
     margin: 1px 10px 1px 10px;
     border-radius: 10px;
     font-size: medium;
@@ -20,7 +19,6 @@
     align-items: center;
     background-color: #f0f0f5;
     color: black;
-    cursor: pointer;
     margin: 1px 10px 1px 10px;
     border-radius: 10px;
     font-size: medium;
@@ -30,6 +28,10 @@
 
 .channel:hover {
     background-color: #f4e6ff;
+}
+
+.channel_selected:hover{
+    cursor: pointer;
 }
 
 .channel > span{

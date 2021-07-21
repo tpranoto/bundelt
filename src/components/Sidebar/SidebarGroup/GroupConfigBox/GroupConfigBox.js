@@ -47,7 +47,7 @@ const GroupConfigBox = ({ openGroupSetting, handleOpenChannelDialog }) => {
                 </div>
 
                 <div id="leave_group_box">
-                    <span id="leave_name">Leave Group</span>
+                    <span id="leave_group_name">Leave Group</span>
                     <ExitToAppIcon id="leave_icon" />
                 </div>
             </div>

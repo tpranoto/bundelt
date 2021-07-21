@@ -1,18 +1,18 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import './ChannelSettingPage.css';
 import SidebarSettingPage from './Sidebar/SidebarSettingPage';
-import { selectChannelName } from '../../slices/channelSlice';
 import { useEffect } from 'react';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { selectGroupId } from '../../slices/groupSlice';
+import { useSelector } from 'react-redux';
 
-const ChannelSettingPage = ({ handleClose }) => {
-  const channelName = useSelector(selectChannelName);
+const ChannelSettingPage = ({ handleClose, handleCloseNorm, channelId, channelName }) => {
+  const groupId = useSelector(selectGroupId);
 
   useEffect(() => {
     const handleEsc = (event) => {
       if (event.keyCode === 27) {
-        handleClose();
+        handleCloseNorm();
       }
     };
     window.addEventListener('keydown', handleEsc);
@@ -35,6 +35,8 @@ const ChannelSettingPage = ({ handleClose }) => {
 
 
       <SidebarSettingPage
+        groupId={groupId}
+        channelId={channelId}
         channelName={channelName}
       />
 
