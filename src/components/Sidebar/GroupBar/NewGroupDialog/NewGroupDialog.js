@@ -30,7 +30,7 @@ const NewGroupDialog = ({ handleCloseDialog, handleGroupIcon, show }) => {
                     .doc(docRef.id)
                     .collection('groupmembers')
                     .add({
-                        roleName:"admin"
+                        roleName:"admin",
                     }).then((groupRef)=>{
                         db.collection('groups')
                             .doc(docRef.id)

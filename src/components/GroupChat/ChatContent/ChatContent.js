@@ -8,109 +8,16 @@ import Message from './Message/Message.js';
 import MemberList from './MemberList/MemberList.js';
 import db from '../../../utils/firebase/firebase';
 import firebase from 'firebase';
-
-const mockMembers=[
-    {
-        roleName:"Admin",
-        members:[
-            {
-                photo:"",
-                displayName:"admin1"
-            },
-            {
-                photo:"",
-                displayName:"admin2"
-            }
-        ]
-    },
-    {
-        roleName:"Moderators",
-        members:[
-            {
-                photo:"",
-                displayName:"mod1"
-            },
-            {
-                photo:"",
-                displayName:"mod2"
-            },
-            {
-                photo:"",
-                displayName:"mod3"
-            }
-        ]
-    },
-    {
-        roleName:"Members",
-        members:[
-            {
-                photo:"",
-                displayName:"member1"
-            },
-            {
-                photo:"",
-                displayName:"reallyreallyreallyreallyreallylongmember2"
-            },
-            {
-                photo:"",
-                displayName:"member3"
-            },
-            {
-                photo:"",
-                displayName:"member3"
-            },
-            {
-                photo:"",
-                displayName:"member3"
-            },
-            {
-                photo:"",
-                displayName:"member3"
-            },
-            {
-                photo:"",
-                displayName:"member3"
-            },
-            {
-                photo:"",
-                displayName:"member3"
-            },
-            {
-                photo:"",
-                displayName:"member3"
-            },
-            {
-                photo:"",
-                displayName:"member3"
-            },
-            {
-                photo:"",
-                displayName:"member3"
-            },
-            {
-                photo:"",
-                displayName:"member3"
-            },
-            {
-                photo:"",
-                displayName:"member3"
-            },
-            {
-                photo:"",
-                displayName:"member3"
-            },
-            {
-                photo:"",
-                displayName:"member3"
-            }
-        ]
-    }
-];
-
+import { useRef } from 'react';
 
 const ChatContent = ({ user, groupId, channelId, channelName, showMembers }) => {
     const [input, setInput] = useState("");
     const [messages, setMessages] = useState([]);
+    const messagesEndRef = useRef(null);
+
+    const scrollToBottom = () => {
+        messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+    }
 
     useEffect(() => {
         if (groupId && channelId) {
@@ -125,6 +32,8 @@ const ChatContent = ({ user, groupId, channelId, channelName, showMembers }) => 
                 );
         }
     }, [groupId, channelId])
+
+    useEffect(scrollToBottom, [messages]);
 
     const sendMessage = (e) => {
         e.preventDefault();
@@ -154,6 +63,8 @@ const ChatContent = ({ user, groupId, channelId, channelName, showMembers }) => 
                             message={message.message}
                         />
                     ))}
+
+                    <div ref={messagesEndRef} />
                 </div>
 
                 <div className="chat_input">
@@ -168,7 +79,7 @@ const ChatContent = ({ user, groupId, channelId, channelName, showMembers }) => 
                         <button
                             className="chat_input_button"
                             type="submit"
-                            disabled={!groupId||input===""}
+                            disabled={!groupId || input === ""}
                             onClick={sendMessage}
                         >
                             Send Message
@@ -185,7 +96,7 @@ const ChatContent = ({ user, groupId, channelId, channelName, showMembers }) => 
 
             {
                 showMembers && (
-                    <MemberList groupMembers={mockMembers}/>
+                    <MemberList groupId={groupId} />
                 )
             }
 
