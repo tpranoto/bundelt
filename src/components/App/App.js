@@ -29,6 +29,8 @@ function App() {
         dispatch(logout());
       }
     })
+
+    document.title = "Bundelt"
   }, [dispatch])
 
   return (

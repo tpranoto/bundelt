@@ -1,0 +1,9 @@
+.discover_content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.discover_content_empty_div{
+    flex: 1;
+}

@@ -1,0 +1,42 @@
+.discover_page{
+    flex: 1;
+    overflow: auto;
+    height: 100vh;
+}
+
+.discover_content_search_bg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: blueviolet;
+    margin: 10px 20px 0 20px;
+    height: 20%;
+    border-radius: 10px;
+}
+
+.discover_content_search_bg > h3{
+    color: white;
+    padding: 5px;
+}
+
+.discover_content_search_bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: grey;
+    background-color: white;
+    border-radius: 3px;
+    width: 50%;
+    padding: 3px;
+}
+
+.discover_content_search_bar > input{
+    background: transparent;
+    outline-width: 0;
+    border: none;
+}
+
+.discover_content_search_bar > input::placeholder{
+    color: grey;
+}
