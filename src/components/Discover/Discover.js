@@ -50,7 +50,7 @@ const Discover = () => {
             />
 
             <DiscoverContent
-                commName="Community 3"
+                commName="Community 4"
                 commDesc="Description of a community. Welcome you fucking wanker"
             />
 

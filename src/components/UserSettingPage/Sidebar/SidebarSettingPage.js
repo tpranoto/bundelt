@@ -1,6 +1,7 @@
 import React from 'react';
 import './SidebarSettingPage.css';
 import logo from '../../../assets/logo192.png';
+import { auth } from '../../../utils/firebase/firebase';
 
 const SidebarSettingPage = ({ userName }) => {
     return (
@@ -21,7 +22,10 @@ const SidebarSettingPage = ({ userName }) => {
                 Moderations
             </div>
 
-            <div className="user_setting_page_sidebar_logout">
+            <div 
+                className="user_setting_page_sidebar_logout"
+                onClick={() => auth.signOut()}
+            >
                 Logout
             </div>
 
