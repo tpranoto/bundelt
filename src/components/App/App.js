@@ -7,14 +7,14 @@ import Login from '../Login/Login.js'
 import Home from '../Home/Home.js'
 import Discover from '../Discover/Discover.js'
 import { selectUser } from '../../slices/userSlice'
-import { selectGroupState } from '../../slices/appSlice'
+import { selectSidebarTabState } from '../../slices/appSlice'
 import { auth } from '../../utils/firebase/firebase';
 import { login, logout } from '../../slices/userSlice'
 
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const groupState = useSelector(selectGroupState);
+  const sidebarTabState = useSelector(selectSidebarTabState);
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -30,7 +30,7 @@ function App() {
       }
     })
 
-    document.title = "Bundelt"
+    document.title = "bundelt"
   }, [dispatch])
 
   return (
@@ -39,9 +39,9 @@ function App() {
         <>
           <Sidebar />
           {
-            groupState === "home" ? (
+            sidebarTabState === "home" ? (
               <Home />
-            ) : groupState === "discover" ? (
+            ) : sidebarTabState === "discover" ? (
               <Discover />
             ) : (
               <GroupChat />

@@ -1,48 +1,46 @@
-.sidebar_home{
+.sidebar_home_div{
     display: flex;
     flex-direction: column;
-    height: 100%;
-    background-color: #f0f0f5;
+    margin-top: 5px;
 }
 
-.sidebar_header_home{
-    background-color: #8c00ff;
-    padding: 19px 10px 18px 20px;
-    color: white;
-}
-
-.sidebar_home_divider{
-    border-left: 1px solid #f2f2f2;
-}
-
-.home_tab{
+.sidebar_home{
     display: flex;
-    padding-left: 15px;
-    align-items: center;
-    background-color: #f0f0f5;
-    color: black;
-    cursor: pointer;
-    margin: 1px 10px 1px 10px;
-    border-radius: 10px;
-    font-size: medium;
-    font-weight: 500;
-    padding: 10px;
+    flex-direction: row;
+    margin: 0px 5px 0px 5px;
+    border-radius: 5px;
+    padding: 5px 0px 5px 0px;
 }
 
-.selected_home_tab{
+.sidebar_home_selected{
     display: flex;
-    padding-left: 15px;
-    align-items: center;
+    flex-direction: row;
+    margin: 0px 5px 0px 5px;
+    border-radius: 5px;
+    padding: 5px 0px 5px 0px;
     background-color: #d199ff;
-    color: black;
-    cursor: pointer;
-    margin: 1px 10px 1px 10px;
-    border-radius: 10px;
-    font-size: medium;
-    font-weight: 500;
-    padding: 10px;
 }
 
-.home_tab:hover{
-    background-color: #f4e6ff;
+.sidebar_home:hover, .sidebar_home_selected:hover{
+    cursor: pointer;
+}
+
+.sidebar_home_icon{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8c00ff;
+}
+
+.sidebar_home_title_container{
+    flex: 9;
+    display: flex;
+}
+
+.sidebar_home_title{
+    display: flex;
+    align-items: center;
+    font-size: small;
+    font-weight: bold;
 }

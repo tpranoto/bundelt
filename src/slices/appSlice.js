@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  groupState: "home",
+  sidebarTabState: "home",
   homeTabState: "friends",
   friendTabState: "online",
   discoverTabState: "home",
@@ -12,8 +12,8 @@ export const appState = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    setAppInfo: (state, action) => {
-      state.groupState = action.payload.groupState;
+    setSidebarTabState: (state, action) => {
+      state.sidebarTabState = action.payload.sidebarTabState;
     },
     setHomeTabState: (state, action) => {
       state.homeTabState = action.payload.homeTabState;
@@ -30,9 +30,9 @@ export const appState = createSlice({
   },
 });
 
-export const { setAppInfo, setHomeTabState, setFriendTabState, setDiscoverTabState, setShowCreateChannel } = appState.actions;
+export const { setSidebarTabState, setHomeTabState, setFriendTabState, setDiscoverTabState, setShowCreateChannel } = appState.actions;
 
-export const selectGroupState = (state) => state.app.groupState;
+export const selectSidebarTabState = (state) => state.app.sidebarTabState;
 export const selectHomeTabState = (state) => state.app.homeTabState;
 export const selectFriendTabState = (state) => state.app.friendTabState;
 export const selectDiscoverTabState = (state) => state.app.discoverTabState;

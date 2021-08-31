@@ -27,7 +27,7 @@ const UserSettingPage = ({ handleClose }) => {
       <div className="user_setting_page_empty">
         <div
           className="user_setting_page_sidebar_close"
-          onClick={handleClose}
+          onClick={()=>handleClose()}
         >
           <ArrowBackIcon />
         </div>

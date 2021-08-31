@@ -1,37 +1,27 @@
 import React from 'react';
-import './Sidebar.css';
-import SidebarProfile from './SidebarProfile/SidebarProfile.js';
-import SidebarGroup from './SidebarGroup/SidebarGroup.js';
-import SidebarHome from './SidebarHome/SidebarHome.js';
-import SidebarDiscover from './SidebarDiscover/SidebarDiscover.js';
-import GroupBar from './GroupBar/GroupBar.js';
-import { selectUser } from '../../slices/userSlice';
-import { selectGroupState } from '../../slices/appSlice';
 import { useSelector } from 'react-redux';
+import './Sidebar.css';
+import SidebarProfile from './SidebarProfile/SidebarProfile';
+import SidebarHome from './SidebarHome/SidebarHome';
+import SidebarDiscover from './SidebarDiscover/SidebarDiscover';
+import SidebarGroup from './SidebarGroup/SidebarGroup';
+import { selectUser } from '../../slices/userSlice';
 
 const Sidebar = () => {
     const user = useSelector(selectUser);
-    const gState = useSelector(selectGroupState);
 
     return (
         <div className="sidebar">
-            <GroupBar />
+             <SidebarProfile
+                user={user}
+            />
 
-            <div className="sidebar_right">
-                {
-                    gState === "home" ? (
-                        <SidebarHome />
-                    ) : gState === "discover" ? (
-                        <SidebarDiscover />
-                    ) : (
-                        <SidebarGroup />
-                    )
-                }
-
-                <SidebarProfile
-                    user={user}
-                />
+            <div className="sidebar_inside">
+                <SidebarHome />
+                <SidebarDiscover />
+                <SidebarGroup />
             </div>
+            
         </div>
     );
 }
