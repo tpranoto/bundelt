@@ -1,0 +1,29 @@
+.group_info_dialog_about_tab{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 5px;
+    margin: 20px;
+    border: 1px solid #cccccc;
+}
+
+.group_info_dialog_about_tab_desc{
+    flex: 1;
+    border-bottom: 1px solid #cccccc;
+}
+
+.group_info_dialog_about_tab_name{
+    flex: 1;
+    border-bottom: 1px solid #cccccc;
+}
+
+.group_info_dialog_about_tab_time{
+    flex: 1;
+}
+
+.group_info_dialog_about_tab_title{
+    font-size: small;
+    font-weight: 600;
+    padding: 5px;
+}

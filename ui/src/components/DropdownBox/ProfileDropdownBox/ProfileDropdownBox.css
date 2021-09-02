@@ -1,0 +1,55 @@
+.profile_dropdown_box_bg{
+    position: absolute;
+    background-color: transparent;
+    padding: 0px 10px 5px 10px;
+    width: 260px;
+    z-index: 2;
+    transform: translateX(0) translateY(110px);
+}
+
+.profile_dropdown_box{
+    border-radius: 5px;
+    background-color: #5c0099;
+    padding: 5px;
+}
+
+.profile_dropdown_box > div{
+    display: flex;
+    height: 40px;
+    color: #f0f0f5;
+    text-align: center;
+    justify-content: space-between;
+    margin: 5px 10px 5px 10px;
+    border-radius: 5px;
+}
+
+.profile_dropdown_view_profile:hover, .profile_dropdown_preferences:hover{
+    background-color: #d699ff;
+    cursor: pointer;
+}
+
+.profile_dropdown_box > div > span{
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: small;
+    margin-left: 5px;
+}
+
+.profile_dropdown_box > div > .MuiSvgIcon-root{
+    margin-top: 10px;
+    margin-right: 5px;
+    font-size: medium;
+}
+
+#profile_dropdown_logout > span, #profile_dropdown_logout > .MuiSvgIcon-root{
+    color: #ff0000;
+}
+
+#profile_dropdown_logout:hover{
+    background-color: red;
+    cursor: pointer;
+}
+
+#profile_dropdown_logout:hover #profile_dropdown_logout_title, #profile_dropdown_logout:hover #logout_icon{
+    color: white;
+}
