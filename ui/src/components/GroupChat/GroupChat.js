@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import './GroupChat.css';
 import ChatHeader from './ChatHeader/ChatHeader';
@@ -11,6 +11,10 @@ const GroupChat = () => {
     const groupId = useSelector(selectGroupId);
     const groupName = useSelector(selectGroupName);
     const [showMembers, setShowMembers] = useState(true);
+
+    useEffect(() => {
+
+    }, [groupId])
 
     return (
         <div className="chat">

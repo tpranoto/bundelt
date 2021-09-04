@@ -10,7 +10,6 @@ import { selectUser } from '../../slices/userSlice';
 import { selectSidebarTabState } from '../../slices/appSlice';
 import { auth } from '../../utils/firebase/firebase';
 import { login, logout } from '../../slices/userSlice';
-import db from '../../utils/firebase/firebase';
 
 function App() {
   const dispatch = useDispatch();
@@ -18,6 +17,13 @@ function App() {
   const sidebarTabState = useSelector(selectSidebarTabState);
 
   useEffect(() => {
+    let lat;
+    let lon;
+    navigator.geolocation.getCurrentPosition((position) => {
+      lat = parseFloat(position.coords.latitude).toFixed(3);
+      lon = parseFloat(position.coords.longitude).toFixed(3);
+    });
+
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         dispatch(login({
@@ -25,19 +31,13 @@ function App() {
           photo: authUser.photoURL,
           email: authUser.email,
           displayName: authUser.displayName,
+          lat: lat,
+          lon: lon,
         }));
-
-        db.collection('users').where
-        .add({
-          user_id: authUser.uid,
-        });
       } else {
         dispatch(logout());
       }
-
-      
-
-    })
+    });
 
     document.title = "bundelt"
   }, [dispatch])

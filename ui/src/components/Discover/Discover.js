@@ -1,60 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Discover.css';
-import SearchIcon from '@material-ui/icons/Search';
-import { useSelector } from 'react-redux';
-import { selectDiscoverTabState } from '../../slices/appSlice';
 import DiscoverContent from './DiscoverContent/DiscoverContent';
+import db from '../../utils/firebase/firebase';
 
 const Discover = () => {
-    const discoverTabState = useSelector(selectDiscoverTabState);
+    const [groups, setGroups] = useState([]);
 
-    let discoverConst = "Communities";
-    if (discoverTabState === "market") {
-        discoverConst = "Markets"
-    }
 
-    if (discoverTabState === "study") {
-        discoverConst = "Study Centers";
-    }
-
-    if (discoverTabState === "entertainment") {
-        discoverConst = "Entertainments"
-    }
+    useEffect(() => {
+        db.collection('groups').onSnapshot((snapshot) =>
+            setGroups(snapshot.docs.map((doc) => ({
+                id: doc.id,
+                group: doc.data(),
+            })))
+        );
+    }, []);
 
     return (
         <div className="discover_page">
-            <div className="discover_content_search_bg">
+            <div
+                className="discover_content_search_bg"
+            >
                 <h3>
-                    Find Nearby {discoverConst} on Bundelt
+                    Find Nearby Communities on Bundelt
                 </h3>
-
-                <div className="discover_content_search_bar">
-                    <input placeholder="Discover" />
-                    <SearchIcon />
-                </div>
             </div>
 
-            <DiscoverContent
-                commName="Community 1"
-                commDesc="Description of a community. Welcome you fucking wanker"
-            />
-
-            <DiscoverContent
-                commName="Community 2"
-                commDesc="Description of a community. Welcome you fucking wanker"
-            />
-
-            <DiscoverContent
-                commName="Community 3"
-                commDesc="Description of a community. Welcome you fucking wanker"
-            />
-
-            <DiscoverContent
-                commName="Community 4"
-                commDesc="Description of a community. Welcome you fucking wanker"
-            />
-
-            <div> 1 2 ... 100</div>
+            {
+                groups.map(({ id, group }) => (
+                    <DiscoverContent
+                        groupId={id}
+                        groupName={group.groupName}
+                        groupDesc={group.desc}
+                        groupTstamp={group.timestamp}
+                    />
+                ))
+            }
         </div>
     );
 };

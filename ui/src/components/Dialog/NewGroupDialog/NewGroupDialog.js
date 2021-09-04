@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import './NewGroupDialog.css';
 import db from '../../../utils/firebase/firebase';
 import { useOutsideAlerter } from '../../../utils/helper/helper.js';
-import firebase from 'firebase';
 import { setGroupInfo } from '../../../slices/groupSlice';
 import { setSidebarTabState } from '../../../slices/appSlice';
 import { selectUser } from '../../../slices/userSlice';
@@ -25,13 +24,39 @@ const NewGroupDialog = ({ handleCloseGroupDialog }) => {
     });
 
     const handleAddChannel = () => {
+        let lat;
+        let lon;
+        navigator.geolocation.getCurrentPosition((position) => {
+            lat = parseFloat(position.coords.latitude).toFixed(3);
+            lon = parseFloat(position.coords.longitude).toFixed(3);
+        });
         if (groupName !== "") {
+            let tstamp = new Date().toUTCString();
             db.collection('groups')
                 .add({
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    timestamp: tstamp,
                     groupName: groupName,
                     desc: desc,
                 }).then((docRef) => {
+                    const addGroups = async () => {
+                        const resp = await fetch('/user_group_detail/add', {
+                            method: "POST",
+                            body: JSON.stringify({
+                                user_fb_id: user.uid,
+                                group_id: docRef.id,
+                                group_name: groupName,
+                                desc: desc,
+                                created: tstamp,
+                                lat: lat,
+                                lon: lon,
+                            })
+                        });
+
+                        const res = await resp.json();
+                        console.log(res);
+                    };
+                    addGroups();
+
                     db.collection('groups')
                         .doc(docRef.id)
                         .collection('members')
@@ -50,7 +75,9 @@ const NewGroupDialog = ({ handleCloseGroupDialog }) => {
                     dispatch(
                         setGroupInfo({
                             groupId: docRef.id,
-                            groupName: docRef.groupName,
+                            groupName: groupName,
+                            desc: desc,
+                            timestamp: tstamp,
                         })
                     );
                 });

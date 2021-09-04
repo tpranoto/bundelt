@@ -18,25 +18,6 @@
 .discover_content_search_bg > h3{
     color: white;
     padding: 5px;
+    text-shadow: 0 0 5px black;
 }
 
-.discover_content_search_bar{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: grey;
-    background-color: white;
-    border-radius: 3px;
-    width: 50%;
-    padding: 3px;
-}
-
-.discover_content_search_bar > input{
-    background: transparent;
-    outline-width: 0;
-    border: none;
-}
-
-.discover_content_search_bar > input::placeholder{
-    color: grey;
-}

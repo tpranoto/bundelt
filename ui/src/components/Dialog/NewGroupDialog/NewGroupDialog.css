@@ -60,6 +60,7 @@
 
 #new_group_name_input, #new_group_description_input{
     font-size: medium;
+    width: 100%;
 }
 
 .new_group_buttons{

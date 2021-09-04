@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import './GroupInfoDialog.css';
-import db from '../../../utils/firebase/firebase';
 import { useOutsideAlerter } from '../../../utils/helper/helper.js';
-import firebase from 'firebase';
-import { setGroupInfo, selectGroupName } from '../../../slices/groupSlice';
-import { setSidebarTabState } from '../../../slices/appSlice';
-import { selectUser } from '../../../slices/userSlice';
+import { selectGroupName } from '../../../slices/groupSlice';
 import CloseIcon from '@material-ui/icons/Close';
 import AboutTab from './AboutTab/AboutTab';
 
 const GroupInfoDialog = ({ handleCloseGroupDialog }) => {
-    const dispatch = useDispatch();
-    const user = useSelector(selectUser);
     const groupName = useSelector(selectGroupName);
     const [tabState, setTabState] = useState("about");
 

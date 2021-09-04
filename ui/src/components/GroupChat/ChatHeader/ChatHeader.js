@@ -19,6 +19,7 @@ const headerGroupTooltipStyle = makeStyles((theme) => ({
 
 const ChatHeader = ({ groupName, setShowMembers }) => {
     const tooltipStyle = headerGroupTooltipStyle();
+    
     const [openGroupInfo, setOpenGroupInfo] = useState(false);
 
     return (

@@ -1,23 +1,12 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import './AboutTab.css';
-import db from '../../../../utils/firebase/firebase';
-import { useOutsideAlerter } from '../../../../utils/helper/helper.js';
-import firebase from 'firebase';
 import { selectGroupName, selectGroupDesc, selectGroupTimestamp } from '../../../../slices/groupSlice';
-import { setSidebarTabState } from '../../../../slices/appSlice';
-import { selectUser } from '../../../../slices/userSlice';
-import CloseIcon from '@material-ui/icons/Close';
 
-const AboutTab = ({ handleCloseGroupDialog }) => {
-    const dispatch = useDispatch();
+const AboutTab = () => {
     const groupName = useSelector(selectGroupName);
     const groupDesc = useSelector(selectGroupDesc);
     const groupTime = useSelector(selectGroupTimestamp);
-
-    const dialogRef = useOutsideAlerter(() => {
-        handleCloseGroupDialog();
-    });
 
     return (
         <div className="group_info_dialog_about_tab">
