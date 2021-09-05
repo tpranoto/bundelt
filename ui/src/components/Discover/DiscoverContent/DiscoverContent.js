@@ -7,43 +7,44 @@ import { setGroupInfo } from '../../../slices/groupSlice';
 import { setSidebarTabState } from '../../../slices/appSlice';
 import db from '../../../utils/firebase/firebase';
 
-const DiscoverContent = ({ groupId, groupName, groupDesc, groupTstamp }) => {
+const DiscoverContent = ({ groupId, groupName, groupDesc, groupTstamp, groupDistance }) => {
     const dispatch = useDispatch();
     const user = useSelector(selectUser);
 
     const handleJoinGroup = () => {
-        const AddUserGroupRel = async () => {
-            const resp = await fetch('/user_group/add', {
-                method: "POST",
-                body: JSON.stringify({
-                    user_fb_id: user.uid,
-                    group_id: groupId,
-                })
-            });
-            const checkRes = await resp.json();
-            console.log(checkRes);
-        };
-        AddUserGroupRel();
+        fetch('/user_group/add', {
+            method: "POST",
+            body: JSON.stringify({
+                user_fb_id: user.uid,
+                group_id: groupId,
+            })
+        }).then((response) => {
+            if (!response.ok) {
+                throw new Error('Something went wrong');
+            }
+        }).then((data) => {
+            db.collection('groups')
+                .doc(groupId)
+                .collection('members')
+                .add({
+                    user_id: user.uid,
+                    photo: user.photo,
+                    displayName: user.displayName,
+                });
 
-        db.collection('groups')
-        .doc(groupId)
-        .collection('members')
-        .add({
-            user_id: user.uid,
-            photo: user.photo,
-            displayName: user.displayName,
+            dispatch(setGroupInfo({
+                groupId: groupId,
+                groupName: groupName,
+                desc: groupDesc,
+                timestamp: groupTstamp,
+            }));
+
+            dispatch(setSidebarTabState({
+                sidebarTabState: groupId,
+            }));
+        }).catch((error) => {
+            console.log("error: ", error);
         });
-
-        dispatch(setGroupInfo({
-            groupId: groupId,
-            groupName: groupName,
-            desc: groupDesc,
-            timestamp: groupTstamp,
-        }));
-
-        dispatch(setSidebarTabState({
-            sidebarTabState: groupId,
-        }));
     };
 
     return (
@@ -51,6 +52,7 @@ const DiscoverContent = ({ groupId, groupName, groupDesc, groupTstamp }) => {
             <DiscoverCommunity
                 groupName={groupName}
                 groupDesc={groupDesc}
+                groupDistance={groupDistance}
             />
 
             <div className="discover_right_content">

@@ -1,20 +1,43 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import './Discover.css';
 import DiscoverContent from './DiscoverContent/DiscoverContent';
-import db from '../../utils/firebase/firebase';
+import { selectUser } from '../../slices/userSlice';
+import { selectGroupId } from '../../slices/groupSlice';
 
 const Discover = () => {
+    const user = useSelector(selectUser);
+    const groupId = useSelector(selectGroupId);
     const [groups, setGroups] = useState([]);
 
 
     useEffect(() => {
-        db.collection('groups').onSnapshot((snapshot) =>
-            setGroups(snapshot.docs.map((doc) => ({
-                id: doc.id,
-                group: doc.data(),
-            })))
-        );
-    }, []);
+        // db.collection('groups').onSnapshot((snapshot) =>
+        //     setGroups(snapshot.docs.map((doc) => ({
+        //         id: doc.id,
+        //         group: doc.data(),
+        //     })))
+        // );
+
+        fetch('/group/nearby?lat=' + user.lat + '&lon=' + user.lon + '&limit=10&offset=0')
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Something went wrong');
+                }
+            }).then((responseJson) => {
+                setGroups(responseJson.map((doc) => ({
+                    id: doc.group_id,
+                    groupName: doc.group_name,
+                    desc: doc.desc,
+                    timestamp: doc.created,
+                    distance: doc.distance,
+                })));
+            }).catch((error) => {
+                console.log("error: ", error);
+            });
+    }, [groupId, user.lat, user.lon]);
 
     return (
         <div className="discover_page">
@@ -27,12 +50,13 @@ const Discover = () => {
             </div>
 
             {
-                groups.map(({ id, group }) => (
+                groups.map(({ id, groupName, desc, timestamp, distance }) => (
                     <DiscoverContent
                         groupId={id}
-                        groupName={group.groupName}
-                        groupDesc={group.desc}
-                        groupTstamp={group.timestamp}
+                        groupName={groupName}
+                        groupDesc={desc}
+                        groupTstamp={timestamp}
+                        groupDistance={distance}
                     />
                 ))
             }

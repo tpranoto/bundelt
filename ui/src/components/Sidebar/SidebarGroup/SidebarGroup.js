@@ -19,22 +19,23 @@ const SidebarGroup = () => {
     const [openNewGroupDialog, setOpenNewGroupDialog] = useState(false);
 
     useEffect(() => {
-        const fetchGroups = async () => {
-            const resp = await fetch('/user_group/get?user=' + user.uid);
-
-            const getGroups = await resp.json();
-
-            if (getGroups){
-                setGroups(getGroups.map((doc) => ({
+        fetch('/user_group/get?user=' + user.uid)
+            .then((response)=>{
+                if (response.ok){
+                    return response.json();
+                }else{
+                    throw new Error('Something went wrong');
+                }
+            }).then((responseJson)=>{
+                setGroups(responseJson.map((doc) => ({
                     id: doc.group_id,
                     groupName: doc.group_name,
                     desc: doc.desc,
                     timestamp: doc.created,
                 })));
-            }      
-        }
-
-        fetchGroups();
+            }).catch((error)=>{
+                console.log("error: ", error);
+            });
     }, [user.uid, groupId])
 
     const handleSidebarTab = (id, gName, desc, timestamp) => {

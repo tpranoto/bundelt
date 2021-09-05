@@ -38,51 +38,52 @@ const NewGroupDialog = ({ handleCloseGroupDialog }) => {
                     groupName: groupName,
                     desc: desc,
                 }).then((docRef) => {
-                    const addGroups = async () => {
-                        const resp = await fetch('/user_group_detail/add', {
-                            method: "POST",
-                            body: JSON.stringify({
-                                user_fb_id: user.uid,
-                                group_id: docRef.id,
-                                group_name: groupName,
-                                desc: desc,
-                                created: tstamp,
-                                lat: lat,
-                                lon: lon,
-                            })
-                        });
-
-                        const res = await resp.json();
-                        console.log(res);
-                    };
-                    addGroups();
-
-                    db.collection('groups')
-                        .doc(docRef.id)
-                        .collection('members')
-                        .add({
-                            user_id: user.uid,
-                            photo: user.photo,
-                            displayName: user.displayName,
-                        });
-
-                    dispatch(
-                        setSidebarTabState({
-                            sidebarTabState: docRef.id,
-                        })
-                    );
-
-                    dispatch(
-                        setGroupInfo({
-                            groupId: docRef.id,
-                            groupName: groupName,
+                    fetch('/user_group_detail/add', {
+                        method: "POST",
+                        body: JSON.stringify({
+                            user_fb_id: user.uid,
+                            group_id: docRef.id,
+                            group_name: groupName,
                             desc: desc,
-                            timestamp: tstamp,
+                            created: tstamp,
+                            lat: lat,
+                            lon: lon,
                         })
-                    );
+                    }).then((response) => {
+                        if (response.ok) {
+                            return response.text();
+                        } else {
+                            throw new Error('Something went wrong');
+                        }
+                    }).then((responseJson) => {
+                        db.collection('groups')
+                            .doc(docRef.id)
+                            .collection('members')
+                            .add({
+                                user_id: user.uid,
+                                photo: user.photo,
+                                displayName: user.displayName,
+                            });
+
+                        dispatch(
+                            setSidebarTabState({
+                                sidebarTabState: docRef.id,
+                            })
+                        );
+
+                        dispatch(
+                            setGroupInfo({
+                                groupId: docRef.id,
+                                groupName: groupName,
+                                desc: desc,
+                                timestamp: tstamp,
+                            })
+                        );
+                    }).catch((error) => {
+                        console.log("error: ", error);
+                    })
                 });
         }
-
         handleCloseDialogRoutine();
     };
 
