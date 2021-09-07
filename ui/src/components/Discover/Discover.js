@@ -10,15 +10,7 @@ const Discover = () => {
     const groupId = useSelector(selectGroupId);
     const [groups, setGroups] = useState([]);
 
-
     useEffect(() => {
-        // db.collection('groups').onSnapshot((snapshot) =>
-        //     setGroups(snapshot.docs.map((doc) => ({
-        //         id: doc.id,
-        //         group: doc.data(),
-        //     })))
-        // );
-
         fetch('/group/nearby?lat=' + user.lat + '&lon=' + user.lon + '&limit=10&offset=0')
             .then((response) => {
                 if (response.ok) {
@@ -50,7 +42,11 @@ const Discover = () => {
             </div>
 
             {
-                groups.map(({ id, groupName, desc, timestamp, distance }) => (
+                (groups.length === 0) ? (
+                    <div className="discover_content_empty_groups">
+                        It seems there are no groups nearby. Create a new group for others to find.
+                    </div>
+                ) : groups.map(({ id, groupName, desc, timestamp, distance }) => (
                     <DiscoverContent
                         groupId={id}
                         groupName={groupName}
@@ -60,6 +56,7 @@ const Discover = () => {
                     />
                 ))
             }
+
         </div>
     );
 };

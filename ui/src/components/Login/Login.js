@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 import './Login.css';
 import { auth, provider } from '../../utils/firebase/firebase';
-import logo from '../../assets/logo512.png';
+import logo from '../../assets/biglogo.png';
 
 const Login = () => {
     const signIn = () => {

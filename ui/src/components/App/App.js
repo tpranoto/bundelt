@@ -7,7 +7,8 @@ import Login from '../Login/Login';
 import Home from '../Home/Home';
 import Discover from '../Discover/Discover';
 import { selectUser } from '../../slices/userSlice';
-import { selectSidebarTabState } from '../../slices/appSlice';
+import { selectSidebarTabState, setSidebarTabState } from '../../slices/appSlice';
+import { setGroupInfo } from '../../slices/groupSlice';
 import { auth } from '../../utils/firebase/firebase';
 import { login, logout } from '../../slices/userSlice';
 
@@ -36,11 +37,17 @@ function App() {
         }));
       } else {
         dispatch(logout());
+
+        dispatch((setGroupInfo(null)));
+
+        dispatch(setSidebarTabState({
+          sidebarTabState: "home",
+        }));
       }
     });
 
     document.title = "bundelt"
-  }, [dispatch])
+  }, [dispatch], user)
 
   return (
     <div className="app">
