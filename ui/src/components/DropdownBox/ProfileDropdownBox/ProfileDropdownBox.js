@@ -1,11 +1,26 @@
 import React from 'react';
 import './ProfileDropdownBox.css';
-import { auth } from '../../../utils/firebase/firebase';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import FaceIcon from '@material-ui/icons/Face';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../slices/userSlice';
+import { resetGroupInfo } from '../../../slices/groupSlice';
+import { setSidebarTabState } from '../../../slices/appSlice';
 
 const ProfileDropdownBox = () => {
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        //reset every state
+        dispatch(logout());
+
+        dispatch((resetGroupInfo()));
+
+        dispatch(setSidebarTabState({
+            sidebarTabState: "home",
+        }));
+    }
 
     return (
         <div className="profile_dropdown_box_bg">
@@ -22,9 +37,9 @@ const ProfileDropdownBox = () => {
                     <SettingsIcon />
                 </div>
 
-                <div 
+                <div
                     id="profile_dropdown_logout"
-                    onClick={() => auth.signOut()}
+                    onClick={handleLogout}
                 >
                     <span id="profile_dropdown_logout_title">Logout</span>
                     <ExitToAppIcon id="logout_icon" />

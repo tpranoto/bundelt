@@ -25,6 +25,7 @@ const Discover = () => {
                     desc: doc.desc,
                     timestamp: doc.created,
                     distance: doc.distance,
+                    members: doc.members,
                 })));
             }).catch((error) => {
                 console.log("error: ", error);
@@ -46,13 +47,14 @@ const Discover = () => {
                     <div className="discover_content_empty_groups">
                         It seems there are no groups nearby. Create a new group for others to find.
                     </div>
-                ) : groups.map(({ id, groupName, desc, timestamp, distance }) => (
+                ) : groups.map(({ id, groupName, desc, timestamp, distance, members }) => (
                     <DiscoverContent
                         groupId={id}
                         groupName={groupName}
                         groupDesc={desc}
                         groupTstamp={timestamp}
                         groupDistance={distance}
+                        groupMembers= {members}
                     />
                 ))
             }

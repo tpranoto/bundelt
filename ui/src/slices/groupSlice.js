@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   groupId: null,
   groupName: null,
+  desc: null,
+  timestamp: null,
 };
 
 export const groupSlice = createSlice({
@@ -15,10 +17,16 @@ export const groupSlice = createSlice({
       state.desc = action.payload.desc;
       state.timestamp = action.payload.timestamp;
     },
+    resetGroupInfo: (state) => {
+      state.groupId = null;
+        state.groupName = null;
+        state.desc = null;
+        state.timestamp = null;
+    },
   },
 });
 
-export const { setGroupInfo } = groupSlice.actions;
+export const { setGroupInfo, resetGroupInfo } = groupSlice.actions;
 
 export const selectGroupId = (state) => state.group.groupId;
 export const selectGroupName = (state) => state.group.groupName;

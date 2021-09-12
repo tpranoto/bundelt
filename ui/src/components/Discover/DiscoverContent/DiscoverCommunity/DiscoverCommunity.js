@@ -2,7 +2,7 @@ import React from 'react';
 import './DiscoverCommunity.css';
 import cat from '../../../../assets/cat.jpeg';
 
-const DiscoverCommunity = ({ groupName, groupDesc, groupDistance }) => {
+const DiscoverCommunity = ({ groupName, groupDesc, groupDistance, groupMembers }) => {
     return (
         <div className="discover_content_container">
             <div className="discover_content_community">
@@ -16,7 +16,7 @@ const DiscoverCommunity = ({ groupName, groupDesc, groupDistance }) => {
                     <h4>{groupName}</h4>
                     <p>{groupDesc}</p>
 
-                    <h6>1000 members - {groupDistance} km away</h6>
+                    <h6>{groupMembers} members - {groupDistance} km away</h6>
                 </div>
             </div>
         </ div>

@@ -7,7 +7,7 @@ import { setGroupInfo } from '../../../slices/groupSlice';
 import { setSidebarTabState } from '../../../slices/appSlice';
 import db from '../../../utils/firebase/firebase';
 
-const DiscoverContent = ({ groupId, groupName, groupDesc, groupTstamp, groupDistance }) => {
+const DiscoverContent = ({ groupId, groupName, groupDesc, groupTstamp, groupDistance, groupMembers }) => {
     const dispatch = useDispatch();
     const user = useSelector(selectUser);
 
@@ -15,7 +15,7 @@ const DiscoverContent = ({ groupId, groupName, groupDesc, groupTstamp, groupDist
         fetch('/user_group/add', {
             method: "POST",
             body: JSON.stringify({
-                user_fb_id: user.uid,
+                user_id: user.uid,
                 group_id: groupId,
             })
         }).then((response) => {
@@ -28,7 +28,7 @@ const DiscoverContent = ({ groupId, groupName, groupDesc, groupTstamp, groupDist
                 .collection('members')
                 .add({
                     user_id: user.uid,
-                    photo: user.photo,
+                    initials: user.initials,
                     displayName: user.displayName,
                 });
 
@@ -53,6 +53,7 @@ const DiscoverContent = ({ groupId, groupName, groupDesc, groupTstamp, groupDist
                 groupName={groupName}
                 groupDesc={groupDesc}
                 groupDistance={groupDistance}
+                groupMembers={groupMembers}
             />
 
             <div className="discover_right_content">

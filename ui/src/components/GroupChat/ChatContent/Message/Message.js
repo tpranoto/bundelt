@@ -6,7 +6,7 @@ import { Avatar } from '@material-ui/core'
 const Message = ({ timestamp, user, message }) => {
     return (
         <div className="message">
-            <Avatar src={user.photo} />
+            <Avatar>{user.initials}</Avatar>
             <div className="message_info">
                 <h4>
                     {user.displayName}

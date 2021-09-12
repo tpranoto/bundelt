@@ -5,19 +5,79 @@
     width: 100%;
 }
 
-.login > button {
+.login_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 500px;
+    padding: 20px;
+    background: #29293d;
+    border-radius: 5px;
+    box-shadow: 0 1px 8px 0 rgb(0 17 25 / 27%);
+}
+
+.login_info{
+    flex: 2;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    color: #b3b3cc;
+}
+
+.login_info > h2{
+    color: white;
+}
+
+.login_logo{
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.login_info > span, .login_info > p{
+    font-size: small;
+    margin: 5px 0 5px 0;
+    color: #a3a3c2;
+}
+
+.login_info > p > span{
+    color: #3a83f8;
+}
+
+.login_info > p > span:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.login_info > h5{
+    margin: 5px 0 5px 0;
+}
+
+.login_info > input{
+    margin-bottom: 15px;
+    padding: 5px;
+    background: #3d3d5c;
+    color: #a3a3c2;
+    font-size: medium;
+}
+
+#sign_in_submit_button {
     width: 300px;
+    text-align: center;
     background-color: #738adb;
     color: #eff2f5;
     font-weight: 800;
+    margin-top: 10px;
 }
 
-.login > button:hover {
+#sign_in_submit_button:hover {
     background-color: black;
     color: #738adb;
+    cursor: pointer;
 }
 
-.login > div > img {
+.login_logo > img {
     object-fit: contain;
     height: 150px;
 }

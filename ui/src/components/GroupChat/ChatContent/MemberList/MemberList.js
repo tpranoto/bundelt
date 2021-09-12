@@ -25,7 +25,7 @@ const MemberList = ({ groupId }) => {
             {
                 groupMembers.map(({ id, data }) => (
                     <Member
-                        photo={data.photo}
+                        initials={data.initials}
                         displayName={data.displayName}
                     />
                 ))

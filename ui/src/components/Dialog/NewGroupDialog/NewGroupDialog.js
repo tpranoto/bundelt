@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './NewGroupDialog.css';
 import db from '../../../utils/firebase/firebase';
@@ -12,6 +12,10 @@ const NewGroupDialog = ({ handleCloseGroupDialog }) => {
     const user = useSelector(selectUser);
     const [groupName, setGroupName] = useState("");
     const [desc, setDesc] = useState("");
+    const [loc, setLoc] = useState({
+        lat: 0,
+        lon: 0,
+    });
 
     const handleCloseDialogRoutine = () => {
         setGroupName("");
@@ -24,12 +28,6 @@ const NewGroupDialog = ({ handleCloseGroupDialog }) => {
     });
 
     const handleAddChannel = () => {
-        let lat;
-        let lon;
-        navigator.geolocation.getCurrentPosition((position) => {
-            lat = parseFloat(position.coords.latitude).toFixed(3);
-            lon = parseFloat(position.coords.longitude).toFixed(3);
-        });
         if (groupName !== "") {
             let tstamp = new Date().toUTCString();
             db.collection('groups')
@@ -41,13 +39,13 @@ const NewGroupDialog = ({ handleCloseGroupDialog }) => {
                     fetch('/user_group_detail/add', {
                         method: "POST",
                         body: JSON.stringify({
-                            user_fb_id: user.uid,
+                            user_id: user.uid,
                             group_id: docRef.id,
                             group_name: groupName,
                             desc: desc,
                             created: tstamp,
-                            lat: lat,
-                            lon: lon,
+                            lat: loc.lat,
+                            lon: loc.lon,
                         })
                     }).then((response) => {
                         if (response.ok) {
@@ -61,7 +59,7 @@ const NewGroupDialog = ({ handleCloseGroupDialog }) => {
                             .collection('members')
                             .add({
                                 user_id: user.uid,
-                                photo: user.photo,
+                                initials: user.initials,
                                 displayName: user.displayName,
                             });
 
@@ -86,6 +84,15 @@ const NewGroupDialog = ({ handleCloseGroupDialog }) => {
         }
         handleCloseDialogRoutine();
     };
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            setLoc({
+                lat: parseFloat(position.coords.latitude.toFixed(3)),
+                lon: parseFloat(position.coords.longitude.toFixed(3)),
+            });
+        });
+    }, []);
 
     return (
         <div className="bg_dialog">

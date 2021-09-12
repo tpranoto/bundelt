@@ -20,8 +20,10 @@ const SidebarProfile = ({ user }) => {
                 variant="square"
                 className="avatar"
                 id="avatar_profile"
-                src={user.photo}
-            />
+            >
+                {user.initials}
+            </Avatar>
+
 
             <div className="sidebar_profile_info">
                 <h3>{user.displayName}</h3>
