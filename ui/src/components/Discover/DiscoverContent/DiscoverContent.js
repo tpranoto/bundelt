@@ -5,7 +5,6 @@ import DiscoverCommunity from './DiscoverCommunity/DiscoverCommunity';
 import { selectUser } from '../../../slices/userSlice';
 import { setGroupInfo } from '../../../slices/groupSlice';
 import { setSidebarTabState } from '../../../slices/appSlice';
-import db from '../../../utils/firebase/firebase';
 
 const DiscoverContent = ({ groupId, groupName, groupDesc, groupTstamp, groupDistance, groupMembers }) => {
     const dispatch = useDispatch();
@@ -23,15 +22,6 @@ const DiscoverContent = ({ groupId, groupName, groupDesc, groupTstamp, groupDist
                 throw new Error('Something went wrong');
             }
         }).then((data) => {
-            db.collection('groups')
-                .doc(groupId)
-                .collection('members')
-                .add({
-                    user_id: user.uid,
-                    initials: user.initials,
-                    displayName: user.displayName,
-                });
-
             dispatch(setGroupInfo({
                 groupId: groupId,
                 groupName: groupName,

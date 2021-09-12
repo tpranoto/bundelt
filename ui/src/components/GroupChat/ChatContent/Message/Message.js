@@ -3,15 +3,15 @@ import './Message.css'
 import { Avatar } from '@material-ui/core'
 
 
-const Message = ({ timestamp, user, message }) => {
+const Message = ({ timestamp, initials, name, message }) => {
     return (
         <div className="message">
-            <Avatar>{user.initials}</Avatar>
+            <Avatar>{initials}</Avatar>
             <div className="message_info">
                 <h4>
-                    {user.displayName}
+                    {name}
                     <span className="message_timestamp">
-                        {new Date(timestamp?.toDate()).toUTCString()}
+                        {timestamp}
                     </span>
                 </h4>
 

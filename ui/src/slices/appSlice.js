@@ -1,8 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  sidebarTabState: "home",
+  sidebarTabState: -2,
 };
+
+//home: -2
+//discover: -1
 
 export const appState = createSlice({
   name: 'app',

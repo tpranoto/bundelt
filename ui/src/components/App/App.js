@@ -23,9 +23,9 @@ function App() {
         <>
           <Sidebar />
           {
-            sidebarTabState === "home" ? (
+            sidebarTabState === -2 ? (
               <Home />
-            ) : sidebarTabState === "discover" ? (
+            ) : sidebarTabState === -1 ? (
               <Discover />
             ) : (
               <GroupChat />

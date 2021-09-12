@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './ChatContent.css';
-import firebase from 'firebase';
 import Message from './Message/Message.js';
 import MemberList from './MemberList/MemberList.js';
-import db from '../../../utils/firebase/firebase';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
+import { getInitials } from '../../../utils/helper/helper';
 
 
 const ChatContent = ({ user, groupId, groupName, showMembers }) => {
     const [input, setInput] = useState("");
     const [messages, setMessages] = useState([]);
+    const [updated, setUpdated] = useState(0);
     const messagesEndRef = useRef(null);
 
     const scrollToBottom = () => {
@@ -18,29 +18,44 @@ const ChatContent = ({ user, groupId, groupName, showMembers }) => {
 
     useEffect(() => {
         if (groupId) {
-            db.collection('groups')
-                .doc(groupId)
-                .collection('messages')
-                .orderBy('timestamp', 'asc')
-                .onSnapshot((snapshot) =>
-                    setMessages(snapshot.docs.map((doc) => doc.data()))
-                );
+            fetch('/message/group?group_id=' + groupId)
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Something went wrong');
+                    }
+                }).then((data) => {
+                    setMessages(data.map((doc) => ({
+                        user_id: doc.user_id,
+                        initials: getInitials(doc.full_name),
+                        name: doc.full_name,
+                        group_id: doc.group_id,
+                        msg: doc.msg,
+                        timestamp: doc.create_time,
+                    })));
+                }).catch((error) => {
+                    console.log("error: ", error);
+                });
         }
-    }, [groupId])
+    }, [groupId, updated])
 
     useEffect(scrollToBottom, [messages]);
 
     const sendMessage = (e) => {
+        setUpdated(updated + 1);
         e.preventDefault();
 
-        db.collection('groups')
-            .doc(groupId)
-            .collection('messages')
-            .add({
-                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                message: input,
-                user: user,
+        fetch('/message/group/add', {
+            method: "POST",
+            body: JSON.stringify({
+                user_id: user.uid,
+                group_id: parseInt(groupId, 10),
+                msg: input,
             })
+        }).catch((error) => {
+            console.log("error: ", error);
+        })
 
         setInput("");
     }
@@ -49,11 +64,12 @@ const ChatContent = ({ user, groupId, groupName, showMembers }) => {
         <div className="chat_content">
             <div className="chat_content_main">
                 <div className="chat_messages">
-                    {messages.map(message => (
+                    {messages.map(msg => (
                         <Message
-                            timestamp={message.timestamp}
-                            user={message.user}
-                            message={message.message}
+                            timestamp={msg.timestamp}
+                            message={msg.msg}
+                            initials={msg.initials}
+                            name={msg.name}
                         />
                     ))}
 

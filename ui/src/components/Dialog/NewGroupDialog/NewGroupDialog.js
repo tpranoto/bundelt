@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './NewGroupDialog.css';
-import db from '../../../utils/firebase/firebase';
 import { useOutsideAlerter } from '../../../utils/helper/helper.js';
 import { setGroupInfo } from '../../../slices/groupSlice';
 import { setSidebarTabState } from '../../../slices/appSlice';
@@ -30,57 +29,42 @@ const NewGroupDialog = ({ handleCloseGroupDialog }) => {
     const handleAddChannel = () => {
         if (groupName !== "") {
             let tstamp = new Date().toUTCString();
-            db.collection('groups')
-                .add({
-                    timestamp: tstamp,
-                    groupName: groupName,
+
+            fetch('/user_group_detail/add', {
+                method: "POST",
+                body: JSON.stringify({
+                    user_id: user.uid,
+                    group_name: groupName,
                     desc: desc,
-                }).then((docRef) => {
-                    fetch('/user_group_detail/add', {
-                        method: "POST",
-                        body: JSON.stringify({
-                            user_id: user.uid,
-                            group_id: docRef.id,
-                            group_name: groupName,
-                            desc: desc,
-                            created: tstamp,
-                            lat: loc.lat,
-                            lon: loc.lon,
-                        })
-                    }).then((response) => {
-                        if (response.ok) {
-                            return response.text();
-                        } else {
-                            throw new Error('Something went wrong');
-                        }
-                    }).then((responseJson) => {
-                        db.collection('groups')
-                            .doc(docRef.id)
-                            .collection('members')
-                            .add({
-                                user_id: user.uid,
-                                initials: user.initials,
-                                displayName: user.displayName,
-                            });
-
-                        dispatch(
-                            setSidebarTabState({
-                                sidebarTabState: docRef.id,
-                            })
-                        );
-
-                        dispatch(
-                            setGroupInfo({
-                                groupId: docRef.id,
-                                groupName: groupName,
-                                desc: desc,
-                                timestamp: tstamp,
-                            })
-                        );
-                    }).catch((error) => {
-                        console.log("error: ", error);
+                    created: tstamp,
+                    lat: loc.lat,
+                    lon: loc.lon,
+                })
+            }).then((response) => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('Something went wrong');
+                }
+            }).then((responseJson) => {
+                dispatch(
+                    setSidebarTabState({
+                        sidebarTabState: responseJson.group_id,
                     })
-                });
+                );
+
+                dispatch(
+                    setGroupInfo({
+                        groupId: responseJson.group_id,
+                        groupName: groupName,
+                        desc: desc,
+                        timestamp: tstamp,
+                    })
+                );
+            }).catch((error) => {
+                console.log("error: ", error);
+            })
+
         }
         handleCloseDialogRoutine();
     };
