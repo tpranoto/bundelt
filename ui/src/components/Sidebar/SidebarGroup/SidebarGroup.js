@@ -20,20 +20,20 @@ const SidebarGroup = () => {
 
     useEffect(() => {
         fetch('/user_group/get?user=' + user.uid)
-            .then((response)=>{
-                if (response.ok){
+            .then((response) => {
+                if (response.ok) {
                     return response.json();
-                }else{
+                } else {
                     throw new Error('Something went wrong');
                 }
-            }).then((responseJson)=>{
+            }).then((responseJson) => {
                 setGroups(responseJson.map((doc) => ({
                     id: doc.group_id,
                     groupName: doc.group_name,
                     desc: doc.desc,
                     timestamp: doc.created,
                 })));
-            }).catch((error)=>{
+            }).catch((error) => {
                 console.log("error: ", error);
             });
     }, [user.uid, groupId])
@@ -41,7 +41,7 @@ const SidebarGroup = () => {
     const handleSidebarTab = (id, gName, desc, timestamp) => {
         dispatch(
             setSidebarTabState({
-                sidebarTabState: id,
+                sidebarTabState: "group_" + id,
             })
         );
 
@@ -96,7 +96,7 @@ const SidebarGroup = () => {
                             groups.map(({ id, groupName, desc, timestamp }) => (
 
                                 <div
-                                    className={sidebarTab === id ? "selected_group_tab" : "group_tab"}
+                                    className={sidebarTab === "group_" + id ? "selected_group_tab" : "group_tab"}
                                     onClick={() => handleSidebarTab(id, groupName, desc, timestamp)}
                                 >
                                     <span className="group_tab_title"># {groupName}</span>

@@ -49,7 +49,7 @@ const NewGroupDialog = ({ handleCloseGroupDialog }) => {
             }).then((responseJson) => {
                 dispatch(
                     setSidebarTabState({
-                        sidebarTabState: responseJson.group_id,
+                        sidebarTabState: "group_" + responseJson.group_id,
                     })
                 );
 

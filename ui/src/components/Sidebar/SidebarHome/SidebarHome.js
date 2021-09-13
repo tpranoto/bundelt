@@ -11,7 +11,7 @@ const SidebarHome = () => {
     const handleHomeTab = () => {
         dispatch(
             setSidebarTabState({
-                sidebarTabState: -2,
+                sidebarTabState: "home",
             })
         );
     };
@@ -19,7 +19,7 @@ const SidebarHome = () => {
     return (
         <div className="sidebar_home_div">
             <div
-                className={sidebarTab === -2 ? "sidebar_home_selected" : "sidebar_home"}
+                className={sidebarTab === "home" ? "sidebar_home_selected" : "sidebar_home"}
                 onClick={handleHomeTab}
             >
                 <HomeIcon className="sidebar_home_icon" />

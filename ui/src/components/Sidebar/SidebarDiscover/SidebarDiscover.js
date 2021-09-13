@@ -11,7 +11,7 @@ const SidebarDiscover = () => {
     const handleDiscoverTab = () => {
         dispatch(
             setSidebarTabState({
-                sidebarTabState: -1,
+                sidebarTabState: "discover",
             })
         );
     };
@@ -19,7 +19,7 @@ const SidebarDiscover = () => {
     return (
         <div className="sidebar_discover_div">
             <div
-                className={sidebarTab === -1 ? "sidebar_discover_selected" : "sidebar_discover"}
+                className={sidebarTab === "discover" ? "sidebar_discover_selected" : "sidebar_discover"}
                 onClick={handleDiscoverTab}
             >
                 <ExploreIcon className="sidebar_discover_icon" />

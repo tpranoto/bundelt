@@ -18,7 +18,7 @@ const ProfileDropdownBox = () => {
         dispatch((resetGroupInfo()));
 
         dispatch(setSidebarTabState({
-            sidebarTabState: -2,
+            sidebarTabState: "home",
         }));
     }
 

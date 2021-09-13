@@ -30,7 +30,7 @@ const DiscoverContent = ({ groupId, groupName, groupDesc, groupTstamp, groupDist
             }));
 
             dispatch(setSidebarTabState({
-                sidebarTabState: groupId,
+                sidebarTabState: "group_" + groupId,
             }));
         }).catch((error) => {
             console.log("error: ", error);
