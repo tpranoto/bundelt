@@ -27,8 +27,12 @@ function App() {
               <Home />
             ) : sidebarTabState === "discover" ? (
               <Discover />
-            ) : (
+            ) : sidebarTabState.startsWith("group_")?(
               <GroupChat />
+            ):(
+              <div>
+                Friend
+              </div>
             )
           }
         </>

@@ -3,7 +3,6 @@ import './Home.css'
 import EventPage from './EventPage/EventPage.js';
 
 const Home = () => {
-
     return (
         <div className="home">
             <EventPage />

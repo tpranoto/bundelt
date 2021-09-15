@@ -1,11 +1,10 @@
 import React from 'react';
 
-const EmptyEventPage =() =>{
-    return(
+
+const SidebarFriend = () => {
+    return (
         <div>
             
         </div>
     )
 }
-
-export default EmptyEventPage;
