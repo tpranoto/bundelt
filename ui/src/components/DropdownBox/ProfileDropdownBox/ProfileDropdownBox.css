@@ -4,13 +4,48 @@
     padding: 0px 10px 5px 10px;
     width: 260px;
     z-index: 2;
-    transform: translateX(0) translateY(110px);
+    transform: translateX(20px) translateY(130px);
 }
 
 .profile_dropdown_box{
     border-radius: 5px;
     background-color: #5c0099;
     padding: 5px;
+}
+
+.profile_dropdown_info_box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile_dropdown_info_box:hover{
+    cursor: default;
+}
+
+.profile_dropdown_info{
+    flex: 1;
+    padding: 7px 15px 7px 15px;
+    text-align: start;
+}
+
+.profile_dropdown_info > h3{
+    color: white;
+    font-size: small;
+}
+
+.profile_dropdown_info > p{
+    color: white;
+    font-size: small;
+}
+
+#profile_dropdown_avatar_profile{
+    height: 30px;
+    width: 30px;
+}
+
+.profile_dropdown_avatar{
+    border: 2px solid #26282c;
 }
 
 .profile_dropdown_box > div{

@@ -1,0 +1,10 @@
+.event_content{
+    flex: 20;
+    display: flex;
+    flex-direction: column;
+}
+
+.event_content_inside{
+    overflow: scroll;
+    height: 87.1vh;
+}

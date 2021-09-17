@@ -1,32 +1,30 @@
-.discover_page{
-    flex: 1;
-    overflow: auto;
-    height: 100vh;
-}
-
-.discover_content_search_bg{
+.discover{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: blueviolet;
-    margin: 10px 20px 0 20px;
-    height: 20%;
-    border-radius: 10px;
+    width: 100%;
+    background-color: white;
 }
 
-.discover_content_search_bg > h3{
-    color: white;
-    padding: 5px;
-    text-shadow: 0 0 5px black;
-}
-
-.discover_content_empty_groups{
+.discover_tabs{
+    flex: 1;
     display: flex;
-    justify-content: center;
-    text-align: center;
-    background: #f0f0f5;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px;
+    flex-direction: row;
+    margin-left: 5%;
+}
+
+.discover_tab{
+    display: flex;
+    flex-direction: row;
+    background: white;
+    color: grey;
+    margin: 10px;
+}
+
+.discover_tab:hover{
+    cursor: pointer;
+}
+
+.selected_discover_tab{
+    border-bottom: 4px solid #8c00ff;
+    color: black;
 }

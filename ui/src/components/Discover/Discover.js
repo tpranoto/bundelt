@@ -1,66 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import './Discover.css';
-import DiscoverContent from './DiscoverContent/DiscoverContent';
-import { selectUser } from '../../slices/userSlice';
-import { selectGroupId } from '../../slices/groupSlice';
+import React, { useState } from 'react';
+import './Discover.css'
+import EventContent from './EventContent/EventContent.js';
+import GroupContent from './GroupContent/GroupContent';
 
 const Discover = () => {
-    const user = useSelector(selectUser);
-    const groupId = useSelector(selectGroupId);
-    const [groups, setGroups] = useState([]);
-
-    useEffect(() => {
-        fetch('/group/nearby?lat=' + user.lat + '&lon=' + user.lon + '&limit=10&offset=0')
-            .then((response) => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Something went wrong');
-                }
-            }).then((responseJson) => {
-                setGroups(responseJson.map((doc) => ({
-                    id: doc.group_id,
-                    groupName: doc.group_name,
-                    desc: doc.desc,
-                    timestamp: doc.created,
-                    distance: doc.distance,
-                    members: doc.members,
-                })));
-            }).catch((error) => {
-                console.log("error: ", error);
-            });
-    }, [groupId, user.lat, user.lon]);
+    const [tabState, setTabState] = useState("events");
 
     return (
-        <div className="discover_page">
-            <div
-                className="discover_content_search_bg"
-            >
-                <h3>
-                    Find Nearby Communities on Bundelt
-                </h3>
+        <div className="discover">
+            <div className="discover_tabs">
+                <div 
+                    className={tabState === "events" ? "discover_tab selected_discover_tab" : "discover_tab"}
+                    onClick = {()=>setTabState("events")}
+                >
+                    <h4>Events</h4>
+                </div>
+
+                <div 
+                    className={tabState === "groups" ? "discover_tab selected_discover_tab" : "discover_tab"}
+                    onClick = {()=>setTabState("groups")}
+                >
+                    <h4>Groups</h4>
+                </div>
             </div>
 
             {
-                (groups.length === 0) ? (
-                    <div className="discover_content_empty_groups">
-                        It seems there are no groups nearby. Create a new group for others to find.
-                    </div>
-                ) : groups.map(({ id, groupName, desc, timestamp, distance, members }) => (
-                    <DiscoverContent
-                        groupId={id}
-                        groupName={groupName}
-                        groupDesc={desc}
-                        groupTstamp={timestamp}
-                        groupDistance={distance}
-                        groupMembers= {members}
-                    />
-                ))
+                tabState === "events"?(
+                    <EventContent />
+                ):(
+                    <GroupContent />
+                )
             }
-
         </div>
-    );
-};
+    )
+}
 
 export default Discover;

@@ -1,0 +1,31 @@
+.group_detail_container{
+    flex: 1;
+    background-color: #f0f0f5;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: scroll;
+    height: 92.7vh;
+    border-left: 2px solid #d1d1e0;
+}
+
+.group_detail_tabs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.group_detail_tab{
+    display: flex;
+    flex-direction: row;
+    color: grey;
+    margin: 10px;
+}
+
+.group_detail_tab:hover{
+    cursor: pointer;
+}
+
+.selected_group_detail_tab{
+    color: #8c00ff;
+}

@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './ChatContent.css';
-import Message from './Message/Message.js';
-import MemberList from './MemberList/MemberList.js';
+import Message from './Message/Message';
+import GroupDetails from './GroupDetails/GroupDetails';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import { getInitials } from '../../../utils/helper/helper';
 
 
-const ChatContent = ({ user, groupId, groupName, showMembers }) => {
+const ChatContent = ({ user, groupId, groupName }) => {
     const [input, setInput] = useState("");
     const [messages, setMessages] = useState([]);
     const [updated, setUpdated] = useState(0);
@@ -100,11 +100,7 @@ const ChatContent = ({ user, groupId, groupName, showMembers }) => {
                 </div>
             </div>
 
-            {
-                showMembers && (
-                    <MemberList groupId={groupId} />
-                )
-            }
+            <GroupDetails />
 
         </div>
     )

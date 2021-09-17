@@ -7,8 +7,9 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../../../slices/userSlice';
 import { resetGroupInfo } from '../../../slices/groupSlice';
 import { setSidebarTabState } from '../../../slices/appSlice';
+import { Avatar } from '@material-ui/core';
 
-const ProfileDropdownBox = () => {
+const ProfileDropdownBox = ({ user, handleCloseProfileDropBox }) => {
     const dispatch = useDispatch();
 
     const handleLogout = () => {
@@ -20,11 +21,27 @@ const ProfileDropdownBox = () => {
         dispatch(setSidebarTabState({
             sidebarTabState: "home",
         }));
+        handleCloseProfileDropBox();
     }
 
     return (
         <div className="profile_dropdown_box_bg">
             <div className="profile_dropdown_box">
+                <div className="profile_dropdown_info_box">
+                    <Avatar
+                        className="profile_dropdown_avatar"
+                        id="profile_dropdown_avatar_profile"
+                    >
+                        {user.initials}
+                    </Avatar>
+
+
+                    <div className="profile_dropdown_info">
+                        <h3>{user.displayName}</h3>
+                        <p>Location</p>
+                    </div>
+                </div>
+                
                 <div
                     className="profile_dropdown_view_profile"
                 >

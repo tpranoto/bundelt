@@ -78,7 +78,7 @@ const SidebarGroup = () => {
                     onClick={handleCategoryExpand}
 
                 >
-                    <span className="sidebar_header_group_title">Bundel</span>
+                    <span className="sidebar_header_group_title">Groups</span>
                 </div>
 
                 <div

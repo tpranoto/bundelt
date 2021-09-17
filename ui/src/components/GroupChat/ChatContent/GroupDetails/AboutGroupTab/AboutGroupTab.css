@@ -1,0 +1,40 @@
+.group_detail_about_group_tab{
+    display: flex;
+    flex-direction: column;
+}
+
+.group_detail_name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.group_detail_img{
+    display: flex;
+    justify-content: center;
+}
+
+.group_detail_img > img{
+    height: 200px;
+    border-radius: 5px;
+    border: 5px solid #8c00ff;
+}
+
+.group_detail_desc, .group_detail_create_at{
+    display: flex;
+    flex-direction: column;
+    background: white;
+    margin: 5px 10px 0 10px;
+    border-radius: 5px;
+    border: 2px solid #d1d1e0;
+}
+
+.group_detail_desc > h5, .group_detail_create_at > h5{
+    margin: 5px;
+}
+
+.group_detail_desc > span, .group_detail_create_at > span{
+    font-size: small;
+    margin: 5px;
+}

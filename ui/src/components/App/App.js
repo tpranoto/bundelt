@@ -4,10 +4,10 @@ import './App.css';
 import Sidebar from '../Sidebar/Sidebar';
 import GroupChat from '../GroupChat/GroupChat';
 import Login from '../Login/Login';
-import Home from '../Home/Home';
 import Discover from '../Discover/Discover';
 import { selectUser } from '../../slices/userSlice';
 import { selectSidebarTabState } from '../../slices/appSlice';
+import Header from '../Header/Header';
 
 function App() {
   const user = useSelector(selectUser);
@@ -21,20 +21,24 @@ function App() {
     <div className="app">
       {user ? (
         <>
-          <Sidebar />
-          {
-            sidebarTabState === "home" ? (
-              <Home />
-            ) : sidebarTabState === "discover" ? (
-              <Discover />
-            ) : sidebarTabState.startsWith("group_")?(
-              <GroupChat />
-            ):(
-              <div>
-                Friend
-              </div>
-            )
-          }
+          <Header user={user} />
+
+          <div className="app_content">
+            <Sidebar />
+            {
+              sidebarTabState === "home" ? (
+                <div></div>
+              ) : sidebarTabState === "discover" ? (
+                <Discover />
+              ) : sidebarTabState.startsWith("group_") ? (
+                <GroupChat />
+              ) : (
+                <div>
+                  Friend
+                </div>
+              )
+            }
+          </div>
         </>
       ) : (
         <Login />

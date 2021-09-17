@@ -1,0 +1,20 @@
+.group_content{
+    flex: 20;
+    display: flex;
+    flex-direction: column;
+}
+
+.group_content_empty{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background: #f0f0f5;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.group_content_inside{
+    overflow: scroll;
+    height: 87.1vh;
+}

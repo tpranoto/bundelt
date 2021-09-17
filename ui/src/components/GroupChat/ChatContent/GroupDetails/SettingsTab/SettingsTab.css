@@ -1,0 +1,27 @@
+.settings_tab_content{
+    display: flex;
+    flex-direction: column;
+}
+
+.settings_tab_share, .settings_tab_notification,
+.settings_tab_report, .settings_tab_leave{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: white;
+    margin: 5px 10px 0 10px;
+    border-radius: 5px;
+    border: 2px solid #d1d1e0;
+    padding: 10px;
+}
+
+.settings_tab_share > h5, .settings_tab_notification > h5,
+.settings_tab_report > h5, .settings_tab_leave > h5{
+    margin-left: 10px;
+}
+
+.settings_tab_share:hover, .settings_tab_notification:hover,
+.settings_tab_report:hover, .settings_tab_leave:hover{
+    cursor: pointer;
+    background: #d1d1e0;
+}
