@@ -42,23 +42,23 @@ const NewGroupDialog = ({ handleCloseGroupDialog }) => {
                 })
             }).then((response) => {
                 if (response.ok) {
-                    return response.text();
+                    return response.json();
                 } else {
                     throw new Error('Something went wrong');
                 }
             }).then((responseJson) => {
-                dispatch(
-                    setSidebarTabState({
-                        sidebarTabState: "group_" + responseJson.group_id,
-                    })
-                );
-
                 dispatch(
                     setGroupInfo({
                         groupId: responseJson.group_id,
                         groupName: groupName,
                         desc: desc,
                         timestamp: tstamp,
+                    })
+                );
+                
+                dispatch(
+                    setSidebarTabState({
+                        sidebarTabState: "group_" + responseJson.group_id,
                     })
                 );
             }).catch((error) => {

@@ -1,0 +1,56 @@
+.next_event_container{
+    display: flex;
+    flex-direction: column;
+    margin: 20px 25% 20px 5%;
+}
+
+.home_next_events{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.see_all_events_button{
+    padding: 10px;
+    background: #8c00ff;
+    color: white;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.see_all_events_button:hover{
+    cursor: pointer;
+}
+
+.closest_event_container{
+    border: 2px solid #d1d1e0;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.empty_event{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.empty_event > .MuiSvgIcon-root{
+    flex: 1;
+}
+
+.empty_event > h4{
+    flex: 8;
+}
+
+.go_to_discover_event_button{
+    flex: 2;
+    padding: 10px;
+    border-radius: 5px;
+    background: #d1d1e0;
+}
+
+.go_to_discover_event_button:hover{
+    cursor: pointer;
+}

@@ -5,6 +5,8 @@ import Sidebar from '../Sidebar/Sidebar';
 import GroupChat from '../GroupChat/GroupChat';
 import Login from '../Login/Login';
 import Discover from '../Discover/Discover';
+import Home from '../Home/Home';
+import Event from '../Event/Event';
 import { selectUser } from '../../slices/userSlice';
 import { selectSidebarTabState } from '../../slices/appSlice';
 import Header from '../Header/Header';
@@ -27,9 +29,11 @@ function App() {
             <Sidebar />
             {
               sidebarTabState === "home" ? (
-                <div></div>
+                <Home />
               ) : sidebarTabState === "discover" ? (
                 <Discover />
+              ) : sidebarTabState === "event" ? (
+                <Event />
               ) : sidebarTabState.startsWith("group_") ? (
                 <GroupChat />
               ) : (

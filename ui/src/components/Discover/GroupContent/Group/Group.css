@@ -94,3 +94,32 @@
     cursor: pointer;
     background: #00b33c;
 }
+
+.group_details_footer_joined{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    background: #00b33c;
+    color: white;
+    border-radius: 5px;
+    font-size: small;
+    padding: 3px 2px 3px 2px;
+}
+
+.group_details_cont_tags{
+    display: flex;
+    flex-direction: row;
+}
+
+.discover_group_tag{
+    font-size: small;
+    font-weight: 600;
+    color: white;
+    background: #8c00ff;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.discover_group_tag:not(:last-child){
+    margin-right: 5px;
+}

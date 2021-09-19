@@ -3,6 +3,7 @@ import './Sidebar.css';
 import SidebarHome from './SidebarHome/SidebarHome';
 import SidebarDiscover from './SidebarDiscover/SidebarDiscover';
 import SidebarGroup from './SidebarGroup/SidebarGroup';
+import SidebarEvent from './SidebarEvent/SidebarEvent';
 
 const Sidebar = () => {
     return (
@@ -10,6 +11,7 @@ const Sidebar = () => {
             <div className="sidebar_inside">
                 <SidebarHome />
                 <SidebarDiscover />
+                <SidebarEvent />
                 <SidebarGroup />
             </div>
 

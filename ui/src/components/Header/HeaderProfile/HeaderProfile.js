@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './HeaderProfile.css';
 import { useOutsideAlerter } from '../../../utils/helper/helper.js';
 import ProfileDropdownBox from '../../DropdownBox/ProfileDropdownBox/ProfileDropdownBox';
+import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Avatar } from '@material-ui/core';
 
 const HeaderProfile = ({ user }) => {
@@ -13,12 +15,18 @@ const HeaderProfile = ({ user }) => {
     return (
         <div
             className="header_profile"
-
         >
+            <MoreVertIcon 
+                id="header_notification"
+            />
+            
+            <NotificationsActiveIcon 
+                id="header_notification"
+            />
+            
             <Avatar
                 id="header_avatar_profile"
                 onClick={() => setDisplayProfileDropBox(!displayProfileDropBox)}
-                ref={dialogRef}
             >
                 {user.initials}
             </Avatar>
@@ -27,7 +35,7 @@ const HeaderProfile = ({ user }) => {
                 displayProfileDropBox && (
                     <ProfileDropdownBox
                         user={user}
-                        handleCloseProfileDropBox={() => setDisplayProfileDropBox(false)}
+                        ref={dialogRef}
                     />
                 )
             }

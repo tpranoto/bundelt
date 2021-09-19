@@ -9,7 +9,7 @@ import { resetGroupInfo } from '../../../slices/groupSlice';
 import { setSidebarTabState } from '../../../slices/appSlice';
 import { Avatar } from '@material-ui/core';
 
-const ProfileDropdownBox = ({ user, handleCloseProfileDropBox }) => {
+const ProfileDropdownBox = ({ user, ref }) => {
     const dispatch = useDispatch();
 
     const handleLogout = () => {
@@ -21,11 +21,10 @@ const ProfileDropdownBox = ({ user, handleCloseProfileDropBox }) => {
         dispatch(setSidebarTabState({
             sidebarTabState: "home",
         }));
-        handleCloseProfileDropBox();
     }
 
     return (
-        <div className="profile_dropdown_box_bg">
+        <div className="profile_dropdown_box_bg" ref={ref}>
             <div className="profile_dropdown_box">
                 <div className="profile_dropdown_info_box">
                     <Avatar
@@ -41,7 +40,7 @@ const ProfileDropdownBox = ({ user, handleCloseProfileDropBox }) => {
                         <p>Location</p>
                     </div>
                 </div>
-                
+
                 <div
                     className="profile_dropdown_view_profile"
                 >

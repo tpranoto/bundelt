@@ -11,7 +11,7 @@ const GroupContent = () => {
     const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-        fetch('/group/nearby?lat=' + user.lat + '&lon=' + user.lon + '&limit=10&offset=0')
+        fetch('/group/nearby?user_id=' + user.uid + '&lat=' + user.lat + '&lon=' + user.lon + '&limit=10&offset=0')
             .then((response) => {
                 if (response.ok) {
                     return response.json();
@@ -21,6 +21,7 @@ const GroupContent = () => {
             }).then((responseJson) => {
                 setGroups(responseJson.map((doc) => ({
                     id: doc.group_id,
+                    joined: doc.joined,
                     groupName: doc.group_name,
                     desc: doc.desc,
                     timestamp: doc.created,
@@ -30,7 +31,7 @@ const GroupContent = () => {
             }).catch((error) => {
                 console.log("error: ", error);
             });
-    }, [groupId, user.lat, user.lon]);
+    }, [groupId, user.uid, user.lat, user.lon]);
 
     return (
         <div className="group_content">
@@ -40,9 +41,10 @@ const GroupContent = () => {
                         <div className="group_content_empty">
                             It seems there are no groups nearby. Create a new group for others to find.
                         </div>
-                    ) : groups.map(({ id, groupName, desc, timestamp, distance, members }) => (
+                    ) : groups.map(({ id, joined, groupName, desc, timestamp, distance, members }) => (
                         <Group
                             groupId={id}
+                            groupJoined={joined}
                             groupName={groupName}
                             groupDesc={desc}
                             groupTstamp={timestamp}

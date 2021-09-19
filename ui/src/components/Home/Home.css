@@ -1,0 +1,10 @@
+.home{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.home_inside{
+    height: 92.7vh;
+    overflow: scroll;
+}

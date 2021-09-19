@@ -1,0 +1,19 @@
+.event_page_sidebar{
+    flex: 1;
+    background-color: #f0f0f5;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: scroll;
+    height: 92.7vh;
+    border-left: 2px solid #d1d1e0;
+}
+
+.event_page_sidebar > h4{
+    margin: 10px 20px 10px 20px;
+}
+
+.event_calendar_container{
+    display: flex;
+    margin: 10px 20px 10px 20px;
+}

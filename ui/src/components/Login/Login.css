@@ -11,7 +11,7 @@
     justify-content: space-between;
     width: 500px;
     padding: 20px;
-    background: #29293d;
+    background: #f0f0f5;
     border-radius: 5px;
     box-shadow: 0 1px 8px 0 rgb(0 17 25 / 27%);
 }
@@ -25,7 +25,7 @@
 }
 
 .login_info > h2{
-    color: white;
+    color: #3e4042;
 }
 
 .login_logo{
@@ -38,7 +38,7 @@
 .login_info > span, .login_info > p{
     font-size: small;
     margin: 5px 0 5px 0;
-    color: #a3a3c2;
+    color: #3e4042;
 }
 
 .login_info > p > span{
@@ -52,20 +52,21 @@
 
 .login_info > h5{
     margin: 5px 0 5px 0;
+    color: #3e4042;
 }
 
 .login_info > input{
     margin-bottom: 15px;
     padding: 5px;
-    background: #3d3d5c;
-    color: #a3a3c2;
+    background: #d1d1e0;
+    color: #3e4042;
     font-size: medium;
 }
 
 #sign_in_submit_button {
     width: 300px;
     text-align: center;
-    background-color: #738adb;
+    background-color: #8c00ff;
     color: #eff2f5;
     font-weight: 800;
     margin-top: 10px;

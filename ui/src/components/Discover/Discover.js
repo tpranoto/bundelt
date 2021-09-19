@@ -1,33 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectHomeTabState, setHomeTabState } from '../../slices/appSlice';
 import './Discover.css'
 import EventContent from './EventContent/EventContent.js';
 import GroupContent from './GroupContent/GroupContent';
 
 const Discover = () => {
-    const [tabState, setTabState] = useState("events");
+    const dispatch = useDispatch();
+    const homeTab = useSelector(selectHomeTabState);
 
     return (
         <div className="discover">
             <div className="discover_tabs">
-                <div 
-                    className={tabState === "events" ? "discover_tab selected_discover_tab" : "discover_tab"}
-                    onClick = {()=>setTabState("events")}
+                <div
+                    className={homeTab === "events" ? "discover_tab selected_discover_tab" : "discover_tab"}
+                    onClick={() => dispatch(setHomeTabState({
+                        homeTabState: "events",
+                    }))}
                 >
                     <h4>Events</h4>
                 </div>
 
-                <div 
-                    className={tabState === "groups" ? "discover_tab selected_discover_tab" : "discover_tab"}
-                    onClick = {()=>setTabState("groups")}
+                <div
+                    className={homeTab === "groups" ? "discover_tab selected_discover_tab" : "discover_tab"}
+                    onClick={() => dispatch(setHomeTabState({
+                        homeTabState: "groups",
+                    }))}
                 >
                     <h4>Groups</h4>
                 </div>
             </div>
 
             {
-                tabState === "events"?(
+                homeTab === "events" ? (
                     <EventContent />
-                ):(
+                ) : (
                     <GroupContent />
                 )
             }

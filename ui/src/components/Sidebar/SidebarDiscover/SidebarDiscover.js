@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './SidebarDiscover.css';
-import { setSidebarTabState, selectSidebarTabState } from '../../../slices/appSlice';
+import { setSidebarTabState, selectSidebarTabState, setHomeTabState } from '../../../slices/appSlice';
 import ExploreIcon from '@material-ui/icons/Explore';
 
 const SidebarDiscover = () => {
@@ -9,6 +9,10 @@ const SidebarDiscover = () => {
     const sidebarTab = useSelector(selectSidebarTabState);
 
     const handleDiscoverTab = () => {
+        dispatch(setHomeTabState({
+            homeTabState: "events",
+        }));
+
         dispatch(
             setSidebarTabState({
                 sidebarTabState: "discover",

@@ -1,0 +1,31 @@
+.event_content_container{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.event_content_title{
+    padding: 20px 20px 10px 20px;
+}
+
+.event_title_date{
+    margin: 0 20px 10px 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+}
+
+.event_list_empty_events{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px 40px 20px 40px;
+}
+
+#empty_event_list_icon{
+    width: 40px;
+    height: 40px;
+}
+
+.event_list_empty_events > h3{
+    margin-left: 40px;
+}

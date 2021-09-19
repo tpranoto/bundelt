@@ -6,7 +6,7 @@ import { selectUser } from '../../../../slices/userSlice';
 import { setGroupInfo } from '../../../../slices/groupSlice';
 import { setSidebarTabState } from '../../../../slices/appSlice';
 
-const Group = ({ groupId, groupName, groupDesc, groupTstamp, groupDistance, groupMembers }) => {
+const Group = ({ groupId, groupJoined, groupName, groupDesc, groupTstamp, groupDistance, groupMembers }) => {
     const dispatch = useDispatch();
     const user = useSelector(selectUser);
 
@@ -52,19 +52,32 @@ const Group = ({ groupId, groupName, groupDesc, groupTstamp, groupDistance, grou
                     </div>
 
                     <div className="group_details_container">
-                        <h5 className="group_details_cont_group_desc">This is the description </h5>
+                        <h5 className="group_details_cont_group_desc">{groupDesc}</h5>
+
+                        <div className="group_details_cont_tags">
+                            <GroupTag tag="pokego" />
+                            <GroupTag tag="cycling" />
+                        </div>
 
                         <div className="group_details_footer">
                             <div className="group_details_footer_members">
                                 {groupMembers} members • {groupDistance} km away
                             </div>
 
-                            <div
-                                className="group_details_footer_join"
-                                onClick={handleJoinGroup}
-                            >
-                                Join
-                            </div>
+                            {
+                                groupJoined ? (
+                                    <div className="group_details_footer_joined">
+                                        Joined
+                                    </div>
+                                ) : (
+                                    <div
+                                        className="group_details_footer_join"
+                                        onClick={handleJoinGroup}
+                                    >
+                                        Join
+                                    </div>
+                                )
+                            }
                         </div>
                     </div>
                 </div>
@@ -74,3 +87,12 @@ const Group = ({ groupId, groupName, groupDesc, groupTstamp, groupDistance, grou
 }
 
 export default Group;
+
+
+const GroupTag = ({tag}) =>{
+    return (
+        <div className="discover_group_tag">
+            {tag}
+        </div>
+    )
+}
