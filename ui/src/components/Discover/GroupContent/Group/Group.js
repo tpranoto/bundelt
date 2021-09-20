@@ -55,7 +55,7 @@ const Group = ({ groupId, groupJoined, groupName, groupDesc, groupTstamp, groupD
                         <h5 className="group_details_cont_group_desc">{groupDesc}</h5>
 
                         <div className="group_details_cont_tags">
-                            <GroupTag tag="pokego" />
+                            <GroupTag tag="cars" />
                             <GroupTag tag="cycling" />
                         </div>
 

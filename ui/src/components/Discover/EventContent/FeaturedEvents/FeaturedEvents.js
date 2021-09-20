@@ -1,12 +1,12 @@
 import React from 'react';
-import './SponsoredEvents.css';
-import pic from '../../../assets/husky.png';
+import './FeatureEvents.css';
+import pic from '../../../../assets/husky.png';
 
-const SponsoredEvents = () =>{
+const FeatureEvents = () =>{
     return (
         <div className="sponsored_events_container">
             <div className="sponsored_events_title">
-                <h2>Sponsored Events Nearby</h2>
+                <h3>Featured Events Nearby</h3>
             </div>
 
             <div className="sponsored_events_list">
@@ -25,7 +25,7 @@ const SponsoredEvents = () =>{
     )
 }
 
-export default SponsoredEvents;
+export default FeatureEvents;
 
 
 const SponsoredEvent = () =>{

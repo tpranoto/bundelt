@@ -12,7 +12,7 @@
 .sponsored_events_list{
     display: flex;
     flex-direction: row;
-    padding: 20px 0 10px 0;
+    padding: 10px 0 10px 0;
     overflow: scroll;
 }
 
@@ -39,10 +39,4 @@
     height: 200px;
     background: #898c90;
     border-radius: 10px 10px 0 0;
-}
-
-.sponsored_event_title{
-}
-
-.sponsored_event_attendees_count{
 }
