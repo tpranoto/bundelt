@@ -1,8 +1,8 @@
 import React from 'react';
 import './NextEvent.css';
-import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
 import { useDispatch } from 'react-redux';
 import { setHomeTabState, setSidebarTabState } from '../../../slices/appSlice';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 
 const EmptyNextEvent = () => {
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const EmptyNextEvent = () => {
 
     return (
         <div className="empty_event">
-            <SentimentDissatisfiedIcon />
+            <CalendarTodayIcon />
 
             <h4>You are not attending any events</h4>
 

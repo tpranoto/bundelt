@@ -29,11 +29,10 @@
 }
 
 .empty_event_group > h4{
-    flex: 7;
+    flex: 8;
 }
 
 .go_to_discover_group_button{
-    flex: 2;
     padding: 10px;
     border-radius: 5px;
     background: #d1d1e0;

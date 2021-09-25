@@ -4,7 +4,7 @@ import logo from '../../assets/roundedlogo.png';
 import HeaderProfile from './HeaderProfile/HeaderProfile';
 import { useDispatch } from 'react-redux';
 import { setSidebarTabState } from '../../slices/appSlice';
-import SearchIcon from '@material-ui/icons/Search';
+import MyLocationIcon from '@material-ui/icons/MyLocation';
 
 const Header = ({ user }) => {
     const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const Header = ({ user }) => {
 
             <div className="header_location_search">
                 <input placeholder="Location" />
-                <SearchIcon />
+                <MyLocationIcon />
             </div>
 
             <HeaderProfile user={user} />

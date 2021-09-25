@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './HeaderProfile.css';
 import { useOutsideAlerter } from '../../../utils/helper/helper.js';
 import ProfileDropdownBox from '../../DropdownBox/ProfileDropdownBox/ProfileDropdownBox';
-import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
+import InboxIcon from '@material-ui/icons/Inbox';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Avatar } from '@material-ui/core';
 
@@ -20,7 +20,7 @@ const HeaderProfile = ({ user }) => {
                 id="header_notification"
             />
             
-            <NotificationsActiveIcon 
+            <InboxIcon 
                 id="header_notification"
             />
             

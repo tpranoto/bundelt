@@ -17,6 +17,7 @@ const ChatContent = ({ user, groupId, groupName }) => {
     }
 
     useEffect(() => {
+        setTimeout(() => {}, 3000);
         if (groupId) {
             fetch('/message/group?group_id=' + groupId)
                 .then((response) => {
@@ -43,7 +44,6 @@ const ChatContent = ({ user, groupId, groupName }) => {
     useEffect(scrollToBottom, [messages]);
 
     const sendMessage = (e) => {
-        setUpdated(updated + 1);
         e.preventDefault();
 
         fetch('/message/group/add', {
@@ -58,6 +58,7 @@ const ChatContent = ({ user, groupId, groupName }) => {
         })
 
         setInput("");
+        setUpdated(updated + 1);
     }
 
     return (

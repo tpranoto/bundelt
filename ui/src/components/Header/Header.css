@@ -55,3 +55,7 @@
 .header_location_search > input::placeholder{
     color: grey;
 }
+
+.header_location_search > .MuiSvgIcon-root{
+    margin-right: 5px;
+}

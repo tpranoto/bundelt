@@ -1,8 +1,8 @@
 import React from 'react';
 import './NextEventGroup.css';
-import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
 import { useDispatch } from 'react-redux';
 import { setHomeTabState, setSidebarTabState } from '../../../slices/appSlice';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 
 const EmptyNextEventGroup = () => {
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const EmptyNextEventGroup = () => {
 
     return (
         <div className="empty_event_group">
-            <SentimentDissatisfiedIcon />
+            <CalendarTodayIcon />
 
             <h4>Your groups don’t have many events right now</h4>
 
