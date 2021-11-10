@@ -10,7 +10,7 @@ const Discover = () => {
     const homeTab = useSelector(selectHomeTabState);
 
     return (
-        <div className="discover">
+        <div className="discover_lala">
             <div className="discover_tabs">
                 <div
                     className={homeTab === "events" ? "discover_tab selected_discover_tab" : "discover_tab"}

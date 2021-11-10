@@ -1,10 +1,47 @@
 .home{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    height: 92.7vh;
+}
+
+.home_page{
+    flex: 4;
     display: flex;
     flex-direction: column;
-    width: 100%;
 }
 
 .home_inside{
-    height: 92.7vh;
     overflow: scroll;
+}
+
+.home_inside > h1 {
+    margin: 20px 5% 20px 5%;
+}
+
+.home_news_div{
+    margin: 0 5% 20px 5%;
+}
+
+#home_news_img{
+    height: 300px;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.home_inside > h3{
+    margin: 0 5% 0 5%;
+}
+
+.home_popular_events, .home_popular_groups{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 5% 20px 5%;
+}
+
+.home_discover_events_button{
+    padding: 5px;
+    background: #8c00ff;
+    color: white;
 }

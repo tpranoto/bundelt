@@ -1,10 +1,8 @@
 import React from 'react';
 import './Sidebar.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setMainTabState, selectMainTabState } from '../../slices/appSlice';
-import SidebarGroup from './SidebarGroup/SidebarGroup';
+import { setMainTabState, selectMainTabState, setGroupTabState, setEventTabState } from '../../slices/appSlice';
 import HomeIcon from '@material-ui/icons/Home';
-import ExploreIcon from '@material-ui/icons/Explore';
 import GroupIcon from '@material-ui/icons/Group';
 import EventIcon from '@material-ui/icons/Event';
 import { Avatar } from '@material-ui/core';
@@ -14,8 +12,8 @@ const Sidebar = () => {
     const user = useSelector(selectUser);
 
     return (
-        <div className="sidebar">
-            <div className="sidebar_inside">
+        <div className="sidebar_home">
+            <div className="sidebar_home_inside">
                 <SidebarTab
                     tabName="user"
                     tabTitle={user.displayName}
@@ -28,20 +26,14 @@ const Sidebar = () => {
                 />
 
                 <SidebarTab
-                    tabName="discover"
-                    tabTitle="Discover"
-                />
-
-                <SidebarTab
                     tabName="group"
                     tabTitle="Groups"
                 />
+
                 <SidebarTab
                     tabName="event"
                     tabTitle="Events"
                 />
-
-                <SidebarGroup />
             </div>
 
         </div>
@@ -62,28 +54,54 @@ const SidebarTab = ({ tabName, tabTitle, tabUserInitial }) => {
         );
     };
 
+    const handleGroupTab = () => {
+        dispatch(
+            setMainTabState({
+                mainTabState: tabName,
+            })
+        );
+
+        dispatch(
+            setGroupTabState({
+                groupTabState: "home",
+            })
+        );
+    }
+
+    const handleEventTab = () => {
+        dispatch(
+            setMainTabState({
+                mainTabState: tabName,
+            })
+        );
+
+        dispatch(
+            setEventTabState({
+                eventTabState: "home",
+            })
+        );
+    }
+
     return (
-        <div className="tab_cont">
+        <div className="home_tab_cont">
             <div
-                className={mainTab === tabName ? "tab_selected" : "tab_def"}
-                onClick={handleTab}
+                className={mainTab === tabName ? "home_tab_selected" : "home_tab_def"}
+                onClick={tabName === "group" ? handleGroupTab : tabName === "event" ? handleEventTab : handleTab}
             >
                 {
                     tabName === "user" ? (
-                        <Avatar id="tab_profile">{tabUserInitial}</ Avatar>
+                        <Avatar id="home_tab_profile">{tabUserInitial}</ Avatar>
                     ) : tabName === "home" ? (
-                        <HomeIcon className="tab_icon" />
-                    ) : tabName === "discover" ? (
-                        <ExploreIcon className="tab_icon" />
+                        <HomeIcon className="home_tab_icon" />
                     ) : tabName === "group" ? (
-                        <GroupIcon className="tab_icon" />
+                        <GroupIcon className="home_tab_icon" />
                     ) : (
-                        <EventIcon className="tab_icon" />
+                        <EventIcon className="home_tab_icon" />
                     )
                 }
 
-                <div className="tab_title_container">
-                    <span className="tab_title">{tabTitle}</span>
+                <div className="home_tab_title_container">
+                    <span className="home_tab_title">{tabTitle}</span>
                 </div>
             </div>
 

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './NewGroupDialog.css';
 import { useOutsideAlerter } from '../../../utils/helper/helper.js';
 import { setGroupInfo } from '../../../slices/groupSlice';
-import { setSidebarTabState } from '../../../slices/appSlice';
+import { setGroupTabState } from '../../../slices/appSlice';
 import { selectUser } from '../../../slices/userSlice';
 
 const NewGroupDialog = ({ handleCloseGroupDialog }) => {
@@ -26,7 +26,7 @@ const NewGroupDialog = ({ handleCloseGroupDialog }) => {
         handleCloseDialogRoutine();
     });
 
-    const handleAddChannel = () => {
+    const handleAddGroup = () => {
         if (groupName !== "") {
             let tstamp = new Date().toUTCString();
 
@@ -55,10 +55,10 @@ const NewGroupDialog = ({ handleCloseGroupDialog }) => {
                         timestamp: tstamp,
                     })
                 );
-                
+
                 dispatch(
-                    setSidebarTabState({
-                        sidebarTabState: "group_" + responseJson.group_id,
+                    setGroupTabState({
+                        groupTabState: "group_" + responseJson.group_id,
                     })
                 );
             }).catch((error) => {
@@ -125,7 +125,7 @@ const NewGroupDialog = ({ handleCloseGroupDialog }) => {
 
                     <button
                         className="create_group_button"
-                        onClick={handleAddChannel}
+                        onClick={handleAddGroup}
                         disabled={groupName === ""}
                     >
                         Create

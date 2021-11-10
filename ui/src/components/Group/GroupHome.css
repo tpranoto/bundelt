@@ -1,0 +1,9 @@
+.group_home_page{
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+}
+
+.group_home_page_title{
+    margin: 20px 5% 20px 5%;
+}

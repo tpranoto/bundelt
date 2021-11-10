@@ -4,7 +4,7 @@ import './Group.css';
 import GroupTemplate from './GroupTemplate/GroupTemplate';
 import { selectUser } from '../../../../slices/userSlice';
 import { setGroupInfo } from '../../../../slices/groupSlice';
-import { setSidebarTabState } from '../../../../slices/appSlice';
+import { setMainTabState } from '../../../../slices/appSlice';
 
 const Group = ({ groupId, groupName, groupDesc, groupTstamp, groupDistance, groupMembers }) => {
     const dispatch = useDispatch();
@@ -29,8 +29,8 @@ const Group = ({ groupId, groupName, groupDesc, groupTstamp, groupDistance, grou
                 timestamp: groupTstamp,
             }));
 
-            dispatch(setSidebarTabState({
-                sidebarTabState: "group_" + groupId,
+            dispatch(setMainTabState({
+                mainTabState: "group_" + groupId,
             }));
         }).catch((error) => {
             console.log("error: ", error);

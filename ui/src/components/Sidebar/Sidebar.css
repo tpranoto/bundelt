@@ -12,3 +12,61 @@
 .sidebar_inside{
     overflow: auto;
 }
+
+
+/* tabs css */
+.tab_cont{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+
+.tab_def{
+    display: flex;
+    flex-direction: row;
+    margin: 0px 5px 0px 5px;
+    border-radius: 5px;
+    padding: 5px 0px 5px 0px;
+}
+
+.tab_selected{
+    display: flex;
+    flex-direction: row;
+    margin: 0px 5px 0px 5px;
+    border-radius: 5px;
+    padding: 5px 0px 5px 0px;
+    background-color: #d199ff;
+}
+
+.tab_def:hover, .tab_selected:hover{
+    cursor: pointer;
+}
+
+.tab_icon{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8c00ff;
+    margin-right: 5px;
+}
+
+#tab_profile{
+    height: 25px;
+    width: 25px;
+    border: 2px solid #26282c;
+    margin-right: 5px;
+}
+
+.tab_title_container{
+    flex: 9;
+    display: flex;
+}
+
+.tab_title{
+    display: flex;
+    align-items: center;
+    font-size: small;
+    font-weight: bold;
+}
+

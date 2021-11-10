@@ -1,26 +1,36 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  sidebarTabState: "home",
+  mainTabState: "home",
   homeTabState: "events",
+  groupTabState: "home",
+  eventTabState: "home",
 };
 
 export const appState = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    setSidebarTabState: (state, action) => {
-      state.sidebarTabState = action.payload.sidebarTabState;
+    setMainTabState: (state, action) => {
+      state.mainTabState = action.payload.mainTabState;
     },
-    setHomeTabState:(state,action) =>{
+    setHomeTabState: (state, action) => {
       state.homeTabState = action.payload.homeTabState;
     },
+    setGroupTabState: (state, action) => {
+      state.groupTabState = action.payload.groupTabState;
+    },
+    setEventTabState: (state, action) => {
+      state.eventTabState = action.payload.eventTabState;
+    }
   },
 });
 
-export const { setSidebarTabState, setHomeTabState } = appState.actions;
+export const { setMainTabState, setHomeTabState, setGroupTabState, setEventTabState } = appState.actions;
 
-export const selectSidebarTabState = (state) => state.app.sidebarTabState;
+export const selectMainTabState = (state) => state.app.mainTabState;
 export const selectHomeTabState = (state) => state.app.homeTabState;
+export const selectGroupTabState = (state) => state.app.groupTabState;
+export const selectEventTabState = (state) => state.app.eventTabState;
 
 export default appState.reducer;

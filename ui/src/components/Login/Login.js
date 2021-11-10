@@ -35,6 +35,13 @@ const Login = () => {
             return
         }
 
+        navigator.geolocation.getCurrentPosition((position) => {
+            setLoc({
+                lat: parseFloat(position.coords.latitude.toFixed(3)),
+                lon: parseFloat(position.coords.longitude.toFixed(3)),
+            });
+        });
+
         fetch('/login', {
             method: "POST",
             body: JSON.stringify({

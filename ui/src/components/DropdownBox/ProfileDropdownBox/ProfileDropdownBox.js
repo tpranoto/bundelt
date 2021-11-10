@@ -6,7 +6,7 @@ import FaceIcon from '@material-ui/icons/Face';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../../slices/userSlice';
 import { resetGroupInfo } from '../../../slices/groupSlice';
-import { setSidebarTabState } from '../../../slices/appSlice';
+import { setMainTabState } from '../../../slices/appSlice';
 import { Avatar } from '@material-ui/core';
 
 const ProfileDropdownBox = ({ user, ref }) => {
@@ -18,8 +18,8 @@ const ProfileDropdownBox = ({ user, ref }) => {
 
         dispatch((resetGroupInfo()));
 
-        dispatch(setSidebarTabState({
-            sidebarTabState: "home",
+        dispatch(setMainTabState({
+            mainTabState: "home",
         }));
     }
 

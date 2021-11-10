@@ -1,0 +1,94 @@
+.bg_dialog {
+    display: block;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.new_event_dialog_main {
+    position:fixed;
+    background: white;
+    width: 35%;
+    height: auto;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 1px 8px 0 rgb(0 17 25 / 27%);
+}
+
+.event_dialog_main > h2{
+    padding: 0 0 10px;
+}
+
+.create_event_directions{
+    font-size: smaller;
+    color: grey;
+    padding-bottom: 5px;
+}
+
+.event_dialog_main > h4{
+    padding: 10px 0 10px 0;
+}
+
+.event_dialog_main > h4 >span{
+    font-weight: 400;
+    font-size: small;
+}
+
+.new_event_input{
+    display: flex;
+    align-items: center;
+    color: gray;
+    background-color: #f0f0f5;
+    border-radius: 3px;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.new_event_input > input{
+    background: transparent;
+    outline-width: 0;
+    color: gray;
+    border: none;
+}
+
+#new_event_name_input, #new_event_description_input{
+    font-size: medium;
+    width: 100%;
+}
+
+.new_event_buttons{
+    padding-top: 15px;
+    text-align: right;
+}
+
+.create_event_button{
+    padding: 8px;
+    margin-left: 10px;
+    border-radius: 5px;
+    background: #8c00ff;
+    color: white;
+    font-size: medium;
+}
+
+.create_event_button:hover{
+    background: #af4dff;
+    cursor: pointer;
+}
+
+.cancel_event_button{
+    color: #808080;
+    font-size: small;
+    text-decoration: underline;
+}
+
+.cancel_event_button:hover{
+    color: #cccccc;
+    cursor: pointer;
+}

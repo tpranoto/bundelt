@@ -1,10 +1,25 @@
-.sidebar_home_div{
+.sidebar_home{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f5;
+    border-right: 2px solid #d1d1e0;
+    height: 92.7vh;
+}
+
+.sidebar_home_inside{
+    overflow: auto;
+}
+
+
+/* tabs css */
+.home_tab_cont{
     display: flex;
     flex-direction: column;
     margin-top: 5px;
 }
 
-.sidebar_home{
+.home_tab_def{
     display: flex;
     flex-direction: row;
     margin: 0px 5px 0px 5px;
@@ -12,7 +27,7 @@
     padding: 5px 0px 5px 0px;
 }
 
-.sidebar_home_selected{
+.home_tab_selected{
     display: flex;
     flex-direction: row;
     margin: 0px 5px 0px 5px;
@@ -21,26 +36,40 @@
     background-color: #d199ff;
 }
 
-.sidebar_home:hover, .sidebar_home_selected:hover{
+.home_tab_def:hover{
+    cursor: pointer;
+    background-color: #f4e6ff;
+}
+
+.home_tab_selected:hover{
     cursor: pointer;
 }
 
-.sidebar_home_icon{
+.home_tab_icon{
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #8c00ff;
+    margin-right: 5px;
 }
 
-.sidebar_home_title_container{
+#home_tab_profile{
+    height: 25px;
+    width: 25px;
+    border: 2px solid #26282c;
+    margin-right: 5px;
+}
+
+.home_tab_title_container{
     flex: 9;
     display: flex;
 }
 
-.sidebar_home_title{
+.home_tab_title{
     display: flex;
     align-items: center;
     font-size: small;
     font-weight: bold;
 }
+

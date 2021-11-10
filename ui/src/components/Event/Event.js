@@ -1,16 +1,31 @@
-import React, { useState } from 'react';
-import EventList from './EventList/EventList';
-import EventSidebar from './EventSidebar/EventSidebar';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectEventTabState } from '../../slices/appSlice';
+import DiscoverEvent from './DiscoverEvent';
 import './Event.css';
+import EventHome from './EventHome';
+import Sidebar from './Sidebar';
 
 const Event = () => {
-    const [dateSelected, setDateSelected] = useState(new Date());
+    const eventState = useSelector(selectEventTabState);
 
     return (
         <div className="event">
-            <EventList dateSelected={dateSelected}/>
+            <Sidebar />
 
-            <EventSidebar dateSelected={dateSelected} setDateSelected={setDateSelected}/>
+            {
+                eventState === "home" ? (
+                    <EventHome />
+                ) : eventState === "discover" ? (
+                    <DiscoverEvent />
+                ) : eventState.startsWith("event_") ? (
+                    <div />
+                ) : (
+                    <div>
+                        Page Not Found
+                    </div>
+                )
+            }
         </div>
     )
 }

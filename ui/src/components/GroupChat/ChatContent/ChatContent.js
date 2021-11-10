@@ -17,28 +17,29 @@ const ChatContent = ({ user, groupId, groupName }) => {
     }
 
     useEffect(() => {
-        setTimeout(() => {}, 3000);
-        if (groupId) {
-            fetch('/message/group?group_id=' + groupId)
-                .then((response) => {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        throw new Error('Something went wrong');
-                    }
-                }).then((data) => {
-                    setMessages(data.map((doc) => ({
-                        user_id: doc.user_id,
-                        initials: getInitials(doc.full_name),
-                        name: doc.full_name,
-                        group_id: doc.group_id,
-                        msg: doc.msg,
-                        timestamp: doc.create_time,
-                    })));
-                }).catch((error) => {
-                    console.log("error: ", error);
-                });
-        }
+        setTimeout(() => {
+            if (groupId) {
+                fetch('/message/group?group_id=' + groupId)
+                    .then((response) => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error('Something went wrong');
+                        }
+                    }).then((data) => {
+                        setMessages(data.map((doc) => ({
+                            user_id: doc.user_id,
+                            initials: getInitials(doc.full_name),
+                            name: doc.full_name,
+                            group_id: doc.group_id,
+                            msg: doc.msg,
+                            timestamp: doc.create_time,
+                        })));
+                    }).catch((error) => {
+                        console.log("error: ", error);
+                    });
+            }
+        }, 2000);
     }, [groupId, updated])
 
     useEffect(scrollToBottom, [messages]);

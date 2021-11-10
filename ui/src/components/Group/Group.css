@@ -1,0 +1,11 @@
+.group{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.group_list_page{
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+}

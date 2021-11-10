@@ -1,0 +1,121 @@
+.discover_group_content{
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+}
+
+.discover_group_content_empty{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background: #f0f0f5;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 5% 20px 5%;
+}
+
+.discover_group_content_inside{
+    overflow: scroll;
+    height: 92.7vh;
+}
+
+.discover_group_list_row{
+    display: flex;
+    flex-direction: row;
+    margin: 20px 5% 20px 5%;
+}
+
+/* group container */
+.group_details_container{
+    display: flex;
+    flex-direction: column;
+    width: 270px;
+    height: 340px;
+    background: #f0f0f5;
+    border-radius: 10px;
+    border: 2px solid #d1d1e0;
+    box-shadow: 0 1px 8px 0 rgb(0 17 25 / 27%);
+}
+
+.group_details_container:not(:last-child){
+    margin-right: 20px;
+}
+
+.group_details_img{
+    display: flex;justify-content: center;
+}
+
+.group_details_img > img{
+    width: 300px;
+    height: 200px;
+    background: #898c90;
+    border-radius: 10px 10px 0 0;
+}
+
+.group_details_title{
+    flex: 1;
+    margin-left: 10px;
+}
+
+.group_details_desc{
+    flex: 2;
+    margin: 5px 10px 5px 10px;
+    font-size: small;
+}
+
+.group_details_tags{
+    flex: 1;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.group_details_member_count{
+    flex: 1;
+    margin: 5px 10px 5px 10px;
+    font-size: small;
+    font-weight: 600;
+}
+
+.group_details_footer_join{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    background: green;
+    color: white;
+    border-radius: 5px;
+    font-size: small;
+    padding: 3px;
+    margin: 5px;
+}
+
+.group_details_footer_join:hover{
+    cursor: pointer;
+    background: #00b33c;
+}
+
+.group_details_footer_joined{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    background: #00b33c;
+    color: white;
+    border-radius: 5px;
+    font-size: small;
+    padding: 3px 2px 3px 2px;
+    margin: 5px;
+}
+
+/* group tag*/
+.discover_group_tag{
+    font-size: small;
+    font-weight: 600;
+    color: white;
+    background: #8c00ff;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.discover_group_tag:not(:last-child){
+    margin-right: 5px;
+}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './SidebarGroup.css';
 import NewGroupDialog from '../../Dialog/NewGroupDialog/NewGroupDialog';
-import { setSidebarTabState, selectSidebarTabState } from '../../../slices/appSlice';
+import { setMainTabState, selectMainTabState } from '../../../slices/appSlice';
 import { setGroupInfo, selectGroupId } from '../../../slices/groupSlice';
 import { selectUser } from '../../../slices/userSlice';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -11,7 +11,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 const SidebarGroup = () => {
     const dispatch = useDispatch();
-    const sidebarTab = useSelector(selectSidebarTabState);
+    const mainTab = useSelector(selectMainTabState);
     const user = useSelector(selectUser);
     const groupId = useSelector(selectGroupId);
     const [groups, setGroups] = useState([]);
@@ -40,8 +40,8 @@ const SidebarGroup = () => {
 
     const handleSidebarTab = (id, gName, desc, timestamp) => {
         dispatch(
-            setSidebarTabState({
-                sidebarTabState: "group_" + id,
+            setMainTabState({
+                mainTabState: "group_" + id,
             })
         );
 
@@ -78,7 +78,7 @@ const SidebarGroup = () => {
                     onClick={handleCategoryExpand}
 
                 >
-                    <span className="sidebar_header_group_title">Groups</span>
+                    <span className="sidebar_header_group_title"> My Groups</span>
                 </div>
 
                 <div
@@ -96,7 +96,7 @@ const SidebarGroup = () => {
                             groups.map(({ id, groupName, desc, timestamp }) => (
 
                                 <div
-                                    className={sidebarTab === "group_" + id ? "selected_group_tab" : "group_tab"}
+                                    className={mainTab === "group_" + id ? "selected_group_tab" : "group_tab"}
                                     onClick={() => handleSidebarTab(id, groupName, desc, timestamp)}
                                 >
                                     <span className="group_tab_title"># {groupName}</span>
